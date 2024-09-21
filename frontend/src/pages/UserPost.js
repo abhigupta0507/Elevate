@@ -23,13 +23,11 @@ const userpostdata = [
   },
 ];
 const UserPost = () => {
-  // Initial state for posts made by user
   const [userPosts, setUserPosts] = useState(userpostdata);
-
-  // State for new post inputs
   const [newPost, setNewPost] = useState({ title: "", content: "" });
 
-  // Handle creating a new post
+
+  
   const handleNewPost = () => {
     const post = {
       id: userPosts.length + 1,

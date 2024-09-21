@@ -8,10 +8,10 @@ import Community from "./Community";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Home from "./Home";
-import '../App.css'
 import Knowledge from "./Knowledge";
 import Footer from "./Footer"
 import UserPost from "./UserPost"
+import '../App.css'
 
 function App() {
   return (

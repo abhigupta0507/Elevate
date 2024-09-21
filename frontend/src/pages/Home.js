@@ -1,93 +1,11 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../components/styles/Home.css";
+import "../components/styles/Reviewslider.css";
 import dietHome from "../images/diet_Home.jpg";
 import professionalHome from "../images/professionals_Home.jpg";
 import progressImg from "../images/progress_Home.jpg";
-import logophoto from "../images/logo_transparent.png";
-import "../components/styles/Reviewslider.css";
-import { useState, useEffect } from "react";
 
-export default function Home() {
-  return (
-    <div>
-      <MainPage />
-      <HomepageCard />
-      <CardOfTwo />
-      <HomepageCard />
-      <ReviewSlider />
-    </div>
-  );
-}
-
-function HomepageCard() {
-  return (
-    <div className="class-studio-container">
-      <div className="class-studio-text">
-        <h1>DIET PLANS</h1>
-        <p>
-          Use this space to highlight your most popular services. You can also
-          use this for your flagship products.
-        </p>
-        <button className="class-button">LEARN MORE</button>
-      </div>
-      <div className="class-studio-video">
-        <img
-          src={dietHome}
-          alt="Workout Class"
-          className="class-video-placeholder"
-        />
-      </div>
-    </div>
-  );
-}
-
-const MainPage = () => {
-  return (
-    <div className="main-container">
-      <div className="left-section">
-        <p className="left-section-name">ELEVATE</p>
-        <p className="left-section-detail">
-          IT'S TIME TO BE HEALTHY AND IN GREAT SHAPE
-        </p>
-        <button className="signup-button">SIGN UP NOW</button>
-      </div>
-      <div className="right-section">
-        <img src={professionalHome} alt="fitness" className="fitness-image" />
-        <div className="circle-text">
-          <p>
-            Elevate your physical fitness by our workout and diet plans
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-function CardOfTwo() {
-  return (
-    <div className="cardoftwo-main-container">
-      <div className="cardoftwo-inner-container">
-        <p className="cardoftwo-inner-container-heading">PROGRESS📈</p>
-        <p className="cardoftwo-inner-container-detail">
-          Track your progress using our graph which displays your daily
-          activities and goals
-        </p>
-        <img src={progressImg} alt="progress"></img>
-      </div>
-      <div className="cardoftwo-inner-container">
-        <p className="cardoftwo-inner-container-heading">BADGES🌟</p>
-        <p className="cardoftwo-inner-container-detail">
-          Reward yourself with badges given by us to motivate you for completing
-          tasks
-        </p>
-        <img src={dietHome} alt="badges"></img>
-      </div>
-    </div>
-  );
-}
-
-// Import your custom CSS
-
-// Sample reviews data stored in an array
 const reviews = [
   {
     name: "John Doe",
@@ -125,14 +43,105 @@ const reviews = [
     image: "https://randomuser.me/api/portraits/women/3.jpg",
   },
 ];
+export default function Home() {
+  return (
+    <div>
+      <MainPage />
+      <DescribeBlockCard
+        title="DIET PLANS"
+        content="Discover personalized diet plans tailored to your goals—whether you're aiming for weight loss, muscle gain, or maintaining a balanced lifestyle. Choose from vegan, vegetarian, or non-vegan options to fuel your journey and track your daily progress"
+        photo={dietHome}
+        buttontext="LEARN MORE"
+        path="/Diet"
+      />
+      <CardOfTwo
+        title1="PROGRESS📈"
+        content1="Track your progress using our graph which displays your daily
+          activities and goals"
+        photo1={progressImg}
+        title2="BADGES🌟"
+        content2="Reward yourself with badges given by us to motivate you for completing
+          tasks"
+        photo2={dietHome}
+      />
+      <DescribeBlockCard
+        title="WORKOUT PLANS"
+        content="Transform your fitness with structured workout plans designed for every level. From beginner to advanced routines, follow exercises tailored to your body and track calories burned as you progress toward your goals"
+        photo={dietHome}
+        buttontext="LEARN MORE"
+        path="/Workout"
+      />
+      <ReviewSlider />
+    </div>
+  );
+}
+
+function DescribeBlockCard({ title, content, photo, buttontext, path }) {
+  const navigate = useNavigate();
+
+  return (
+    <div className="class-studio-container">
+      <div className="class-studio-text">
+        <h1>{title}</h1>
+        <p>{content}</p>
+        <button className="class-button" onClick={() => navigate(path)}>
+          {buttontext}
+        </button>
+      </div>
+      <div className="class-studio-video">
+        <img
+          src={photo}
+          alt="Workout Class"
+          className="class-video-placeholder"
+        />
+      </div>
+    </div>
+  );
+}
+
+const MainPage = () => {
+  return (
+    <div className="main-container">
+      <div className="left-section">
+        <p className="left-section-name">ELEVATE</p>
+        <p className="left-section-detail">
+          IT'S TIME TO BE HEALTHY AND IN GREAT SHAPE
+        </p>
+        <button className="signup-button">SIGN UP NOW</button>
+      </div>
+      <div className="right-section">
+        <img src={professionalHome} alt="fitness" className="fitness-image" />
+        <div className="circle-text">
+          <p>Elevate your physical fitness by our workout and diet plans</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+function CardOfTwo({ title1, content1, photo1, title2, content2, photo2 }) {
+  return (
+    <div className="cardoftwo-main-container">
+      <div className="cardoftwo-inner-container">
+        <p className="cardoftwo-inner-container-heading">{title1}</p>
+        <p className="cardoftwo-inner-container-detail">{content1}</p>
+        <img src={photo1} alt={title1}></img>
+      </div>
+      <div className="cardoftwo-inner-container">
+        <p className="cardoftwo-inner-container-heading">{title2}</p>
+        <p className="cardoftwo-inner-container-detail">{content2}</p>
+        <img src={photo2} alt={title2}></img>
+      </div>
+    </div>
+  );
+}
 
 const ReviewSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const reviewsToShow = 3; // Number of reviews visible at one time
+  const reviewsToShow = 3;
 
-  // Automatically change slide every 5 seconds
   useEffect(() => {
     const slideInterval = setInterval(() => {
       handleNext();
@@ -191,7 +200,6 @@ const ReviewSlider = () => {
         ))}
       </div>
 
-      {/* Manual Controls */}
       <button className="prev" onClick={handlePrevious}>
         &#10094;
       </button>

@@ -5,69 +5,6 @@ import dietplancoffee from "../images/dietplan_coffee.jpg";
 import "../components/styles/Dietplan.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
-const CircularCaloriesProgress = ({ totalCalories, consumedCalories }) => {
-  const percentage = (consumedCalories / totalCalories) * 100;
-
-  return (
-    <div
-      style={{
-        width: 200,
-        height: 200,
-        margin: "auto",
-      }}
-    >
-      <CircularProgressbar
-        className="chartfordiet"
-        value={percentage}
-        text={`${Math.round(percentage)}%`}
-        styles={buildStyles({
-          // Colors for the text and path
-          pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-          textColor: "#f88",
-          trailColor: "#d6d6d6",
-          backgroundColor: "#3e98c7",
-        })}
-      />
-    </div>
-  );
-};
-const Diet = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  return (
-    <>
-      {isAuthenticated ? (
-        <LoggedInDiet />
-      ) : (
-        <>
-          <OptionsChoose />
-          <Timepass />
-          <HomepageCard
-            id="weight-loss-section"
-            heading="Weight Loss"
-            detail="Our Weight Loss Plan is designed to help you shed those extra pounds in a sustainable and healthy way. Focusing on nutrient-dense, lower-calorie meals, this plan will guide you through a balanced approach to weight loss. Enjoy delicious and satisfying meals without feeling deprived, and track your progress to see how each step brings you closer to your goals. With portion control, healthy fats, and lean proteins, you'll be fueled and motivated to stay on track."
-            photo={dietHome}
-            buttonContent="Apply Now"
-          />
-          <HomepageCard
-            id="weight-gain-section"
-            heading="Muscle Gain"
-            detail="Looking to gain muscle and add healthy weight? Our Weight Gain Plan is structured to help you build mass in a balanced and nutritious way. This plan incorporates high-calorie, nutrient-rich meals that provide the right mix of proteins, carbs, and fats to support muscle growth and recovery. Designed for both beginners and advanced fitness enthusiasts, the plan includes frequent meals that nourish and fuel your body, ensuring that your weight gain is healthy and sustainable."
-            photo={dietHome}
-            buttonContent="Apply Now"
-          />
-          <HomepageCard
-            id="maintenance-section"
-            heading="Maintenance"
-            detail="Our Maintenance Plan is perfect for those who want to maintain their current weight while keeping their body healthy and fueled. Balanced with the right mix of macronutrients, this plan helps you sustain your current physique without feeling restricted. With a focus on whole foods, healthy portions, and variety, you can enjoy your favorite meals while maintaining your fitness goals."
-            photo={dietHome}
-            buttonContent="Apply Now"
-          />
-        </>
-      )}
-    </>
-  );
-};
-
 const mealsForToday = {
   breakfast: [
     {
@@ -106,6 +43,123 @@ const mealsForToday = {
   // You can add more meals for evening and dinner here.
 };
 
+export default function Diet() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  return (
+    <>
+      {isAuthenticated ? (
+        <LoggedInDiet />
+      ) : (
+        <>
+          <OptionsChoose />
+          <Heading />
+          <DescribeBlockCard
+            id="weight-loss-section"
+            heading="Weight Loss"
+            detail="Our Weight Loss Plan is designed to help you shed those extra pounds in a sustainable and healthy way. Focusing on nutrient-dense, lower-calorie meals, this plan will guide you through a balanced approach to weight loss. Enjoy delicious and satisfying meals without feeling deprived, and track your progress to see how each step brings you closer to your goals. With portion control, healthy fats, and lean proteins, you'll be fueled and motivated to stay on track."
+            photo={dietHome}
+            buttonContent="Apply Now"
+          />
+          <DescribeBlockCard
+            id="weight-gain-section"
+            heading="Muscle Gain"
+            detail="Looking to gain muscle and add healthy weight? Our Weight Gain Plan is structured to help you build mass in a balanced and nutritious way. This plan incorporates high-calorie, nutrient-rich meals that provide the right mix of proteins, carbs, and fats to support muscle growth and recovery. Designed for both beginners and advanced fitness enthusiasts, the plan includes frequent meals that nourish and fuel your body, ensuring that your weight gain is healthy and sustainable."
+            photo={dietHome}
+            buttonContent="Apply Now"
+          />
+          <DescribeBlockCard
+            id="maintenance-section"
+            heading="Maintenance"
+            detail="Our Maintenance Plan is perfect for those who want to maintain their current weight while keeping their body healthy and fueled. Balanced with the right mix of macronutrients, this plan helps you sustain your current physique without feeling restricted. With a focus on whole foods, healthy portions, and variety, you can enjoy your favorite meals while maintaining your fitness goals."
+            photo={dietHome}
+            buttonContent="Apply Now"
+          />
+        </>
+      )}
+    </>
+  );
+}
+
+{
+  /* Components for page when not logged in or not enrolled i.e. display diet plans */
+}
+function OptionsChoose() {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="diet-page">
+      <h1>Select Your Diet Plan</h1>
+      <div className="cards-container">
+        <div
+          className="card"
+          onClick={() => scrollToSection("weight-loss-section")}
+        >
+          <h2>Weight Loss</h2>
+          <p>
+            Choose a weight loss plan designed for calorie deficit and fat
+            reduction.
+          </p>
+        </div>
+        <div
+          className="card"
+          onClick={() => scrollToSection("weight-gain-section")}
+        >
+          <h2>Muscle Gain</h2>
+          <p>
+            Select a Muscle gain plan focused on muscle building and healthy
+            calorie surplus.
+          </p>
+        </div>
+        <div
+          className="card"
+          onClick={() => scrollToSection("maintenance-section")}
+        >
+          <h2>Maintenance</h2>
+          <p>
+            Opt for a balanced diet to maintain your current weight and stay
+            healthy.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Heading() {
+  return (
+    <div>
+      <h1 className="timepass-heading">More On These Plans</h1>
+    </div>
+  );
+}
+
+function DescribeBlockCard({ id, heading, detail, photo, buttonContent }) {
+  return (
+    <div id={id} className="class-studio-container">
+      <div className="class-studio-text">
+        <h1>{heading}</h1>
+        <p>{detail}</p>
+        <button className="class-button">{buttonContent}</button>
+      </div>
+      <div className="class-studio-video">
+        <img
+          src={photo}
+          alt="Workout Class"
+          className="class-video-placeholder"
+        />
+      </div>
+    </div>
+  );
+}
+
+{
+  /*Components for page when plan chosen and logged in as well */
+}
 const Meal = ({ mealType, meals, handleMealChecked }) => {
   return (
     <div className="meal-section">
@@ -199,7 +253,6 @@ function LoggedInDiet() {
         />
       </div>
 
-      {/* Total Calories Display */}
       <div className="total-calories-section">
         <h2>Total Calories Eaten Today: {calculateTotalCalories()} kcal</h2>
         <div>
@@ -218,78 +271,29 @@ function LoggedInDiet() {
   );
 }
 
-function OptionsChoose() {
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const CircularCaloriesProgress = ({ totalCalories, consumedCalories }) => {
+  const percentage = (consumedCalories / totalCalories) * 100;
 
   return (
-    <div className="diet-page">
-      <h1>Select Your Diet Plan</h1>
-      <div className="cards-container">
-        <div
-          className="card"
-          onClick={() => scrollToSection("weight-loss-section")}
-        >
-          <h2>Weight Loss</h2>
-          <p>
-            Choose a weight loss plan designed for calorie deficit and fat
-            reduction.
-          </p>
-        </div>
-        <div
-          className="card"
-          onClick={() => scrollToSection("weight-gain-section")}
-        >
-          <h2>Muscle Gain</h2>
-          <p>
-            Select a Muscle gain plan focused on muscle building and healthy
-            calorie surplus.
-          </p>
-        </div>
-        <div
-          className="card"
-          onClick={() => scrollToSection("maintenance-section")}
-        >
-          <h2>Maintenance</h2>
-          <p>
-            Opt for a balanced diet to maintain your current weight and stay
-            healthy.
-          </p>
-        </div>
-      </div>
+    <div
+      style={{
+        width: 200,
+        height: 200,
+        margin: "auto",
+      }}
+    >
+      <CircularProgressbar
+        className="chartfordiet"
+        value={percentage}
+        text={`${Math.round(percentage)}%`}
+        styles={buildStyles({
+          // Colors for the text and path
+          pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
+          textColor: "#f88",
+          trailColor: "#d6d6d6",
+          backgroundColor: "#3e98c7",
+        })}
+      />
     </div>
   );
-}
-
-function Timepass() {
-  return (
-    <div>
-      <h1 className="timepass-heading">More On These Plans</h1>
-    </div>
-  );
-}
-
-function HomepageCard({ id, heading, detail, photo, buttonContent }) {
-  return (
-    <div id={id} className="class-studio-container">
-      <div className="class-studio-text">
-        <h1>{heading}</h1>
-        <p>{detail}</p>
-        <button className="class-button">{buttonContent}</button>
-      </div>
-      <div className="class-studio-video">
-        <img
-          src={photo}
-          alt="Workout Class"
-          className="class-video-placeholder"
-        />
-      </div>
-    </div>
-  );
-}
-
-export default Diet;
+};
