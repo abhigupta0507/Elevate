@@ -1,0 +1,87 @@
+.meal-plan-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    font-family: 'Roboto',sans-serif;
+    
+  }
+  
+  .meal-grid {
+    gap: 20px;
+    margin-bottom: 20px;
+    margin-bottom:50px;
+  }
+  
+  .meal-section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom:20px;
+  }
+
+  .meal-section h2{
+    font-weight:bold;
+    font-size:24px;
+    font-family: 'Roboto';
+    margin-bottom:10px;
+  }
+  
+  .meal-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .meal-section-types{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+    font-family: 'Hind',sans-serif;
+  }
+  
+  .meal-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius:50%;
+  }
+  
+  .meal-info {
+    flex: 1;
+  }
+  
+  .finished-label {
+    color: gray;
+    margin-left: 10px;
+  }
+  
+  .finished {
+    background-color: #f0f0f0;
+  }
+  
+  .extra-calories-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .extra-calories-section input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 0.5px solid rgb(179, 179, 179);
+  }
+  
+  .total-calories-section {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+
+  .chartfordiet{
+    
+  }

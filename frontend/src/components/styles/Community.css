@@ -2,10 +2,11 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
 }
 
@@ -44,34 +45,36 @@ h1, h2 {
   height: 60px;
   border-radius: 50%;
   margin-right: 20px;
+  margin-bottom:15px;
 }
 
 .post-content {
-    text-align: left;
+  text-align: left;
   flex: 1;
 }
 
-.post-date-and-title{
-    display: flex;
-    justify-content: space-between;
+.post-date-and-title {
+  display: flex;
+  justify-content: space-between;
 }
 
-.post-date-and-title p{
-    color:#7b7b7b;
+.post-date-and-title p {
+  color: #7b7b7b;
+  font-size: 16px;
 }
 .post-content h3 {
   font-weight: bold;
 }
 
-.post-detail{
-    color:black;
-    margin-bottom:20px;
-    font-family: 'Hind',sans-serif;
+.post-detail {
+  color: black;
+  margin-bottom: 20px;
+  font-family: "Hind", sans-serif;
 }
 
-.post-username{
-  color:#7b7b7b;
-  margin-bottom:10px;
+.post-username {
+  color: #7b7b7b;
+  margin-bottom: 10px;
   font-style: italic;
 }
 
@@ -84,33 +87,5 @@ h1, h2 {
 }
 
 .post-actions button:hover {
-  background-color: #ddd;
-}
-
-.new-post-section {
-  margin-top: 40px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.new-post-section input, .new-post-section textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.new-post-section button {
-  padding: 10px 20px;
-  background-color: #f1f1f1;
-  border: none;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-}
-
-.new-post-section button:hover {
   background-color: #ddd;
 }

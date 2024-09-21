@@ -1,0 +1,97 @@
+/* Auth.css */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f7; /* Soft background */
+  }
+  
+  .auth-box {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .auth-box h1 {
+    color: #3e98c7; /* Same blue as circular progress bar */
+    margin-bottom: 20px;
+  }
+  
+  .auth-form .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .auth-form .input-group label {
+    display: block;
+    color: #4a4a4a;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .auth-form .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .auth-form .input-group input:focus {
+    border-color: #3e98c7;
+  }
+  
+  .auth-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3e98c7;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-button:hover {
+    background-color: #357ca1;
+  }
+  
+  .divider {
+    margin: 20px 0;
+    color: #999;
+    font-size: 14px;
+  }
+  
+  .google-login-button {
+    display: block;
+    width: 100%;
+    background-color: #f8f9fa;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .switch-auth {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #4a4a4a;
+  }
+  
+  .switch-auth a {
+    color: #3e98c7;
+    text-decoration: none;
+  }
+  
+  .switch-auth a:hover {
+    text-decoration: underline;
+  }
+  

@@ -11,6 +11,7 @@ import Home from "./Home";
 import '../App.css'
 import Knowledge from "./Knowledge";
 import Footer from "./Footer"
+import UserPost from "./UserPost"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/" element={<Home/>} />
           <Route path="/Knowledge" element={<Knowledge/>} />
+          <Route path="/UserPost" element={<UserPost/>}/>
         </Routes>
         <Footer/>
       </div>
