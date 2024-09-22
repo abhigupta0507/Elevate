@@ -44,7 +44,7 @@ const mealsForToday = {
 };
 
 export default function Diet() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   return (
     <>
       {isAuthenticated ? (
@@ -257,19 +257,36 @@ function LoggedInDiet() {
         <h2>Total Calories Eaten Today: {calculateTotalCalories()} kcal</h2>
         <div>
           <h1>Calorie Intake Progress</h1>
-          <CircularCaloriesProgress
+          <CalorieGauge
             totalCalories={totalCalories}
-            consumedCalories={
-              calculateTotalCalories() <= totalCalories
-                ? calculateTotalCalories()
-                : totalCalories
-            }
+            consumedCalories={calculateTotalCalories()}
           />
         </div>
       </div>
     </div>
   );
 }
+
+const CalorieGauge = ({ totalCalories, consumedCalories }) => {
+  const percentage = (consumedCalories / totalCalories) * 100;
+
+  return (
+    <div style={{ textAlign: "center", margin: "20px 0" }}>
+      <meter
+        value={percentage / 100}
+        min="0"
+        max="1"
+        low="0.25"
+        high="0.75"
+        optimum="0.9"
+        style={{ width: "200px", height: "30px" }}
+      />
+      <p>
+        {consumedCalories} / {totalCalories} calories consumed
+      </p>
+    </div>
+  );
+};
 
 const CircularCaloriesProgress = ({ totalCalories, consumedCalories }) => {
   const percentage = (consumedCalories / totalCalories) * 100;
