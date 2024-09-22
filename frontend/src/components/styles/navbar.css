@@ -3,7 +3,7 @@
 
 .navbar {
     width: 100%;
-    background-color:white;
+    background-color:rgb(235, 235, 235);
     position: sticky;
     top: 0;
     z-index: 10;

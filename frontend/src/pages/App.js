@@ -8,7 +8,9 @@ import Community from "./Community";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Home from "./Home";
+import '../App.css'
 import Knowledge from "./Knowledge";
+import Footer from "./Footer"
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/Knowledge" element={<Knowledge/>} />
         </Routes>
+        <Footer/>
       </div>
     </Router>
   );
