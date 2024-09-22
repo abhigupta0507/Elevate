@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "../components/styles/Diet.css"; // Import the CSS for styling
 import dietHome from "../images/diet_Home.jpg";
 import dietplancoffee from "../images/dietplan_coffee.jpg";
@@ -80,9 +80,6 @@ export default function Diet() {
   );
 }
 
-{
-  /* Components for page when not logged in or not enrolled i.e. display diet plans */
-}
 function OptionsChoose() {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -157,9 +154,6 @@ function DescribeBlockCard({ id, heading, detail, photo, buttonContent }) {
   );
 }
 
-{
-  /*Components for page when plan chosen and logged in as well */
-}
 const Meal = ({ mealType, meals, handleMealChecked }) => {
   return (
     <div className="meal-section">
@@ -209,23 +203,6 @@ function LoggedInDiet() {
     setMeals(updatedMeals);
   };
 
-  const handleExtraCaloriesChange = (e) => {
-    setExtraCalories(Number(e.target.value));
-  };
-
-  const calculateTotalCalories = () => {
-    let total = 0;
-    Object.keys(meals).forEach((mealType) => {
-      meals[mealType].forEach((meal) => {
-        if (meal.finished) {
-          total += meal.calories;
-        }
-      });
-    });
-    total += extraCalories;
-    return total;
-  };
-
   return (
     <div className="meal-plan-container">
       <h1>Today's Meal Plan</h1>
@@ -241,76 +218,7 @@ function LoggedInDiet() {
           />
         ))}
       </div>
-
-      {/* Extra Calories Input */}
-      <div className="extra-calories-section">
-        <label htmlFor="extraCalories">Any extra calories?</label>
-        <input
-          type="number"
-          id="extraCalories"
-          value={extraCalories}
-          onChange={handleExtraCaloriesChange}
-        />
-      </div>
-
-      <div className="total-calories-section">
-        <h2>Total Calories Eaten Today: {calculateTotalCalories()} kcal</h2>
-        <div>
-          <h1>Calorie Intake Progress</h1>
-          <CalorieGauge
-            totalCalories={totalCalories}
-            consumedCalories={calculateTotalCalories()}
-          />
-        </div>
-      </div>
     </div>
   );
 }
 
-const CalorieGauge = ({ totalCalories, consumedCalories }) => {
-  const percentage = (consumedCalories / totalCalories) * 100;
-
-  return (
-    <div style={{ textAlign: "center", margin: "20px 0" }}>
-      <meter
-        value={percentage / 100}
-        min="0"
-        max="1"
-        low="0.25"
-        high="0.75"
-        optimum="0.9"
-        style={{ width: "200px", height: "30px" }}
-      />
-      <p>
-        {consumedCalories} / {totalCalories} calories consumed
-      </p>
-    </div>
-  );
-};
-
-const CircularCaloriesProgress = ({ totalCalories, consumedCalories }) => {
-  const percentage = (consumedCalories / totalCalories) * 100;
-
-  return (
-    <div
-      style={{
-        width: 200,
-        height: 200,
-        margin: "auto",
-      }}
-    >
-      <CircularProgressbar
-        className="chartfordiet"
-        value={percentage}
-        text={`${Math.round(percentage)}%`}
-        styles={buildStyles({
-          // Colors for the text and path
-          pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-          textColor: "#f88",
-          trailColor: "#d6d6d6",
-          backgroundColor: "#3e98c7",
-        })}
-      />
-    </div>
-  );
-};

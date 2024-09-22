@@ -22,16 +22,6 @@ const caloriesData = [
   { day: "Sun", calories: 550 },
 ];
 
-const caloriesConsumedData = [
-  { day: "Mon", calories: 2200 },
-  { day: "Tue", calories: 2000 },
-  { day: "Wed", calories: 1900 },
-  { day: "Thu", calories: 2100 },
-  { day: "Fri", calories: 1800 },
-  { day: "Sat", calories: 2200 },
-  { day: "Sun", calories: 2500 },
-];
-
 // Sample statistics
 const exerciseStats = {
   week: 10,
@@ -98,28 +88,9 @@ const Progress = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      {/* Calories Consumed Graph */}
-      <div className="progress-section">
-        <h2 className="section-title">Calories Consumed Per Day</h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={caloriesConsumedData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="day" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="calories"
-              stroke="#82ca9d"
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
 
       {/* Weekly, Monthly Statistics */}
-      <div className="progress-section">
+      {/* <div className="progress-section">
         <h2 className="section-title">Exercise & Diet Statistics</h2>
         <div className="stats-container">
           <div className="stats-box">
@@ -138,7 +109,7 @@ const Progress = () => {
             <p>Total Calories Burned: {exerciseStats.totalCalories}</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Goals/Missions */}
       <div className="progress-section">

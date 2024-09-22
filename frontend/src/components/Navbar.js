@@ -5,11 +5,18 @@ import logophoto from "../images/logo_transparent.png";
 import "./styles/navbar.css";
 
 function Logo() {
-  return <img width="200px" className="logo-navbar" src={logophoto} alt="elevate"></img>;
+  return (
+    <img
+      width="200px"
+      className="logo-navbar"
+      src={logophoto}
+      alt="elevate"
+    ></img>
+  );
 }
 
 const NavBar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <div className="navbar">
@@ -48,8 +55,8 @@ const NavBar = () => {
             </li>
           ) : (
             <li>
-              <Link className="link" to="/login">
-                <p className="link">Login</p>
+              <Link className="link" to="/signup">
+                <p className="link">Sign Up</p>
               </Link>
             </li>
           )}
