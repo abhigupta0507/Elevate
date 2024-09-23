@@ -3,7 +3,6 @@ import "../components/styles/Diet.css"; // Import the CSS for styling
 import dietHome from "../images/diet_Home.jpg";
 import dietplancoffee from "../images/dietplan_coffee.jpg";
 import "../components/styles/Dietplan.css";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 const mealsForToday = {
   breakfast: [
@@ -221,4 +220,3 @@ function LoggedInDiet() {
     </div>
   );
 }
-
