@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../components/styles/Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "", 
     email: "",
     password: "",
     confirmPassword: "",
@@ -12,6 +15,8 @@ const Signup = () => {
     age: "",
     height: "",
     weight: "",
+    join_date: new Date().toISOString().split("T")[0],
+    mobile_number: "",
   });
 
   const handleChange = (e) => {
@@ -21,10 +26,33 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic
-    console.log(formData);
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/api/users/signup/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("You have successfully signed up!!");
+        navigate("/login");
+        console.log(formData);
+      } else {
+        console.error("Signup failed", await response.json());
+        alert("Login or try again!!"); // Log server error response
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Signup failed");
+    }
   };
 
   return (
@@ -33,23 +61,23 @@ const Signup = () => {
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-column">
           <div className="form-group">
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="first_name">First Name</label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
+              id="first_name"
+              name="first_name" 
+              value={formData.first_name}
               onChange={handleChange}
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="last_name">Last Name</label>
             <input
               type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
+              id="last_name"
+              name="last_name" // Updated name to match the backend
+              value={formData.last_name}
               onChange={handleChange}
               required
             />
@@ -65,6 +93,7 @@ const Signup = () => {
               required
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="gender">Gender</label>
             <select
@@ -83,7 +112,6 @@ const Signup = () => {
         </div>
 
         <div className="form-column">
-          
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
@@ -140,14 +168,27 @@ const Signup = () => {
               required
             />
           </div>
+          <div className="form-group">
+            <label htmlFor="mobile_number">Mobile Number</label>
+            <input
+              type="text"
+              id="mobile_number"
+              name="mobile_number" // Updated name to match the backend
+              value={formData.mobile_number}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
 
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="submit-btn" onClick={handleSubmit}>
           Sign Up
         </button>
         <p className="already-text">
           Already have an account?{" "}
-          <span style={{ color: "#007bff" }}>Log In</span>
+          <span style={{ color: "#007bff" }}>
+            <Link to="/login">Log In</Link>
+          </span>
         </p>
       </form>
     </div>

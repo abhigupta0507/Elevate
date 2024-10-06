@@ -43,10 +43,11 @@ const reviews = [
     image: "https://randomuser.me/api/portraits/women/3.jpg",
   },
 ];
-export default function Home() {
+export default function Home({ isAuthenticated }) {
+  const navigate = useNavigate();
   return (
     <div>
-      <MainPage />
+      <MainPage isAuthenticated={isAuthenticated} navigate={navigate} />
       <DescribeBlockCard
         title="DIET PLANS"
         content="Discover personalized diet plans tailored to your goals—whether you're aiming for weight loss, muscle gain, or maintaining a balanced lifestyle. Choose from vegan, vegetarian, or non-vegan options to fuel your journey and track your daily progress"
@@ -99,7 +100,10 @@ function DescribeBlockCard({ title, content, photo, buttontext, path }) {
   );
 }
 
-const MainPage = () => {
+const MainPage = ({ isAuthenticated, navigate }) => {
+  function handleTakemeaway() {
+    navigate("/login");
+  }
   return (
     <div className="main-container">
       <div className="left-section">
@@ -107,7 +111,9 @@ const MainPage = () => {
         <p className="left-section-detail">
           IT'S TIME TO BE HEALTHY AND IN GREAT SHAPE
         </p>
-        <button className="signup-button">SIGN UP NOW</button>
+        <button className="signup-button" onClick={handleTakemeaway}>
+          {isAuthenticated ? "" : "SIGN UP NOW"}
+        </button>
       </div>
       <div className="right-section">
         <img src={professionalHome} alt="fitness" className="fitness-image" />

@@ -15,9 +15,7 @@ function Logo() {
   );
 }
 
-const NavBar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+const NavBar = ({ isAuthenticated }) => {
   return (
     <div className="navbar">
       <div className="container">
@@ -55,8 +53,8 @@ const NavBar = () => {
             </li>
           ) : (
             <li>
-              <Link className="link" to="/signup">
-                <p className="link">Sign Up</p>
+              <Link className="link" to="/login">
+                <p className="link">Log In</p>
               </Link>
             </li>
           )}

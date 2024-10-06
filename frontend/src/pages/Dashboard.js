@@ -1,21 +1,21 @@
+import { useEffect } from "react";
 import React from "react";
 import "../components/styles/Dashboard.css";
+import { useNavigate } from "react-router-dom";
 import badge1 from "../images/badge_1.png";
 import badge2 from "../images/badge_2.png";
 import badge3 from "../images/badge_3.png";
+const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("userDetails"));
+  if (!user) {
+  } // Get user details from localStorage
 
-const Dashboard = () => {
-  // Sample user data
-  const user = {
-    profilePicture: "https://randomuser.me/api/portraits/men/1.jpg",
-    firstName: "John",
-    lastName: "Doe",
-    email: "john.doe@example.com",
-    age: 25,
-    height: 180,
-    weight: 75,
-    joinDate: "2023-01-01",
-    streak: 7, // example streak count
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("userDetails"); 
+    alert("You have logged out!!");
+    navigate("/");
   };
 
   // Sample badges data
@@ -40,42 +40,27 @@ const Dashboard = () => {
     },
   ];
 
-  // Sample workout and diet plan data
-  const workoutPlan = {
-    name: "Full Body Strength Training",
-    duration: 45,
-    daysPerWeek: 4,
-  };
-
-  const dietPlan = {
-    name: "Weight Loss Diet Plan",
-    category: "Weight Loss",
-  };
-
   return (
     <div className="dashboard-container">
       {/* User Profile Section */}
       <div className="user-profile">
         <img
-          src={user.profilePicture}
+          src="https://randomuser.me/api/portraits/men/1.jpg"
           alt="User Profile"
           className="profile-picture"
         />
         <div className="user-info">
           <h2>
-            {user.firstName} {user.lastName}
+            {user.first_name} {user.last_name}
           </h2>
+          <button onClick={handleLogout}>LogOut</button>
           <p>Email: {user.email}</p>
           <p>
             Age: {user.age} | Height: {user.height} cm | Weight: {user.weight}{" "}
             kg
           </p>
-          <p>Member since: {user.joinDate}</p>
-          <div className="streak-container">
-            <p className="streak">
-              <strong>🔥 {user.streak}-day streak</strong>
-            </p>
-          </div>
+          <p>Member since: {user.join_date}</p>{" "}
+          {/* Adjust the join date based on your data */}
         </div>
       </div>
 
@@ -84,13 +69,13 @@ const Dashboard = () => {
         <h3>Workout Plan Enrolled</h3>
         <div className="plan-details">
           <p>
-            <strong>Plan:</strong> {workoutPlan.name}
+            <strong>Plan:</strong> xyz
           </p>
           <p>
-            <strong>Duration:</strong> {workoutPlan.duration} minutes
+            <strong>Duration:</strong> minutes
           </p>
           <p>
-            <strong>Days per week:</strong> {workoutPlan.daysPerWeek}
+            <strong>Days per week:</strong>
           </p>
         </div>
       </div>
@@ -100,10 +85,10 @@ const Dashboard = () => {
         <h3>Diet Plan Enrolled</h3>
         <div className="plan-details">
           <p>
-            <strong>Plan:</strong> {dietPlan.name}
+            <strong>Plan:</strong>abc
           </p>
           <p>
-            <strong>Category:</strong> {dietPlan.category}
+            <strong>Category:</strong>
           </p>
         </div>
       </div>

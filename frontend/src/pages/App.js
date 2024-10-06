@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Diet from "./Diet";
@@ -15,19 +16,43 @@ import Signup from "./Signup";
 import "../App.css";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  useEffect(function(){
+    const user = localStorage.getItem("userDetails");
+    if(user){
+      setIsAuthenticated(true);
+    }
+    else{
+      setIsAuthenticated(false);
+    }
+  },[])
   return (
     <Router>
       <div>
-        <NavBar />
+        <NavBar isAuthenticated={isAuthenticated} />
         <Routes>
-          <Route path="/diet" element={<Diet />} />
-          <Route path="/workout" element={<Workout />} />
-          <Route path="/progress" element={<Progress />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/" element={<Home />} />
+          <Route  path="/diet" element={<Diet isAuthenticated={isAuthenticated} />} />
+          <Route  path="/workout" element={<Workout isAuthenticated={isAuthenticated} />} />
+          <Route  path="/progress" element={<Progress isAuthenticated={isAuthenticated} />} />
+          <Route  path="/community" element={<Community isAuthenticated={isAuthenticated} />} />
+          <Route
+            path="/login"
+            element={<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />}
+          />
+          <Route
+            path="/signup"
+            element={<Signup isAuthenticated={isAuthenticated} />}
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                isAuthenticated={isAuthenticated}
+                setIsAuthenticated={setIsAuthenticated}
+              />
+            }
+          />
+          <Route path="/" element={<Home isAuthenticated={isAuthenticated} />} />
           <Route path="/Knowledge" element={<Knowledge />} />
           <Route path="/UserPost" element={<UserPost />} />
         </Routes>

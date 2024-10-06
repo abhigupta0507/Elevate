@@ -42,8 +42,7 @@ const mealsForToday = {
   // You can add more meals for evening and dinner here.
 };
 
-export default function Diet() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+export default function Diet({ isAuthenticated }) {
   return (
     <>
       {isAuthenticated ? (
