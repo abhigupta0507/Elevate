@@ -44,22 +44,49 @@ export default function UserPost() {
         });
       })
       .catch((error) => console.error("Error creating post:", error));
+
+    alert("Your post has been registered!!");
   };
 
-  const handleLike = (id) => {
-    fetch(`http://localhost:8000/api/community/posts/${id}/like/`, {
-      method: "PATCH",
-    })
-      .then((response) => {
-        if (response.ok) {
-          setUserPosts(
-            userPosts.map((post) =>
-              post.id === id ? { ...post, likes: post.likes + 1 } : post
-            )
-          );
+  const handleLike = async (postId) => {
+    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    const userId = userDetails.id; // Assuming the user ID is stored in userDetails
+    if (!userId) {
+      alert("You need to login first to like/dislike!!");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/community/posts/${postId}/like/`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user_id: userId }), // Pass user_id in the request body
         }
-      })
-      .catch((error) => console.error("Error liking post:", error));
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setUserPosts((prevPosts) =>
+          prevPosts.map((post) =>
+            post.id === postId
+              ? {
+                  ...post,
+                  likes: data.likes,
+                  is_liked_by_user: data.is_liked_by_user, // Assuming your API returns if the user has liked it
+                }
+              : post
+          )
+        );
+      } else {
+        console.error("Error liking post:", response.statusText);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
   return (
@@ -105,15 +132,24 @@ export default function UserPost() {
 function Post({ post, handleLike }) {
   return (
     <div className="post">
-      <img src={post.userImage} alt={post.username} className="user-image" />
+      <img
+        src={post.userImage || "/defaultImage.png"}
+        alt={post.username}
+        className="user-image"
+      />
       <div className="post-content">
         <div className="post-date-and-title">
           <h3>{post.title}</h3>
           <p>{new Date(post.created_at).toLocaleDateString()}</p>
         </div>
-        <p className="post-detail">{post.content}</p>
+        <p className="post-username">by {post.username}</p>
+        <p className="post-detail" style={{ whiteSpace: "initial" }}>
+          {post.content}
+        </p>
         <div className="post-actions">
-          <button onClick={() => handleLike(post.id)}>👍 {post.likes}</button>
+          <button onClick={() => handleLike(post.id)}>
+            {post.is_liked_by_user ? "👎 Unlike" : "👍 Like"} {post.likes}
+          </button>
         </div>
       </div>
     </div>

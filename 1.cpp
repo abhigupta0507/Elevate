@@ -1,197 +1,59 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool decider(vector<long long int> &a,vector<long long int> &b,vector<long long int> &c,long long int sumt,int order){
-    int l1=0;
-    int r1=0;
-    int n=a.size();
-    long long int sum1=a[l1];
-    while(sum1<sumt && r1<=n-3) {
-        r1++;
-        sum1+=a[r1];
+void solve()
+{
+	int n,m,q;
+    cin>>n>>m>>q;
+    vector<int> a(n);
+    vector<int> b(m);
+    unordered_map<int,int> hash;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
-    if(r1==n-2){
-        return false;
+    for(int i=0;i<m;i++){
+        cin>>b[i];
     }
-    int l2=r1+1;
-    int r2=r1+1;
-    long long int sum2=b[l2];
-    while(sum2<sumt && r2<=n-2){
-        r2++;
-        sum2+=b[r2];
-    }
-    if(r2==n-1){
-        return false;
-    }
-    int l3=r2+1;
-    int r3=r2+1;
-    long long int sum3=c[l3];
-    while(sum3<sumt && r3<=n-2){
-        r3++;
-        sum3+=c[r3];
-    }
-    if(sum3<sumt){
-        return false;
-    }
-    else{
-        r3=n-1;
-        if(order==1){
-            cout<<l1+1<<' '<<r1+1<<' '<<l2+1<<' '<<r2+1<<' '<<l3+1<<' '<<r3+1<<endl;
-        }
-        else if(order==2){
-            cout<<l1+1<<' '<<r1+1<<' '<<l3+1<<' '<<r3+1<<' '<<l2+1<<' '<<r2+1<<endl;
-        }
-        else if(order==3){
-            cout<<l2+1<<' '<<r2+1<<' '<<l1+1<<' '<<r1+1<<' '<<l3+1<<' '<<r3+1<<endl;
-        }
-        else if(order==4){
-            cout<<l3+1<<' '<<r3+1<<' '<<l1+1<<' '<<r1+1<<' '<<l2+1<<' '<<r2+1<<endl;
-        }
-        else if(order==5){
-            cout<<l2+1<<' '<<r2+1<<' '<<l3+1<<' '<<r3+1<<' '<<l1+1<<' '<<r1+1<<endl;
+
+    int j=0;
+    int flag=1;
+    for(int i=0;i<n && j<m;i++){
+        if(b[j]==a[i] || hash[b[j]]!=0){
+            while(j<m&&(b[j]==a[i] || hash[b[j]]!=0)){
+                j++;
+                hash[a[i]]++;
+            }
         }
         else{
-            cout<<l3+1<<' '<<r3+1<<' '<<l2+1<<' '<<r2+1<<' '<<l1+1<<' '<<r1+1<<endl;
+            cout<<"TIDAK"<<endl;
+            flag=0;
+            break;
         }
-
-       return true;
     }
+
+    if(flag==1){
+        cout<<"YA"<<endl;
+    }
+        
 }
 
-int main(){
-    int t;
-    cin>>t;
-    while(t--){
-        int n;
-        cin>>n;
-        vector<long long int> a(n);
-        vector<long long int> b(n);
-        vector<long long int> c(n);
-        long long int sumt=0;
-
-        for(int i=0;i<n;i++){
-            cin>>a[i];
-            sumt+=a[i];
-        }
-        for(int i=0;i<n;i++){
-            cin>>b[i];
-        }
-        for(int i=0;i<n;i++){
-            cin>>c[i];
-        }
-
-        sumt=(sumt+2)/3;
-
-        //6 cases 
-        bool test=false;
-        test=decider(a,b,c,sumt,1);
-        if(test==true){
-            continue;
-        }
-        test=decider(a,c,b,sumt,2);
-        if(test==true){
-            continue;
-        }
-        test=decider(b,a,c,sumt,3);
-        if(test==true){
-            continue;
-        }
-        test=decider(b,c,a,sumt,4);
-        if(test==true){
-            continue;
-        }
-        test=decider(c,a,b,sumt,5);
-        if(test==true){
-            continue;
-        }
-        test=decider(a,b,a,sumt,6);
-        if(test==true){
-            continue;
-        }
-        else{
-            cout<<-1<<endl;
-        }
-        
+int32_t main()
+{
+ 
+	auto begin = std::chrono::high_resolution_clock::now();
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+   	int testcases=1;
+   	if(1)
+   		cin>>testcases;
+   	int gh=1;
+   	while(testcases--)
+   	{
+   		solve();
     }
+    auto end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+    cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    return 0;
 }
-
-
-// #include<bits/stdc++.h>
-// using namespace std;
-
-// bool decider(vector<long long int>& a, vector<long long int>& b, vector<long long int>& c, long long int sumt, int order) {
-//     int l1 = 0, r1 = 0, n = a.size();
-//     long long int sum1 = a[l1];
-    
-//     while (sum1 < sumt && r1 <= n - 3) {
-//         r1++;
-//         sum1 += a[r1];
-//     }
-    
-//     if (r1 == n - 2) return false;
-
-//     int l2 = r1 + 1, r2 = l2;
-//     long long int sum2 = b[l2];
-    
-//     while (sum2 < sumt && r2 <= n - 2) {
-//         r2++;
-//         sum2 += b[r2];
-//     }
-    
-//     if (r2 == n - 1) return false;
-
-//     int l3 = r2 + 1, r3 = l3;
-//     long long int sum3 = c[l3];
-    
-//     while (sum3 < sumt && r3 <= n - 2) {
-//         r3++;
-//         sum3 += c[r3];
-//     }
-
-//     if (sum3 < sumt) return false;
-    
-
-//     switch (order) {
-//         case 1: cout << l1+1 << ' ' << r1+1 << ' ' << l2+1 << ' ' << r2+1 << ' ' << l3+1 << ' ' << r3+1 << endl; break;
-//         case 2: cout << l1+1 << ' ' << r1+1 << ' ' << l3+1 << ' ' << r3+1 << ' ' << l2+1 << ' ' << r2+1 << endl; break;
-//         case 3: cout << l2+1 << ' ' << r2+1 << ' ' << l1+1 << ' ' << r1+1 << ' ' << l3+1 << ' ' << r3+1 << endl; break;
-//         case 4: cout << l3+1 << ' ' << r3+1 << ' ' << l1+1 << ' ' << r1+1 << ' ' << l2+1 << ' ' << r2+1 << endl; break;
-//         case 5: cout << l2+1 << ' ' << r2+1 << ' ' << l3+1 << ' ' << r3+1 << ' ' << l1+1 << ' ' << r1+1 << endl; break;
-//         case 6: cout << l3+1 << ' ' << r3+1 << ' ' << l2+1 << ' ' << r2+1 << ' ' << l1+1 << ' ' << r1+1 << endl; break;
-//     }
-
-//     return true;
-// }
-
-// int main() {
-//     int t;
-//     cin >> t;
-    
-//     while (t--) {
-//         int n;
-//         cin >> n;
-        
-//         vector<long long int> a(n), b(n), c(n);
-//         long long int sumt = 0;
-
-//         for (int i = 0; i < n; i++) {
-//             cin >> a[i];
-//             sumt += a[i];
-//         }
-        
-//         for (int i = 0; i < n; i++) cin >> b[i];
-//         for (int i = 0; i < n; i++) cin >> c[i];
-
-//         sumt = (sumt + 2) / 3; 
-
-//         // 6 cases
-//         bool found = false;
-//         found = decider(a, b, c, sumt, 1) || decider(a, c, b, sumt, 2) ||
-//                 decider(b, a, c, sumt, 3) || decider(b, c, a, sumt, 4) ||
-//                 decider(c, a, b, sumt, 5) || decider(c, b, a, sumt, 6);
-
-//         if (!found) {
-//             cout << -1 << endl;
-//         }
-//     }
-// }
