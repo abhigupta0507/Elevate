@@ -1,28 +1,28 @@
 import logophoto from "../images/logo_transparent.png";
 export default function Footer() {
   return (
-    <section class="mt-10 py-10 bg-gray-50 sm:pt-16 lg:pt-24 border-t border-0.5 border-gray-300">
-      <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-        <div class="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
-          <div class="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-            <img class="w-auto h-9" src={logophoto} alt="logo" />
+    <section className="mt-10 py-10 bg-gray-50 sm:pt-16 lg:pt-24 border-t border-0.5 border-gray-300">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+        <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
+          <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
+            <img className="w-auto h-9" src={logophoto} alt="logo" />
 
-            <p class="text-base leading-relaxed text-gray-600 mt-7">
+            <p className="text-base leading-relaxed text-gray-600 mt-7">
               At Elevate, we’re dedicated to empowering your fitness journey.
               Our mission is to provide personalized workout plans, nutritious
               guidance, and a supportive community to help you achieve your
               goals.
             </p>
 
-            <ul class="flex items-center space-x-3 mt-9">
+            <ul className="flex items-center space-x-3 mt-9">
               <li>
                 <a
-                  href="#"
+                  href="about"
                   title=""
-                  class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
+                  className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
                 >
                   <svg
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
@@ -34,12 +34,12 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="recipies"
                   title=""
-                  class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
+                  className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
                 >
                   <svg
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
@@ -51,12 +51,12 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="workout"
                   title=""
-                  class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
+                  className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
                 >
                   <svg
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
@@ -70,19 +70,19 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="diet"
                   title=""
-                  class="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
+                  className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600"
                 >
                   <svg
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"
                     ></path>
                   </svg>
@@ -92,16 +92,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <p class="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+            <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
               Quick Links
             </p>
 
-            <ul class="mt-6 space-y-4">
+            <ul className="mt-6 space-y-4">
               <li>
                 <a
-                  href="#"
+                  href="diet"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   About{" "}
@@ -110,9 +110,9 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="recipies"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Recipies{" "}
@@ -121,9 +121,9 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="workout"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Workout{" "}
@@ -132,9 +132,9 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="diet"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   DietPlan{" "}
@@ -144,16 +144,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <p class="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+            <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
               Help
             </p>
 
-            <ul class="mt-6 space-y-4">
+            <ul className="mt-6 space-y-4">
               <li>
                 <a
-                  href="#"
+                  href="support"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Customer Support{" "}
@@ -162,9 +162,9 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="delivery"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Delivery Details{" "}
@@ -173,9 +173,9 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="tnc"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Terms & Conditions{" "}
@@ -184,9 +184,9 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="#"
+                  href="privacy"
                   title=""
-                  class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
                   Privacy Policy{" "}
@@ -195,14 +195,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div class="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
-            <p class="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+          <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
+            <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
               Subscribe to newsletter
             </p>
 
-            <form action="#" method="POST" class="mt-6">
+            <form action="#" method="POST" className="mt-6">
               <div>
-                <label for="email" class="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email
                 </label>
                 <input
@@ -210,13 +210,13 @@ export default function Footer() {
                   name="email"
                   id="email"
                   placeholder="Enter your email"
-                  class="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                  className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                 />
               </div>
 
               <button
                 type="submit"
-                class="inline-flex items-center justify-center px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700"
+                className="inline-flex items-center justify-center px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700"
               >
                 Subscribe
               </button>
@@ -224,9 +224,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr class="mt-16 mb-10 border-gray-200" />
+        <hr className="mt-16 mb-10 border-gray-200" />
 
-        <p class="text-sm text-center text-gray-600">
+        <p className="text-sm text-center text-gray-600">
           © Copyright 2024, All Rights Reserved by Elevate
         </p>
       </div>

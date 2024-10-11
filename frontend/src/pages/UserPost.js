@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../components/styles/UserPost.css"; // Your CSS for styling
+import userImg from "../images/user.png";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Your CSS for styling
 
 export default function UserPost() {
   const [userPosts, setUserPosts] = useState([]);
@@ -8,6 +11,34 @@ export default function UserPost() {
     content: "",
     user_id: JSON.parse(localStorage.getItem("userDetails")).id,
   });
+
+  // const notifyInfo = (message, position) => {
+  //   toast.info(message, {
+  //     position: position,
+  //   });
+  // };
+
+  // const notifyDefault = (message, position) => {
+  //   toast(message, { position: position });
+  // };
+
+  const notifySuccess = (message, position) => {
+    toast.success(message, {
+      position: position,
+    });
+  };
+
+  const notifyWarning = (message, position) => {
+    toast.warn(message, {
+      position: position,
+    });
+  };
+
+  // const notifyError = (message, position) => {
+  //   toast.error(message, {
+  //     position: position,
+  //   });
+  // };
 
   // Fetch user posts from the API when the component loads
   useEffect(() => {
@@ -27,16 +58,21 @@ export default function UserPost() {
       user_id: JSON.parse(localStorage.getItem("userDetails")).id, // Send user_id from localStorage
     };
 
+    if (!newPost.title || !newPost.content) {
+      notifyWarning("Title or content cannot be empty", "top-right");
+      return;
+    }
+
     fetch("http://localhost:8000/api/community/posts/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(postData), // Include user_id in the post data
+      body: JSON.stringify(postData),
     })
       .then((response) => response.json())
       .then((data) => {
-        setUserPosts([data, ...userPosts]); // Add new post to the list
+        setUserPosts([data, ...userPosts]);
         setNewPost({
           title: "",
           content: "",
@@ -45,7 +81,7 @@ export default function UserPost() {
       })
       .catch((error) => console.error("Error creating post:", error));
 
-    alert("Your post has been registered!!");
+    notifySuccess("Your post has been registered!!", "bottom-right");
   };
 
   const handleLike = async (postId) => {
@@ -91,6 +127,7 @@ export default function UserPost() {
 
   return (
     <div className="user-posts-page">
+      <ToastContainer />
       <div className="create-post-section">
         <h1>Create a Post</h1>
         <input
@@ -130,11 +167,12 @@ export default function UserPost() {
 }
 
 function Post({ post, handleLike }) {
+  const username = `${post.first_name} ${post.last_name}`;
   return (
     <div className="post">
       <img
-        src={post.userImage || "/defaultImage.png"}
-        alt={post.username}
+        src={post.userImage || userImg}
+        alt={username}
         className="user-image"
       />
       <div className="post-content">
@@ -142,7 +180,7 @@ function Post({ post, handleLike }) {
           <h3>{post.title}</h3>
           <p>{new Date(post.created_at).toLocaleDateString()}</p>
         </div>
-        <p className="post-username">by {post.username}</p>
+        <p className="post-username">by {username}</p>
         <p className="post-detail" style={{ whiteSpace: "initial" }}>
           {post.content}
         </p>

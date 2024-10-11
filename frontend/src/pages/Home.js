@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/styles/Home.css";
 import "../components/styles/Reviewslider.css";
@@ -94,6 +94,7 @@ function DescribeBlockCard({ title, content, photo, buttontext, path }) {
           src={photo}
           alt="Workout Class"
           className="class-video-placeholder"
+          loading="lazy"
         />
       </div>
     </div>
@@ -102,7 +103,8 @@ function DescribeBlockCard({ title, content, photo, buttontext, path }) {
 
 const MainPage = ({ isAuthenticated, navigate }) => {
   function handleTakemeaway() {
-    navigate("/login");
+    if (!isAuthenticated) navigate("/login");
+    else navigate("/dashboard");
   }
   return (
     <div className="main-container">
@@ -112,11 +114,16 @@ const MainPage = ({ isAuthenticated, navigate }) => {
           IT'S TIME TO BE HEALTHY AND IN GREAT SHAPE
         </p>
         <button className="signup-button" onClick={handleTakemeaway}>
-          {isAuthenticated ? "" : "SIGN UP NOW"}
+          {isAuthenticated ? "WELCOME BACK" : "SIGN UP NOW"}
         </button>
       </div>
       <div className="right-section">
-        <img src={professionalHome} alt="fitness" className="fitness-image" />
+        <img
+          src={professionalHome}
+          alt="fitness"
+          className="fitness-image"
+          loading="lazy"
+        />
         <div className="circle-text">
           <p>Elevate your physical fitness by our workout and diet plans</p>
         </div>
@@ -127,16 +134,16 @@ const MainPage = ({ isAuthenticated, navigate }) => {
 
 function CardOfTwo({ title1, content1, photo1, title2, content2, photo2 }) {
   return (
-    <div className="cardoftwo-main-container">
+    <div className="cardoftwo-main-container" onLoad={lazy}>
       <div className="cardoftwo-inner-container">
         <p className="cardoftwo-inner-container-heading">{title1}</p>
         <p className="cardoftwo-inner-container-detail">{content1}</p>
-        <img src={photo1} alt={title1}></img>
+        <img src={photo1} alt={title1} loading="lazy"></img>
       </div>
       <div className="cardoftwo-inner-container">
         <p className="cardoftwo-inner-container-heading">{title2}</p>
         <p className="cardoftwo-inner-container-detail">{content2}</p>
-        <img src={photo2} alt={title2}></img>
+        <img src={photo2} alt={title2} loading="lazy"></img>
       </div>
     </div>
   );
@@ -157,11 +164,11 @@ const ReviewSlider = () => {
     }, 3000);
 
     return () => clearInterval(slideInterval); // Cleanup
-  }, [currentSlide]);
+  }, []);
 
   const handleNext = () => {
     if (!isAnimating) {
-      setIsAnimating(true); // Wrap around
+      setIsAnimating(true);
     }
   };
 
@@ -176,7 +183,6 @@ const ReviewSlider = () => {
     }
   };
 
-  // Reset animation flag when slide changes
   useEffect(() => {
     const timer = setTimeout(() => setIsAnimating(false), 500); // Match CSS transition duration
     return () => clearTimeout(timer);

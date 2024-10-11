@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/styles/Login.css";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,12 @@ const Login = ({ setIsAuthenticated }) => {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+
+  const notifyError = (message, position) => {
+    toast.error(message, {
+      position: position,
+    });
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -43,16 +51,17 @@ const Login = ({ setIsAuthenticated }) => {
       } else {
         const errorData = await response.json();
         console.log(errorData.detail); // Log the error message
-        alert(errorData.detail); // Show error message to user
+        notifyError(errorData.detail, "top-right"); // Show error message to user
       }
     } catch (error) {
       console.error("An error occurred:", error);
-      alert("An error occurred. Please try again later.");
+      notifyError("An error occurred. Please try again later", "bottom-right");
     }
   };
 
   return (
     <div className="login-container">
+      <ToastContainer />
       <h2>Login to Your Account</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form className="login-form" onSubmit={handleSubmit}>

@@ -1,10 +1,11 @@
-import { useEffect } from "react";
 import React from "react";
 import "../components/styles/Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import badge1 from "../images/badge_1.png";
 import badge2 from "../images/badge_2.png";
 import badge3 from "../images/badge_3.png";
+import userImg from "../images/user.png"; // Your CSS for styling
+
 const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("userDetails"));
@@ -13,7 +14,7 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem("userDetails"); 
+    localStorage.removeItem("userDetails");
     alert("You have logged out!!");
     navigate("/");
   };
@@ -44,11 +45,7 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
     <div className="dashboard-container">
       {/* User Profile Section */}
       <div className="user-profile">
-        <img
-          src="https://randomuser.me/api/portraits/men/1.jpg"
-          alt="User Profile"
-          className="profile-picture"
-        />
+        <img src={userImg} alt="User Profile" className="profile-picture" />
         <div className="user-info">
           <h2>
             {user.first_name} {user.last_name}

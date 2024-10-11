@@ -19,21 +19,6 @@ class CommunityPostCreateView(generics.CreateAPIView):
         # Save the post with the provided user_id
         serializer.save(user_id=user_id)
 
-# class CommunityPostCreateView(generics.CreateAPIView):
-#     permission_classes = [AllowAny]
-#     queryset = CommunityPost.objects.all()
-#     serializer_class = CommunityPostSerializer
-
-#     def perform_create(self, serializer):
-#         user_id = self.request.data.get('user_id')
-
-#         # Handle if user_id is not provided
-#         if not user_id:
-#             raise serializers.ValidationError("User ID is required.")
-
-#         # Save the post with the user retrieved from user_id
-#         serializer.save(user_id=user_id)
-
 class UserPostsView(generics.ListAPIView):
     serializer_class = CommunityPostSerializer
 
