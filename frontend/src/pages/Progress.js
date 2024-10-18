@@ -89,27 +89,6 @@ const Progress = () => {
         </ResponsiveContainer>
       </div>
 
-      {/* Weekly, Monthly Statistics */}
-      {/* <div className="progress-section">
-        <h2 className="section-title">Exercise & Diet Statistics</h2>
-        <div className="stats-container">
-          <div className="stats-box">
-            <h3>This Week</h3>
-            <p>Workouts: {exerciseStats.workoutsThisWeek}</p>
-            <p>Calories Burned: {exerciseStats.totalCalories}</p>
-            <p>Diet Status: {exerciseStats.dietThisWeek}</p>
-          </div>
-          <div className="stats-box">
-            <h3>This Month</h3>
-            <p>Exercises Done: {exerciseStats.month}</p>
-          </div>
-          <div className="stats-box">
-            <h3>Overall Progress</h3>
-            <p>Total Exercises: {exerciseStats.week}</p>
-            <p>Total Calories Burned: {exerciseStats.totalCalories}</p>
-          </div>
-        </div>
-      </div> */}
 
       {/* Goals/Missions */}
       <div className="progress-section">
