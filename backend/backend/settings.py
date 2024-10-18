@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users',
     'community',
+    'workouts',
     'corsheaders',
     'rest_framework',
     # 'rest_framework.authtoken',

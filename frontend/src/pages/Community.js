@@ -15,21 +15,6 @@ export default function Community({ isAuthenticated }) {
       position: position,
     });
   };
-  // const notifyDefault = (message, position) => {
-  //   toast(message, { position: position });
-  // };
-
-  // const notifySuccess = (message, position) => {
-  //   toast.success(message, {
-  //     position: position,
-  //   });
-  // };
-
-  // const notifyWarning = (message, position) => {
-  //   toast.warn(message, {
-  //     position: position,
-  //   });
-  // };
 
   const notifyError = (message, position) => {
     toast.error(message, {

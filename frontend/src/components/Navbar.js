@@ -31,7 +31,7 @@ const NavBar = ({ isAuthenticated }) => {
             </Link>
           </li>
           <li>
-            <Link className="link" to="/workout">
+            <Link className="link" to="/workoutplans">
               <p className="link">Workout Plan</p>
             </Link>
           </li>
