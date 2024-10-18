@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'users',
     'community',
     'workouts',
+    'diet',
     'corsheaders',
     'rest_framework',
     # 'rest_framework.authtoken',
