@@ -9,9 +9,7 @@ export default function Footer() {
 
             <p className="text-base leading-relaxed text-gray-600 mt-7">
               At Elevate, we’re dedicated to empowering your fitness journey.
-              Our mission is to provide personalized workout plans, nutritious
-              guidance, and a supportive community to help you achieve your
-              goals.
+              
             </p>
 
             <ul className="flex items-center space-x-3 mt-9">
