@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/community/', include('community.urls')),
     path('api/workouts/', include('workouts.urls')),
     path('api/progress/',include('progress.urls')),
+    path('api/badges/',include('badges.urls')),
 ]
