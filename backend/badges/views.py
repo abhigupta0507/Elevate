@@ -62,29 +62,29 @@ def get_user_badges(request, user_id):
     return Response(badges_serialized.data)
 
 
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-# from rest_framework import status
-# from .models import Badge, UserBadges
-# from .serializers import BadgeSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Badge, UserBadge
+from .serializers import BadgeSerializer
 
-# class UserBadgesView(APIView):
-#     def get(self, request, user_id):
-#         # Get all badges
-#         all_badges = Badge.objects.all()
-#         # Get earned badges for the user
-#         earned_badges = UserBadges.objects.filter(user_id=user_id).values_list('badge_id', flat=True)
+class UserBadgesView(APIView):
+    def get(self, request, user_id):
+        # Get all badges
+        all_badges = Badge.objects.all()
+        # Get earned badges for the user
+        earned_badges = UserBadge.objects.filter(user_id=user_id).values_list('badge_id', flat=True)
         
-#         # Distinguish between earned and unearned badges
-#         badges_data = []
-#         for badge in all_badges:
-#             badge_data = {
-#                 'id': badge.id,
-#                 'name': badge.badge_name,
-#                 'description': badge.badge_description,
-#                 'icon': badge.badge_icon,
-#                 'earned': badge.id in earned_badges  # Mark if earned or not
-#             }
-#             badges_data.append(badge_data)
+        # Distinguish between earned and unearned badges
+        badges_data = [
+            {
+                'id': badge.id,
+                'name': badge.badge_name,
+                'description': badge.badge_description,
+                'icon': badge.badge_icon,
+                'earned': badge.id in earned_badges  # Mark as earned or unearned
+            }
+            for badge in all_badges
+        ]
 
-#         return Response(badges_data, status=status.HTTP_200_OK)
+        return Response(badges_data, status=status.HTTP_200_OK)
