@@ -37,8 +37,6 @@ export default function DietPlansPage() {
       .then((data) => {
         if (data.diet_plan) {
           setCurrentPlan(data);
-          console.log(data.diet_plan);
-          console.log(currentPlan);
         } else {
           fetch("http://localhost:8000/api/diet/diet-plans/")
             .then((response) => response.json())
@@ -74,7 +72,6 @@ export default function DietPlansPage() {
       .then((response) => response.json())
       .then((data) => {
         setCurrentPlan(data);
-        console.log(currentPlan);
         notifySuccess("Plan selected successfully!", "top-right");
       })
       .catch(() => notifyError("Error selecting plan!", "top-right"));
@@ -97,14 +94,13 @@ export default function DietPlansPage() {
       .then(() => {
         setCurrentPlan(null);
         notifySuccess("Successfully exited the diet plan!", "top-right");
-      })
-      .catch(() => notifyError("Error exiting diet plan!", "top-right"))
-      .then(() =>
-        fetch("http://localhost:8000/api/diet/diet-plans")
+        // Fetch updated diet plans
+        fetch("http://localhost:8000/api/diet/diet-plans/")
           .then((response) => response.json())
           .then((plansData) => setDietPlans(plansData))
-          .catch(() => notifyError("Error fetching diet plans!", "top-right"))
-      );
+          .catch(() => notifyError("Error fetching diet plans!", "top-right"));
+      })
+      .catch(() => notifyError("Error exiting diet plan!", "top-right"));
   };
 
   return (
@@ -119,9 +115,8 @@ export default function DietPlansPage() {
                 dietPlans.map((plan) => (
                   <div className="plan-card" key={plan.id}>
                     <h3>{plan.plan_name}</h3>
-                    <p>Type: {plan.category}</p>
-                    <p>Duration: {plan.program_duration} days</p>
-                    <p>Calories per day: {plan.calories_per_day}</p>
+                    <p>Category: {plan.category.category_name}</p> {/* Displaying category */}
+                    <p>Description: {plan.description || "No description available."}</p> {/* Displaying description */}
                     <button
                       onClick={() =>
                         handleSelectPlan(plan.id, plan.plan_name)
@@ -142,8 +137,7 @@ export default function DietPlansPage() {
             {currentPlan && currentPlan.diet_plan ? (
               <div className="current-plan-card">
                 <h3>{currentPlan.diet_plan.plan_name}</h3>
-                <p>Type: {currentPlan.diet_plan.diet_t}</p>
-                <p>Calories per day: {currentPlan.diet_plan.calories_per_day}</p>
+                <p>Category: {currentPlan.diet_plan.category.category_name}</p> {/* Displaying category for current plan */}
                 <button onClick={() => navigate("/diet")}>
                   Today's meals
                 </button>
