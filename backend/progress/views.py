@@ -46,3 +46,5 @@ class CaloriesBurnedLast7Days(APIView):
         except Exception as e:
             print(f"An error occurred: {e}")  # Debugging output
             return Response({"error": str(e)}, status=500)
+
+
