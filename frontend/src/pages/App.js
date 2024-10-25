@@ -14,6 +14,8 @@ import Footer from "./Footer";
 import UserPost from "./UserPost";
 import Signup from "./Signup";
 import WorkoutPlansPage from "./WorkoutPlans";
+import DietPlansPage from "./DietPlans";
+
 import "../App.css";
 
 function App() {
@@ -59,7 +61,13 @@ function App() {
                 setIsAuthenticated={setIsAuthenticated}
               />
             }
+            />
+          <Route
+            path="/dietplans"
+            element={<DietPlansPage isAuthenticated={isAuthenticated} />}
+          
           />
+
           <Route
             path="/signup"
             element={<Signup isAuthenticated={isAuthenticated} />}

@@ -42,3 +42,6 @@ class UserProgressAdmin(admin.ModelAdmin):
     list_display = ('user', 'progress_date', 'total_calories_burned')
     search_fields = ('user__email',)
     list_filter = ('progress_date',)
+
+
+
