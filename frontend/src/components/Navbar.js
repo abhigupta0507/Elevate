@@ -26,7 +26,7 @@ const NavBar = ({ isAuthenticated }) => {
         </div>
         <ul className="navbar-links">
           <li>
-            <Link className="link" to="/diet">
+            <Link className="link" to="/dietplans">
               <p className="link">Diet Plan</p>
             </Link>
           </li>
