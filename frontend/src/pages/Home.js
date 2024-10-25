@@ -60,10 +60,13 @@ export default function Home({ isAuthenticated }) {
         content1="Track your progress using our graph which displays your daily
           activities and goals"
         photo1={progressImg}
+        path1="/progress"
+        buttontext="LEARN MORE"
         title2="BADGES🌟"
         content2="Reward yourself with badges given by us to motivate you for completing
           tasks"
         photo2={dietHome}
+        path2="/progress"
       />
       <DescribeBlockCard
         title="WORKOUT PLANS"
@@ -132,18 +135,25 @@ const MainPage = ({ isAuthenticated, navigate }) => {
   );
 };
 
-function CardOfTwo({ title1, content1, photo1, title2, content2, photo2 }) {
+function CardOfTwo({ title1, content1, photo1, path1, buttontext, title2, content2, photo2, path2}) {
+  const navigate = useNavigate();
   return (
     <div className="cardoftwo-main-container" onLoad={lazy}>
       <div className="cardoftwo-inner-container">
         <p className="cardoftwo-inner-container-heading">{title1}</p>
         <p className="cardoftwo-inner-container-detail">{content1}</p>
         <img src={photo1} alt={title1} loading="lazy"></img>
+        <button className="class-button" onClick={() => navigate(path1)}>
+          {buttontext}
+        </button>
       </div>
       <div className="cardoftwo-inner-container">
         <p className="cardoftwo-inner-container-heading">{title2}</p>
         <p className="cardoftwo-inner-container-detail">{content2}</p>
         <img src={photo2} alt={title2} loading="lazy"></img>
+        <button className="class-button" onClick={() => navigate(path2)}>
+          {buttontext}
+        </button>
       </div>
     </div>
   );
