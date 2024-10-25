@@ -3,7 +3,7 @@
 
 .navbar {
     width: 100%;
-    background-color:#899c37;
+    background-color:#5a6622;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -36,7 +36,7 @@
   }
   
   .link {
-    color: black;
+    color: white;
     text-decoration: none;
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
