@@ -15,6 +15,16 @@ const Progress = () => {
   const [caloriesData, setCaloriesData] = useState([]);
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   // Function to fetch calories data for the past 7 days
+  const [badges, setBadges] = useState([]);
+
+  useEffect(() => {
+    // Fetch badges for the logged-in user
+    fetch(`http://localhost:8000/api/badges/user/${userDetails.id}`)
+      .then((response) => response.json())
+      .then((data) => setBadges(data))
+      .catch((error) => console.log("Error fetching badges", error));
+  }, [userDetails.id]);
+  
   useEffect(() => {
     fetch(
       `http://localhost:8000/api/progress/calories_burned_last_7_days?user_id=${userDetails.id}`,

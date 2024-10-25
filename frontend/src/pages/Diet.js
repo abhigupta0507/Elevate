@@ -232,22 +232,27 @@ export default function TodaysMealsPage() {
   useEffect(() => {
     const userDetails = JSON.parse(localStorage.getItem("userDetails"));
     if (!userDetails) {
-      toast.error("Please log in to view your meals", { position: "top-right" });
+      toast.error("Please log in to view your meals", {
+        position: "top-right",
+      });
       setLoading(false);
       return;
     }
 
     const fetchMeals = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/diet/todays-meals?user_id=${userDetails.id}`);
+        const response = await fetch(
+          `http://localhost:8000/api/diet/todays-meals?user_id=${userDetails.id}`
+        );
         const data = await response.json();
-
 
         if (response.ok) {
           setMeals(data);
           console.log(data);
         } else {
-          toast.error(data.detail || "Failed to fetch meals", { position: "top-right" });
+          toast.error(data.detail || "Failed to fetch meals", {
+            position: "top-right",
+          });
         }
       } catch (error) {
         toast.error("Error fetching meals!", { position: "top-right" });

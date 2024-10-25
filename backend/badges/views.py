@@ -27,10 +27,11 @@ def award_badges(user):
         UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner'))
 
     # 3. Award for completing workouts for 7 consecutive days ('Consistent Performer')
-    streak = UserWorkouts.objects.filter(
-        user=user,
-        completed_date__range=[today - timedelta(days=6), today]
-    ).values('completed_date').distinct().count()
+    # streak = UserWorkouts.objects.filter(
+    #     user=user,
+    #     completed_date__range=[today - timedelta(days=6), today]
+    # ).values('completed_date').distinct().count()
+
     # if streak == 7 and not has_badge('Consistent Performer'):
     #     UserBadge.objects.create(user=user, badge=get_badge('Consistent Performer'))
 
@@ -59,3 +60,31 @@ def get_user_badges(request, user_id):
     user_badges = UserBadge.objects.filter(user_id=user_id).select_related('badge')
     badges_serialized = UserBadgesSerializer(user_badges, many=True)
     return Response(badges_serialized.data)
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Badge, UserBadge
+from .serializers import BadgeSerializer
+
+class UserBadgesView(APIView):
+    def get(self, request, user_id):
+        # Get all badges
+        all_badges = Badge.objects.all()
+        # Get earned badges for the user
+        earned_badges = UserBadge.objects.filter(user_id=user_id).values_list('badge_id', flat=True)
+        
+        # Distinguish between earned and unearned badges
+        badges_data = [
+            {
+                'id': badge.id,
+                'name': badge.badge_name,
+                'description': badge.badge_description,
+                'icon': badge.badge_icon,
+                'earned': badge.id in earned_badges  # Mark as earned or unearned
+            }
+            for badge in all_badges
+        ]
+
+        return Response(badges_data, status=status.HTTP_200_OK)
