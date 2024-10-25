@@ -144,7 +144,7 @@ export default function UserPost() {
           className="post-content-textarea"
         />
         <button onClick={handleNewPost} className="submit-post-button">
-          Submit
+          Post
         </button>
       </div>
 
