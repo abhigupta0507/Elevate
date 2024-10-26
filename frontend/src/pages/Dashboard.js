@@ -8,6 +8,7 @@ import userImg from "../images/user.png"; // Your CSS for styling
 
 const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
   const [currentWorkoutPlan, setCurrentWorkoutPlan] = useState(null);
+  const [currentDietPlan, setCurrentDietPlan] = useState(null);
   const [badges, setBadges] = useState([]);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("userDetails"));
@@ -23,6 +24,7 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
     alert("You have logged out!!");
     navigate("/");
   };
+  console.log(currentDietPlan);
 
   useEffect(() => {
     // Fetch the current workout plan for the logged-in user
@@ -38,6 +40,19 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
       })
       .catch((error) => console.log("Error fetching current workout plan!"));
 
+      fetch(`http://localhost:8000/api/diet/user-diet-plan/${user.id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.diet_plan) {
+          setCurrentDietPlan(data.diet_plan);
+         // Set the current plan if it exists
+        } else {
+          // If no plan exists, fetch all available workout plans
+          setCurrentDietPlan(null);
+        }
+      })
+      .catch((error) => console.log("Error fetching current workout plan!"));
+
     fetch(`http://localhost:8000/api/badges/user-badges/${user.id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -45,28 +60,6 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
       })
       .catch((error) => console.log("Error fetching badges!"));
   }, [user.id]);
-
-  // Sample badges data
-  // const badges = [
-  //   {
-  //     id: 1,
-  //     name: "Workout Beginner",
-  //     icon: badge1,
-  //     description: "Awarded after completing 5 workouts.",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Calorie Burner",
-  //     icon: badge2,
-  //     description: "Awarded after burning 500 calories.",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Consistent Performer",
-  //     icon: badge3,
-  //     description: "Awarded for 7 days of consecutive workouts.",
-  //   },
-  // ];
 
   return (
     <div className="dashboard-container">
@@ -115,32 +108,19 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
         <h3>Diet Plan Enrolled</h3>
         <div className="plan-details">
           <p>
-            <strong>Plan:</strong>abc
+            <strong>Plan:</strong>{currentDietPlan.plan_name}
           </p>
           <p>
-            <strong>Category:</strong>
+            <strong>Category:</strong>{currentDietPlan.category.category_name}
+          </p>
+          <p>
+            <p>
+              <strong>Description:</strong>{currentDietPlan.description}
+            </p>
           </p>
         </div>
       </div>
 
-      {/* <div className="badges-section">
-        <h3>Collected Badges</h3>
-        <div className="badges-grid">
-          {badges.map((badge) => (
-            <div key={badge.id} className="badge-card">
-              <img
-                src={badge.icon}
-                alt={`${badge.name} Icon`}
-                className="badge-icon"
-              />
-              <div className="badge-info">
-                <h4>{badge.name}</h4>
-                <p>{badge.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
       <div className="badges-section">
         <h3>Collected Badges</h3>
         <div className="badges-grid">

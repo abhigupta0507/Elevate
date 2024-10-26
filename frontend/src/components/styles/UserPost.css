@@ -54,7 +54,84 @@
     font-size:28px;
     font-weight:bold;
   }
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-family: 'Roboto',sans-serif;
+  }
   
+  .imageusername{
+    display: flex;
+    align-items: center;
+  }
+  
+  .post-username{
+    margin-top:-16px;
+    font-family: 'Harmattan',sans-serif;
+    font-size: 20px;
+  }
+  .post-content {
+    text-align: left;
+    flex: 1;
+  }
+  
+  .post-date-and-content h3{
+    font-weight: bold;
+    border: 1px solid rgb(235, 235, 235);
+    padding:10px;
+    font-family: 'Arial';
+  }
+  .post-detail{
+    border:1px solid rgb(206, 206, 206);
+    padding:10px;
+    margin-top:10px;
+    font-family: 'Roboto',sans-serif;
+  }
+  
+  .post-actions{
+    display: flex;
+    justify-content: space-between;
+    margin-top:35px;
+  }
+  .post-actions div{
+    display: flex;
+    align-items: center;
+    height:40px;
+    margin-left:10px;
+  }
+  
+  .likebutton{
+    background-color: white;
+    display: center;
+    margin: auto;
+    padding:0px;
+    width:40px;
+  }
+  
+  .post-actions :hover{
+    background-color: white;
+  }
+  
+  .unlikeimage{
+    width:25px;
+    margin-right:5px;
+  }
+  
+  .likeimage{
+    width:35px;
+    margin-left:-5px;
+  }
+  
+  .date-post{
+    font-style: italic;
+    color:grey;
+  }
+/*   
   .post {
     padding: 20px;
     border-bottom: 1px solid #eee;
@@ -118,4 +195,4 @@
     margin-bottom:10px;
     font-style: italic;
   }
-  
+   */

@@ -4,7 +4,8 @@ import "../components/styles/Community.css";
 import userImg from "../images/user.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Your CSS for styling
-
+import like from "../images/like.png";
+import unlike from "../images/unlike.svg";
 export default function Community({ isAuthenticated }) {
   const [posts, setPosts] = useState([]);
   const [sortType, setSortType] = useState("top");
@@ -115,24 +116,36 @@ function Post({ post, handleLike }) {
   const username = `${post.first_name} ${post.last_name}`;
   return (
     <div className="post">
-      <img
-        src={post.userImage || userImg}
-        alt={username}
-        className="user-image"
-      />
+      <div className="imageusername">
+        <img
+          src={post.userImage || userImg}
+          alt={username}
+          className="user-image"
+        />
+        <p className="post-username">{username}</p>
+      </div>
+
       <div className="post-content">
-        <div className="post-date-and-title">
+        <div className="post-date-and-content">
           <h3>{post.title}</h3>
-          <p>{new Date(post.created_at).toLocaleDateString()}</p>
+          <p className="post-detail" style={{ whiteSpace: "initial" }}>
+            {post.content}
+          </p>
         </div>
-        <p className="post-username">by {username}</p>
-        <p className="post-detail" style={{ whiteSpace: "initial" }}>
-          {post.content}
-        </p>
+
         <div className="post-actions">
-          <button onClick={() => handleLike(post.id)}>
-            {post.is_liked_by_user ? "👎 Unlike" : "👍 Like"} {post.likes}
-          </button>
+          <div>
+            <button className="likebutton" onClick={() => handleLike(post.id)}>
+              {post.is_liked_by_user ? (
+                <img className="likeimage" src={like} alt="liked"></img>
+              ) : (
+                <img className="unlikeimage" src={unlike} alt="unliked"></img>
+              )}
+            </button>
+            <p>{post.likes}</p>
+          </div>
+
+          <p className="date-post">{new Date(post.created_at).toLocaleDateString()}</p>
         </div>
       </div>
     </div>
