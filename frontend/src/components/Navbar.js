@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logophoto from "../images/logo_transparent.png";
+import logophoto from "../images/logo_final.png";
 import "./styles/navbar.css";
 
 function Logo() {
