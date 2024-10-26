@@ -79,7 +79,7 @@ const Progress = () => {
         </div>
       </div>
       <div className="progress-container">
-        <h3>Your Badges</h3>
+        <h3>Badges</h3>
         <div className="badges-grid">
           {badges.map((badge) => (
             <div key={badge.id} className="badge-card">
