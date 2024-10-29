@@ -17,16 +17,57 @@ import WorkoutPlansPage from "./WorkoutPlans";
 import DietPlansPage from "./DietPlans";
 
 import "../App.css";
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  useEffect(function () {
-    const user = localStorage.getItem("userDetails");
-    if (user) {
-      setIsAuthenticated(true);
+
+  const checkAuthentication = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (accessToken) {
+      // Decode the token and check its expiration
+      const { exp } = jwtDecode(accessToken);
+      // console.log(exp);
+      // console.log("hi");
+      if (Date.now() >= exp * 1000) {
+        console.log("exp");
+        // Access token expired, try to refresh
+        if (refreshToken) {
+          const response = await fetch(
+            "http://localhost:8000/api/users/token/refresh/",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refresh: refreshToken }),
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem("accessToken", data.access);
+            console.log(true);
+            setIsAuthenticated(true);
+          } else {
+            console.log(false);
+            // Refresh token expired or invalid, log out
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            setIsAuthenticated(false);
+          }
+        }
+      } else {
+        // Access token is valid
+        setIsAuthenticated(true);
+      }
     } else {
       setIsAuthenticated(false);
     }
+  };
+
+  useEffect(() => {
+    checkAuthentication();
   }, []);
   return (
     <Router>
@@ -35,7 +76,16 @@ function App() {
         <Routes>
           <Route
             path="/diet"
-            element={<Diet isAuthenticated={isAuthenticated} />}
+            element={
+              isAuthenticated ? (
+                <Diet isAuthenticated={isAuthenticated} />
+              ) : (
+                <Login
+                  isAuthenticated={isAuthenticated}
+                  setIsAuthenticated={setIsAuthenticated}
+                />
+              )
+            }
           />
           <Route
             path="/workout"
@@ -61,11 +111,19 @@ function App() {
                 setIsAuthenticated={setIsAuthenticated}
               />
             }
-            />
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                isAuthenticated={isAuthenticated}
+                setIsAuthenticated={setIsAuthenticated}
+              />
+            }
+          />
           <Route
             path="/dietplans"
             element={<DietPlansPage isAuthenticated={isAuthenticated} />}
-          
           />
 
           <Route

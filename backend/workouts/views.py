@@ -1,7 +1,7 @@
 from rest_framework import generics,status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAuthenticated
 from .models import Workout, UserWorkoutPlan,WorkoutExercise, UserWorkouts, UserProgress,Exercise
 from .serializers import WorkoutSerializer, UserWorkoutPlanSerializer,WorkoutExerciseSerializer, UserWorkoutSerializer, UserProgressSerializer,ExerciseSerializer
 from django.shortcuts import get_object_or_404
@@ -14,7 +14,6 @@ User = get_user_model()
 #List of workout plan to display if user isn't enrolled in one
 class WorkoutListView(APIView):
     permission_classes = [AllowAny]
-
     def get(self, request):
         workout_plans = Workout.objects.all()
         serializer = WorkoutSerializer(workout_plans, many=True)
@@ -22,9 +21,10 @@ class WorkoutListView(APIView):
 
 #To either get the userworkoutplan or giving user a workout plan
 class UserWorkoutPlanView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
-    def get(self, request, user_id):
+    def get(self, request):
+        user_id=request.user.id
         user_workout_plan = UserWorkoutPlan.objects.filter(user_id=user_id, is_active=True).first()
         if user_workout_plan:
             serializer = UserWorkoutPlanSerializer(user_workout_plan)
@@ -33,7 +33,7 @@ class UserWorkoutPlanView(APIView):
             return Response({"workout_plan": None})
 
     def post(self, request):
-        user_id = request.data.get("user_id")
+        user_id = request.user.id
         workout_plan_id = request.data.get("workout_plan_id")
 
         workout_plan = get_object_or_404(Workout, pk=workout_plan_id)
@@ -52,10 +52,11 @@ class UserWorkoutPlanView(APIView):
 
 #To exit the workout plan he currently is enrolled in
 class ExitWorkoutPlanView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
-    def post(self, request, user_id):
+    def post(self, request):
         try:
+            user_id=request.user.id
             user_workout_plan = UserWorkoutPlan.objects.get(user_id=user_id, is_active=True)
             user_workout_plan.is_active = False  # Mark the plan as inactive
             user_workout_plan.save()
@@ -67,11 +68,11 @@ class ExitWorkoutPlanView(APIView):
 
 #TO display the list of exercises he has to do
 class TodaysExercisesView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         # Get the user_id from query parameters
-        user_id = request.query_params.get('user_id')
+        user_id = request.user.id
 
         if user_id is None:
             return Response({"detail": "User ID is required"}, status=status.HTTP_400_BAD_REQUEST)
@@ -121,10 +122,11 @@ from rest_framework import status
 from datetime import date
 from .models import User, WorkoutExercise, UserWorkouts
 from .serializers import UserWorkoutSerializer
+import pytz
 
 class MarkExerciseDoneView(APIView):
     def post(self, request):
-        user_id = request.data.get("user_id")
+        user_id = request.user.id
         workout_exercise_id = request.data.get("workout_exercise_id")
 
         # Get the user and workout exercise
@@ -157,17 +159,21 @@ class MarkExerciseDoneView(APIView):
         return Response({"success": True, "data": serializer.data, "calories_burned": calories_burned}, status=status.HTTP_201_CREATED)
 
 class UserCompletedExercisesView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        user_id = request.query_params.get('user_id')
-        today = timezone.now().date()
+        user_id = request.user.id
+        india_tz = pytz.timezone('Asia/Kolkata')
+        today = timezone.now().astimezone(india_tz).date()
+       # today = timezone.now().date()
+        print(timezone.now())
 
         completed_exercises = UserWorkouts.objects.filter(user_id=user_id, completed_date=today).values('workout_exercise', 'calories_burned')
         completed_exercise_ids = [exercise['workout_exercise'] for exercise in completed_exercises]
         total_calories_burned = sum(exercise['calories_burned'] for exercise in completed_exercises)
 
         return Response({
+            #"date":timezone.now(),
             "completed_exercises": completed_exercise_ids,
             "total_calories_burned": total_calories_burned
         })

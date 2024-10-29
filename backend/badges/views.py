@@ -56,7 +56,8 @@ from .models import UserBadge, Badge
 from .serializers import UserBadgesSerializer
 
 @api_view(['GET'])
-def get_user_badges(request, user_id):
+def get_user_badges(request):
+    user_id=request.user.id
     user_badges = UserBadge.objects.filter(user_id=user_id).select_related('badge')
     badges_serialized = UserBadgesSerializer(user_badges, many=True)
     return Response(badges_serialized.data)
@@ -69,7 +70,8 @@ from .models import Badge, UserBadge
 from .serializers import BadgeSerializer
 
 class UserBadgesView(APIView):
-    def get(self, request, user_id):
+    def get(self, request):
+        user_id=request.user.id
         # Get all badges
         all_badges = Badge.objects.all()
         # Get earned badges for the user
