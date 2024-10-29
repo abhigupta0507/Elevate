@@ -113,7 +113,7 @@ export default function Community({ isAuthenticated }) {
 }
 
 function Post({ post, handleLike }) {
-  const username = `${post.first_name} ${post.last_name}`;
+  const username =`${post.first_name} ${post.last_name}`;
   return (
     <div className="post">
       <div className="imageusername">
@@ -151,3 +151,5 @@ function Post({ post, handleLike }) {
     </div>
   );
 }
+
+

@@ -1,7 +1,7 @@
 import logophoto from "../images/logo_transparent.png";
 export default function Footer() {
   return (
-<section className="mt-10 py-10 bg-[#f1eacf] sm:pt-16 lg:pt-24 border-t border-0.5 border-gray-300">
+<section className="mt-10 py-10 bg-[#f1d55f] sm:pt-16 lg:pt-24 border-t border-0.5 border-gray-300">
 <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">

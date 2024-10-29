@@ -70,7 +70,7 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
           <h2>
             {user.first_name} {user.last_name}
           </h2>
-          <button onClick={handleLogout}>LogOut</button>
+          
           <p>Email: {user.email}</p>
           <p>
             Age: {user.age} | Height: {user.height} cm | Weight: {user.weight}{" "}
@@ -104,23 +104,7 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
       </div>
 
       {/* Diet Plan Enrolled Section */}
-      <div className="plan-section">
-        <h3>Diet Plan Enrolled</h3>
-        <div className="plan-details">
-          <p>
-            <strong>Plan:</strong>{currentDietPlan.plan_name}
-          </p>
-          <p>
-            <strong>Category:</strong>{currentDietPlan.category.category_name}
-          </p>
-          <p>
-            <p>
-              <strong>Description:</strong>{currentDietPlan.description}
-            </p>
-          </p>
-        </div>
-      </div>
-
+      
       <div className="badges-section">
         <h3>Collected Badges</h3>
         <div className="badges-grid">
@@ -142,8 +126,12 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
             <p>No badges earned yet.</p>
           )}
         </div>
-      </div>
+        </div>
+        <button onClick={handleLogout}>LogOut</button>
+        
+      
     </div>
+    
   );
 };
 

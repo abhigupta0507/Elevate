@@ -1,9 +1,9 @@
-.diet-plans-page {
+/* .diet-plans-page {
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f1eacf;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
@@ -21,7 +21,7 @@
   }
   
   .plan-card {
-    background-color: #ffffff;
+    background-color: white;
     border: 1px solid #dddddd;
     border-radius: 8px;
     padding: 15px;
@@ -37,7 +37,7 @@
   
   .plan-card h3 {
     margin-top: 0;
-    color: #007bff;
+    color: #f18019;
   }
   
   .plan-card p {
@@ -45,7 +45,7 @@
   }
   
   button {
-    background-color: #007bff;
+    background-color: #f18019;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -55,7 +55,7 @@
   }
   
   button:hover {
-    background-color: #0056b3;
+    background-color: #f1d55f;
   }
   
   .current-plan-card {
@@ -68,10 +68,87 @@
   }
   
   .current-plan-card h3 {
-    color: #28a745;
+    color: #f18019;
   }
   
   .current-plan-card p {
+    color: black;
+  }
+   */
+
+   .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
     color: #333;
   }
+   .outer-container {
+    background-color: #f1eacf;
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .diet-plan-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .class-studio-text h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .class-studio-text p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    max-width: 400px;
+  }
+  
+  .class-button {
+    background-color: #f18019;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .class-button:hover {
+    background-color: #f1d55f;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .class-studio-video {
+    position: relative;
+    width: 450px;
+    height: auto;
+  }
+  .plan-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
   
