@@ -3,11 +3,11 @@ export default function Footer() {
   return (
 <section className="mt-10 py-10 bg-[#f1d55f] sm:pt-16 lg:pt-24 border-t border-0.5 border-gray-300">
 <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
+        <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-4 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
             <img className="w-auto h-9" src={logophoto} alt="logo" />
 
-            <p className="text-base leading-relaxed text-gray-600 mt-7">
+            <p className="text-left leading-relaxed text-gray-600 mt-7">
               At Elevate, we’re dedicated to empowering your fitness journey.
               
             </p>
@@ -95,14 +95,15 @@ export default function Footer() {
             </p>
 
             <ul className="mt-6 space-y-4">
-              <li>
+              <li className="text-center">
                 <a
                   href="diet"
                   title=""
-                  className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
+                  className="flex text-center text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
-                  About{" "}
+                  <p className="text-center">About{" "}</p>
+                  
                 </a>
               </li>
 

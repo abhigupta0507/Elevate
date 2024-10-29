@@ -40,12 +40,13 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
       })
       .catch((error) => console.log("Error fetching current workout plan!"));
 
-      fetch(`http://localhost:8000/api/diet/user-diet-plan/${user.id}`)
+    fetch(`http://localhost:8000/api/diet/user-diet-plan/${user.id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.diet_plan) {
-          setCurrentDietPlan(data.diet_plan);
-         // Set the current plan if it exists
+          setCurrentDietPlan(data);
+         // console.log(data.diet_plan.category);
+          // Set the current plan if it exists
         } else {
           // If no plan exists, fetch all available workout plans
           setCurrentDietPlan(null);
@@ -86,16 +87,16 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
         {currentWorkoutPlan ? (
           <div className="plan-details">
             <p>
-              <strong>Plan:</strong> {currentWorkoutPlan.workout_name}
+              <strong>Plan:</strong> {currentWorkoutPlan?.workout_name}
             </p>
             <p>
-              <strong>Type:</strong> {currentWorkoutPlan.workout_type}
+              <strong>Type:</strong> {currentWorkoutPlan?.workout_type}
             </p>
             <p>
-              <strong>Days per week:</strong> {currentWorkoutPlan.days_per_week}
+              <strong>Days per week:</strong> {currentWorkoutPlan?.days_per_week}
             </p>
             <p>
-              <strong>Description:</strong> {currentWorkoutPlan.description}
+              <strong>Description:</strong> {currentWorkoutPlan?.description}
             </p>
           </div>
         ) : (
@@ -104,7 +105,23 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
       </div>
 
       {/* Diet Plan Enrolled Section */}
-      
+      <div className="plan-section">
+        <h3>Diet Plan Enrolled</h3>
+        <div className="plan-details">
+          <p>
+            <strong>Plan:</strong>{currentDietPlan.plan_name}
+          </p>
+          <p>
+            <strong>Category:</strong>{currentDietPlan.category.category_name}
+          </p>
+          <p>
+            <p>
+              <strong>Description:</strong>{currentDietPlan.description}
+            </p>
+          </p>
+        </div>
+      </div>
+
       <div className="badges-section">
         <h3>Collected Badges</h3>
         <div className="badges-grid">
