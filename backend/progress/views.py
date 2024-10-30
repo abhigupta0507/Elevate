@@ -5,13 +5,13 @@ from datetime import timedelta
 from workouts.models import UserWorkouts
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAuthenticated
 
 class CaloriesBurnedLast7Days(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        user_id = request.query_params.get('user_id')
+        user_id = request.user.id
         today = timezone.now().date()
         start_date = today - timedelta(days=6)  # Get data from the last 7 days
 

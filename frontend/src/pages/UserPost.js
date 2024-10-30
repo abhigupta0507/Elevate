@@ -5,23 +5,17 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Your CSS for styling
 import like from "../images/like.png";
 import unlike from "../images/unlike.svg";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 export default function UserPost() {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [userPosts, setUserPosts] = useState([]);
   const [newPost, setNewPost] = useState({
     title: "",
     content: "",
-    user_id: JSON.parse(localStorage.getItem("userDetails")).id,
   });
 
-  // const notifyInfo = (message, position) => {
-  //   toast.info(message, {
-  //     position: position,
-  //   });
-  // };
-
-  // const notifyDefault = (message, position) => {
-  //   toast(message, { position: position });
-  // };
+  const navigate = useNavigate();
 
   const notifySuccess = (message, position) => {
     toast.success(message, {
@@ -35,73 +29,123 @@ export default function UserPost() {
     });
   };
 
-  // const notifyError = (message, position) => {
-  //   toast.error(message, {
-  //     position: position,
-  //   });
-  // };
+  const checkAuthentication = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (accessToken) {
+      // Decode the token and check its expiration
+      const { exp } = jwtDecode(accessToken);
+      if (Date.now() / 1000 >= exp) {
+        console.log("exp");
+        // Access token expired, try to refresh
+        if (refreshToken) {
+          const response = await fetch(
+            "http://localhost:8000/api/users/token/refresh/",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refresh: refreshToken }),
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem("accessToken", data.access);
+            //console.log(true);
+            setIsAuthenticated(true);
+          } else {
+            console.log(false);
+            // Refresh token expired or invalid, log out
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            setIsAuthenticated(false);
+          }
+        }
+      } else {
+        // Access token is valid
+        setIsAuthenticated(true);
+      }
+    } else {
+      setIsAuthenticated(false);
+    }
+  };
+
+  useEffect(() => {
+    checkAuthentication();
+  }, []);
 
   // Fetch user posts from the API when the component loads
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userDetails"));
+    //const user = JSON.parse(localStorage.getItem("userDetails"));
     // console.log(user);
-    const userId = user.id;
-    fetch(`http://localhost:8000/api/community/posts/${userId}/`)
+    //const userId = user.id;
+    if (!isAuthenticated) {
+      alert("Oops login expired! Login Again");
+      navigate("/login");
+      return;
+    }
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      alert("Oops login expired! Login Again");
+      navigate("/login");
+    }
+    fetch("http://localhost:8000/api/community/posts/user", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => setUserPosts(data))
-      .catch((error) => console.error("Error fetching user posts:", error));
+      .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
-  const handleNewPost = () => {
+  async function handleNewPost() {
+    await checkAuthentication();
+    if (!isAuthenticated) {
+      alert("Oops login expired! Login Again");
+      navigate("/login");
+      return;
+    }
+
+    const token = localStorage.getItem("accessToken");
     const postData = {
       title: newPost.title,
       content: newPost.content,
-      user_id: JSON.parse(localStorage.getItem("userDetails")).id, // Send user_id from localStorage
     };
-
-    if (!newPost.title || !newPost.content) {
-      notifyWarning("Title or content cannot be empty", "top-right");
-      return;
-    }
 
     fetch("http://localhost:8000/api/community/posts/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(postData),
     })
       .then((response) => response.json())
       .then((data) => {
         setUserPosts([data, ...userPosts]);
-        setNewPost({
-          title: "",
-          content: "",
-          user_id: JSON.parse(localStorage.getItem("userDetails")).id, // Reset form
-        });
+        setNewPost({ title: "", content: "" });
       })
       .catch((error) => console.error("Error creating post:", error));
-
-    notifySuccess("Your post has been registered!!", "bottom-right");
-  };
-
+  }
   const handleLike = async (postId) => {
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-    const userId = userDetails.id; // Assuming the user ID is stored in userDetails
-    if (!userId) {
-      alert("You need to login first to like/dislike!!");
-      return;
-    }
-
     try {
+      await checkAuthentication();
+      if (!isAuthenticated) {
+        notifyWarning("Login expired!", "bottom-right");
+        return;
+      }
+      const token = localStorage.getItem("accessToken");
       const response = await fetch(
         `http://localhost:8000/api/community/posts/${postId}/like/`,
         {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ user_id: userId }), // Pass user_id in the request body
         }
       );
 
@@ -113,7 +157,7 @@ export default function UserPost() {
               ? {
                   ...post,
                   likes: data.likes,
-                  is_liked_by_user: data.is_liked_by_user, // Assuming your API returns if the user has liked it
+                  is_liked_by_user: data.is_liked_by_user,
                 }
               : post
           )

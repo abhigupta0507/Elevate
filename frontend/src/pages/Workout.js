@@ -1,26 +1,70 @@
 import React, { useState, useEffect } from "react";
 import "../components/styles/Workout.css"; // Import appropriate styles
-
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 export default function WorkoutPage() {
   const [currentExercise, setCurrentExercise] = useState(null);
   const [totalCaloriesBurned, setTotalCaloriesBurned] = useState(0);
   const [exerciseList, setExerciseList] = useState([]);
   const [completedExercises, setCompletedExercises] = useState([]);
   const [message, setMessage] = useState(""); // Message for feedback
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+  const checkAuthentication = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (accessToken) {
+      // Decode the token and check its expiration
+      const { exp } = jwtDecode(accessToken);
+      if (Date.now() / 1000 >= exp) {
+        console.log("exp");
+        // Access token expired, try to refresh
+        if (refreshToken) {
+          const response = await fetch(
+            "http://localhost:8000/api/users/token/refresh/",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ refresh: refreshToken }),
+            }
+          ).catch((err) => console.log(err));
+
+          if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem("accessToken", data.access);
+            //console.log(true);
+            setIsAuthenticated(true);
+          } else {
+            console.log(false);
+            // Refresh token expired or invalid, log out
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            setIsAuthenticated(false);
+          }
+        }
+      } else {
+        // Access token is valid
+        console.log("made it true");
+        setIsAuthenticated(true);
+      }
+    } else {
+      setIsAuthenticated(false);
+    }
+  };
+  //console.log(isAuthenticated);
 
   // Fetch today's exercises from the backend API
-  const fetchExercises = () => {
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-
-    fetch(
-      `http://127.0.0.1:8000/api/workouts/exercises/today/?user_id=${userDetails.id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+  function fetchExercises() {
+    //const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    const token = localStorage.getItem("accessToken");
+    fetch(`http://127.0.0.1:8000/api/workouts/exercises/today/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setExerciseList(data.exercises);
@@ -30,25 +74,26 @@ export default function WorkoutPage() {
         setCurrentExercise(data.exercises[0]); // Set first exercise as default
       })
       .catch((error) => console.error("Error fetching exercises:", error));
-  };
+  }
 
   // Fetch completed exercises for today
   const fetchCompletedExercises = () => {
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-
-    fetch(
-      `http://127.0.0.1:8000/api/workouts/completed_exercises/?user_id=${userDetails.id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    //const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    const token = localStorage.getItem("accessToken");
+    // if (!token) {
+    //   navigate("/login");
+    // }
+    fetch(`http://127.0.0.1:8000/api/workouts/completed_exercises/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
+        //console.log(data);
         setCompletedExercises(data.completed_exercises);
-        //console.log(completedExercises);
       })
       .catch((error) =>
         console.error("Error fetching completed exercises:", error)
@@ -67,10 +112,21 @@ export default function WorkoutPage() {
   };
 
   useEffect(() => {
-    fetchExercises(); // Call fetchExercises on component mount
-    fetchCompletedExercises(); // Call fetchCompletedExercises on component mount
+    async function fetchexercisedandcompleted() {
+      await checkAuthentication();
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        navigate("/login");
+      } else {
+        fetchExercises(); // Call fetchExercises on component mount
+        fetchCompletedExercises();
+      }
+    }
+    fetchexercisedandcompleted();
+    // Call fetchCompletedExercises on component mount
   }, []);
 
+  //console.log(exerciseList);
   useEffect(() => {
     calculateTotalCalories(); // Calculate total calories burned when exerciseList or completedExercises changes
   }, [exerciseList, completedExercises]);
@@ -82,16 +138,21 @@ export default function WorkoutPage() {
   };
 
   // Handle when the user marks an exercise as done
-  const handleCompleteExercise = (exerciseId) => {
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-
+  const handleCompleteExercise = async (exerciseId) => {
+    //const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    await checkAuthentication();
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      navigate("/login");
+    }
+    //const token = localStorage.getItem("accessToken");
     fetch(`http://127.0.0.1:8000/api/workouts/mark_done/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        user_id: userDetails.id,
         workout_exercise_id: exerciseId,
       }),
     })

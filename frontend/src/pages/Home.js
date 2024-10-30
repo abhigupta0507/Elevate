@@ -45,6 +45,8 @@ const reviews = [
 ];
 export default function Home({ isAuthenticated }) {
   const navigate = useNavigate();
+  const access=localStorage.getItem("accessToken");
+  
   return (
     <div>
       <MainPage isAuthenticated={isAuthenticated} navigate={navigate} />
@@ -53,7 +55,7 @@ export default function Home({ isAuthenticated }) {
         content="Discover personalized diet plans tailored to your goals—whether you're aiming for weight loss, muscle gain, or maintaining a balanced lifestyle. Choose from vegan, vegetarian, or non-vegan options to fuel your journey and track your daily progress"
         photo={dietHome}
         buttontext="LEARN MORE"
-        path="/Diet"
+        path="/dietplans"
       />
       <CardOfTwo
         title1="PROGRESS📈"
@@ -73,7 +75,7 @@ export default function Home({ isAuthenticated }) {
         content="Transform your fitness with structured workout plans designed for every level. From beginner to advanced routines, follow exercises tailored to your body and track calories burned as you progress toward your goals"
         photo={dietHome}
         buttontext="LEARN MORE"
-        path="/Workout"
+        path="/workoutplans"
       />
       <ReviewSlider />
     </div>

@@ -1,53 +1,51 @@
-from rest_framework import generics,status
+
+from rest_framework import generics, status
 from .models import CommunityPost
 from .serializers import CommunityPostSerializer
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 class CommunityPostListView(generics.ListAPIView):
-    queryset = CommunityPost.objects.all().order_by('-created_at')  # List all posts, newest first
+    queryset = CommunityPost.objects.all().order_by('-created_at')
     serializer_class = CommunityPostSerializer
 
 class CommunityPostCreateView(generics.CreateAPIView):
-    permission_classes = [AllowAny]
-    queryset = CommunityPost.objects.all()
     serializer_class = CommunityPostSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
 
     def perform_create(self, serializer):
-        # Extract user_id from the request data
-        user_id = self.request.data.get('user_id')
-        # Save the post with the provided user_id
-        serializer.save(user_id=user_id)
+        serializer.save(user=self.request.user)  # Save with the authenticated user
 
 class UserPostsView(generics.ListAPIView):
     serializer_class = CommunityPostSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
 
     def get_queryset(self):
-        user_id = self.kwargs['user_id']
-        return CommunityPost.objects.filter(user_id=user_id).order_by('-created_at')
+        return CommunityPost.objects.filter(user=self.request.user).order_by('-created_at')
 
 class LikePostView(generics.UpdateAPIView):
-    permission_classes = [AllowAny]
     queryset = CommunityPost.objects.all()
     serializer_class = CommunityPostSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
 
     def patch(self, request, *args, **kwargs):
         post = self.get_object()
-        user_id = request.data.get('user_id')
-
-        if user_id is None:
-            return Response({'error': 'User ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        user = request.user
 
         # Check if the user has already liked the post
-        if post.liked_by.filter(id=user_id).exists():
+        if post.liked_by.filter(id=user.id).exists():
             # Unlike the post
-            post.liked_by.remove(user_id)
+            post.liked_by.remove(user)
             post.likes -= 1
             post.save()
-            return Response({'message': 'Post unliked successfully!', 'likes': post.likes, 'is_liked_by_user':False})
+            return Response({'message': 'Post unliked successfully!', 'likes': post.likes, 'is_liked_by_user': False})
 
         # Like the post
-        post.liked_by.add(user_id)
+        post.liked_by.add(user)
         post.likes += 1
         post.save()
-        return Response({'message': 'Post liked successfully!', 'likes': post.likes ,'is_liked_by_user':True})
+        return Response({'message': 'Post liked successfully!', 'likes': post.likes, 'is_liked_by_user': True})

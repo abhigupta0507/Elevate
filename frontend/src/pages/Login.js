@@ -44,9 +44,10 @@ const Login = ({ setIsAuthenticated }) => {
       if (response.ok) {
         const data = await response.json();
         setIsAuthenticated(true);
-        localStorage.setItem("userFirstName", data.first_name); // Store the user's first name
-        localStorage.setItem("userDetails", JSON.stringify(data));
+        localStorage.setItem("accessToken", data?.access); // Store the user's first name
+        localStorage.setItem("refreshToken", data?.refresh);
         alert("You have successfully logged in!!");
+        alert(data);
         navigate("/dashboard"); // Redirect to dashboard
       } else {
         const errorData = await response.json();
