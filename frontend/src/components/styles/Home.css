@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
 body {
   text-align: center;
   font-family: "Roboto", sans-serif;
@@ -8,10 +8,15 @@ body {
 .cardoftwo-main-container {
   display: flex;
   column-gap: 50px;
-  width: 80%;
+  width: 1000px;
   margin: auto;
-  margin-top: 100px;
-  height: 500px;
+  margin-top: 40px;
+}
+.Progress-Home{
+  background-color: rgb(249, 249, 249);
+  padding-top:20px;
+  padding-bottom:80px;
+  margin-top:50px;
 }
 
 .cardoftwo-inner-container {
@@ -22,24 +27,37 @@ body {
   row-gap: 20px;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 70px 50px;
+  border-radius:60px;
 }
 
 .cardoftwo-inner-container img {
   width: 300px;
-  margin-top:20px;
   height: auto;
+  margin-bottom: 10px;
 }
 
-.cardoftwo-inner-container-heading {
-  font-size: 32px;
+
+.cardoftwo-inner-container h1 {
+  font-size: 40px;
   margin-bottom: 10px;
-  color:black;
+  color: black;
+  font-family: "Roboto", sans-serif;
 }
-.cardoftwo-inner-container-detail{
-    color:rgb(84, 84, 84);
-    font-family: "Hind",sans-serif;
+.cardoftwo-inner-container-detail {
+  color: rgb(71, 71, 71);
+  font-size:18px;
+  font-family: "Hind", sans-serif;
 }
+
+.heading-text{
+  font-size:48px;
+  font-weight:bold;
+  font-family: 'Hind',sans-serif;
+  margin-top:70px;
+}
+
+
 .class-studio-container {
   font-family: "Roboto", sans-serif;
   border-radius: 10px;
@@ -50,11 +68,12 @@ body {
   column-gap: 50px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
+  margin-top: 30px;
   justify-content: space-between;
   align-items: center;
   padding: 40px;
   color: #000;
+  padding-left: 50px;
 }
 
 .class-studio-text h1 {
@@ -66,7 +85,7 @@ body {
   font-size: 16px;
   margin-bottom: 30px;
   max-width: 400px;
-  font-family: "Hind",sans-serif;
+  font-family: "Hind", sans-serif;
 }
 
 .class-button {
@@ -93,7 +112,6 @@ body {
 .class-video-placeholder {
   width: 100%;
   height: auto;
-  border-radius: 5px;
 }
 
 .main-container {
@@ -101,11 +119,12 @@ body {
   justify-content: space-between;
   margin: auto;
   width: 100%;
-  height: 500px;
+  height:550px;
   padding: 50px;
   padding-top: 0px;
   padding-bottom: 0px;
-  background: radial-gradient(circle, #ffffff 0%,  #f1eacf 100%);
+  margin-bottom:100px;
+  background: radial-gradient(circle, #ffffff 0%, #f1eacf 100%);
 }
 
 .left-section {
@@ -136,8 +155,8 @@ body {
   background-color: #f18019;
   color: white;
   padding: 15px 30px;
-  width: 200px;
-  margin-top:100px;
+  width:200px;
+  margin-top: 100px;
   border: none;
   font-size: 20px;
   cursor: pointer;
@@ -146,7 +165,7 @@ body {
 
 .signup-button:hover {
   background-color: #f1d55f;
-  color:black;
+  color: black;
 }
 
 .right-section {
@@ -167,7 +186,7 @@ body {
   position: absolute;
   top: 20%;
   right: -50px;
-  background-color: #f1d55f;/* Circle blue color */
+  background-color: #f1d55f; /* Circle blue color */
   color: black;
   border-radius: 50%;
   padding: 30px;
