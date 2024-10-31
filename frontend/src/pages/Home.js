@@ -4,8 +4,10 @@ import "../components/styles/Home.css";
 import "../components/styles/Reviewslider.css";
 import dietHome from "../images/diet_Home.jpg";
 import professionalHome from "../images/professionals_Home.jpg";
-import progressImg from "../images/progress_Home.jpg";
-
+import progressImg from "../images/progress_Home.png";
+import BadgeImg from "../images/badge_Home.png";
+import CommunityImg from "../images/Community_Home.png";
+import WorkoutImg from "../images/workoutplans_Home.png";
 const reviews = [
   {
     name: "John Doe",
@@ -45,11 +47,36 @@ const reviews = [
 ];
 export default function Home({ isAuthenticated }) {
   const navigate = useNavigate();
-  const access=localStorage.getItem("accessToken");
-  
+  const access = localStorage.getItem("accessToken");
+
   return (
     <div>
       <MainPage isAuthenticated={isAuthenticated} navigate={navigate} />
+      <Heading text="Achieve Your Fitness Goals" />
+      <DescribeBlockCard
+        title="WORKOUT PLANS"
+        content="Transform your fitness with structured workout plans designed for every level. From beginner to advanced routines, follow exercises tailored to your body and track calories burned as you progress toward your goals"
+        photo={WorkoutImg}
+        buttontext="LEARN MORE"
+        path="/workoutplans"
+      />
+      <div className="Progress-Home">
+        <Heading text="Monitor Your Progress" />
+        <CardOfTwo
+          title1="PROGRESS"
+          content1="Track your progress using our graph which displays
+          calories burned in last 7 days"
+          photo1={progressImg}
+          path1="/progress"
+          buttontext="LEARN MORE"
+          title2="BADGES"
+          content2="Reward yourself with badges given by us to motivate you for completing
+          tasks"
+          photo2={BadgeImg}
+          path2="/progress"
+        />
+      </div>
+      <Heading text="Your Guide to Healthy Eating" />
       <DescribeBlockCard
         title="DIET PLANS"
         content="Discover personalized diet plans tailored to your goals—whether you're aiming for weight loss, muscle gain, or maintaining a balanced lifestyle. Choose from vegan, vegetarian, or non-vegan options to fuel your journey and track your daily progress"
@@ -57,31 +84,26 @@ export default function Home({ isAuthenticated }) {
         buttontext="LEARN MORE"
         path="/dietplans"
       />
-      <CardOfTwo
-        title1="PROGRESS📈"
-        content1="Track your progress using our graph which displays your daily
-          activities and goals"
-        photo1={progressImg}
-        path1="/progress"
-        buttontext="LEARN MORE"
-        title2="BADGES🌟"
-        content2="Reward yourself with badges given by us to motivate you for completing
-          tasks"
-        photo2={dietHome}
-        path2="/progress"
-      />
-      <DescribeBlockCard
-        title="WORKOUT PLANS"
-        content="Transform your fitness with structured workout plans designed for every level. From beginner to advanced routines, follow exercises tailored to your body and track calories burned as you progress toward your goals"
-        photo={dietHome}
-        buttontext="LEARN MORE"
-        path="/workoutplans"
-      />
+      <Heading text="Reviews of our Users" />
       <ReviewSlider />
+
+      <div className="Progress-Home">
+        <Heading text="Be a part of Elevate Community" />
+        <DescribeBlockCard
+          title="Community"
+          content="Discover a vibrant space where you can connect with others, share your fitness journey, and learn from one another. From inspiring stories to helpful tips, our community is here to support you every step of the way."
+          photo={CommunityImg}
+          buttontext="EXPLORE"
+          path="/community"
+        />
+      </div>
     </div>
   );
 }
 
+function Heading({ text }) {
+  return <h1 className="heading-text">{text}</h1>;
+}
 function DescribeBlockCard({ title, content, photo, buttontext, path }) {
   const navigate = useNavigate();
 
@@ -137,12 +159,22 @@ const MainPage = ({ isAuthenticated, navigate }) => {
   );
 };
 
-function CardOfTwo({ title1, content1, photo1, path1, buttontext, title2, content2, photo2, path2}) {
+function CardOfTwo({
+  title1,
+  content1,
+  photo1,
+  path1,
+  buttontext,
+  title2,
+  content2,
+  photo2,
+  path2,
+}) {
   const navigate = useNavigate();
   return (
     <div className="cardoftwo-main-container" onLoad={lazy}>
       <div className="cardoftwo-inner-container">
-        <p className="cardoftwo-inner-container-heading">{title1}</p>
+        <h1>{title1}</h1>
         <p className="cardoftwo-inner-container-detail">{content1}</p>
         <img src={photo1} alt={title1} loading="lazy"></img>
         <button className="class-button" onClick={() => navigate(path1)}>
@@ -150,7 +182,7 @@ function CardOfTwo({ title1, content1, photo1, path1, buttontext, title2, conten
         </button>
       </div>
       <div className="cardoftwo-inner-container">
-        <p className="cardoftwo-inner-container-heading">{title2}</p>
+        <h1>{title2}</h1>
         <p className="cardoftwo-inner-container-detail">{content2}</p>
         <img src={photo2} alt={title2} loading="lazy"></img>
         <button className="class-button" onClick={() => navigate(path2)}>
@@ -173,14 +205,19 @@ const ReviewSlider = () => {
       setCurrentSlide(
         (prev) => (prev + 1) % (reviews.length - reviewsToShow + 1)
       );
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(slideInterval); // Cleanup
   }, []);
 
   const handleNext = () => {
     if (!isAnimating) {
-      setIsAnimating(true);
+      if (!isAnimating) {
+        setIsAnimating(true);
+        setCurrentSlide(
+          (next) => (next + 1) % (reviews.length - reviewsToShow + 1)
+        );
+      }
     }
   };
 
@@ -200,9 +237,17 @@ const ReviewSlider = () => {
     return () => clearTimeout(timer);
   }, [currentSlide]);
 
+  const handleDotClick = (index) => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setCurrentSlide(index);
+      setTimeout(() => setIsAnimating(false), 500); // Adjust duration based on your animation
+    }
+  };
+
   return (
     <div className="slider-container">
-      <h1 className="slider-header">Reviews of our Customers</h1>
+      {/* <h1 className="slider-header">Reviews of our Customers</h1> */}
       <div
         className="slider"
         style={{
@@ -224,12 +269,26 @@ const ReviewSlider = () => {
         ))}
       </div>
 
-      <button className="prev" onClick={handlePrevious}>
+      {/* <button className="prev" onClick={handlePrevious}>
         &#10094;
       </button>
       <button className="next" onClick={handleNext}>
         &#10095;
-      </button>
+      </button> */}
+
+      {/* Dots Navigation */}
+      <div className="dots-container">
+        {Array.from(
+          { length: reviews.length - reviewsToShow + 1 },
+          (_, index) => (
+            <span
+              key={index}
+              className={`dot ${currentSlide === index ? "active" : ""}`}
+              onClick={() => handleDotClick(index)}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 };

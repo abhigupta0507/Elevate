@@ -7,8 +7,9 @@
     max-width: 900px; /* Adjust to fit three reviews */
     margin: 0 auto;
     overflow: hidden; /* Hide extra reviews out of view */
-    margin-top:100px;
+    margin-top:30px;
     margin-bottom:100px;
+    
   }
   .slider-header{
     font-family: 'Hind',sans-serif;
@@ -26,7 +27,6 @@
     box-sizing: border-box;
     padding: 20px;
     text-align: center;
-    
   }
   
   /* Review image styling */
@@ -43,6 +43,7 @@
     background-color: #f1eacf;
     padding: 15px;
     border-radius: 10px;
+    height:200px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
   
@@ -68,15 +69,15 @@
     height:50px;
     width:50px;
     border-radius: 50%;
-    z-index: 10;
   }
   
   .prev {
-    left: 5px;
+    
+    left:-5%;
   }
   
   .next {
-    right: 5px;
+    right: -5%;
   }
   
   /* Dots can be added if needed for manual navigation */
