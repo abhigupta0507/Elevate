@@ -243,6 +243,7 @@ export default function WorkoutPlansPage() {
                     <h1>{currentPlan.workout_plan.workout_name}</h1>
                     <p>{currentPlan.workout_plan.description || "No description available."}</p>
                     <span className="plan-category">{currentPlan.workout_plan.workout_type}</span>
+                    <span className="plan-category">Duration: {currentPlan.workout_plan.program_duration} minutes</span>
                     <span className="plan-category">{currentPlan.workout_plan.days_per_week} days a week</span>
                     <div className="button-group">
                       <button onClick={() => navigate("/workout")} className="class-button">
