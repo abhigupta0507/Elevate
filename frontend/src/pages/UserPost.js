@@ -2,18 +2,66 @@ import React, { useState, useEffect } from "react";
 import "../components/styles/UserPost.css"; // Your CSS for styling
 import userImg from "../images/user.png";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Your CSS for styling
+import "react-toastify/dist/ReactToastify.css";
 import like from "../images/like.png";
 import unlike from "../images/unlike.svg";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import Confetti from "react-confetti";
+import { FaCheckCircle } from "react-icons/fa";
+function Modal({ onClose }) {
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [onClose]);
+
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("modal-overlay")) {
+      onClose();
+    }
+  };
+
+  return (
+    <div className="modal-overlay" onClick={handleOverlayClick}>
+      <motion.div
+        className="modal-content"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ type: "spring", stiffness: 300, damping: 10 }}
+      >
+        <div className="modal-icon">
+          <FaCheckCircle
+            className="modal-icon-photo"
+            size={50}
+            color="#4CAF50"
+          />
+        </div>
+        <h2 className="modal-title">Congratulations!</h2>
+        <p className="modal-message">
+          Your post has been created successfully.
+        </p>
+        <button onClick={onClose} className="modal-close-button">
+          Close
+        </button>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function UserPost() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [userPosts, setUserPosts] = useState([]);
-  const [newPost, setNewPost] = useState({
-    title: "",
-    content: "",
-  });
+  const [newPost, setNewPost] = useState({ title: "", content: "" });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,11 +82,8 @@ export default function UserPost() {
     const refreshToken = localStorage.getItem("refreshToken");
 
     if (accessToken) {
-      // Decode the token and check its expiration
       const { exp } = jwtDecode(accessToken);
       if (Date.now() / 1000 >= exp) {
-        console.log("exp");
-        // Access token expired, try to refresh
         if (refreshToken) {
           const response = await fetch(
             "http://localhost:8000/api/users/token/refresh/",
@@ -52,18 +97,14 @@ export default function UserPost() {
           if (response.ok) {
             const data = await response.json();
             localStorage.setItem("accessToken", data.access);
-            //console.log(true);
             setIsAuthenticated(true);
           } else {
-            console.log(false);
-            // Refresh token expired or invalid, log out
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
             setIsAuthenticated(false);
           }
         }
       } else {
-        // Access token is valid
         setIsAuthenticated(true);
       }
     } else {
@@ -75,21 +116,13 @@ export default function UserPost() {
     checkAuthentication();
   }, []);
 
-  // Fetch user posts from the API when the component loads
   useEffect(() => {
-    //const user = JSON.parse(localStorage.getItem("userDetails"));
-    // console.log(user);
-    //const userId = user.id;
     if (!isAuthenticated) {
       alert("Oops login expired! Login Again");
       navigate("/login");
       return;
     }
     const token = localStorage.getItem("accessToken");
-    if (!token) {
-      alert("Oops login expired! Login Again");
-      navigate("/login");
-    }
     fetch("http://localhost:8000/api/community/posts/user", {
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +132,7 @@ export default function UserPost() {
       .then((response) => response.json())
       .then((data) => setUserPosts(data))
       .catch((error) => console.error("Error fetching posts:", error));
-  }, []);
+  }, [isAuthenticated, navigate]);
 
   async function handleNewPost() {
     await checkAuthentication();
@@ -115,6 +148,11 @@ export default function UserPost() {
       content: newPost.content,
     };
 
+    if (!newPost.title || !newPost.content) {
+      notifyWarning("Post cant be empty");
+      return;
+    }
+
     fetch("http://localhost:8000/api/community/posts/create/", {
       method: "POST",
       headers: {
@@ -127,9 +165,13 @@ export default function UserPost() {
       .then((data) => {
         setUserPosts([data, ...userPosts]);
         setNewPost({ title: "", content: "" });
+        setIsModalOpen(true);
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 4000); // Stop confetti after 3 seconds
       })
       .catch((error) => console.error("Error creating post:", error));
   }
+
   const handleLike = async (postId) => {
     try {
       await checkAuthentication();
@@ -173,6 +215,9 @@ export default function UserPost() {
   return (
     <div className="user-posts-page">
       <ToastContainer />
+      {showConfetti && <Confetti />}
+      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+
       <div className="create-post-section">
         <h1>Create a Post</h1>
         <input
@@ -199,7 +244,11 @@ export default function UserPost() {
           <div className="posts-container">
             {userPosts.length > 0 ? (
               userPosts.map((post) => (
-                <Post key={post.id} post={post} handleLike={handleLike} />
+                <AnimatedPost
+                  key={post.id}
+                  post={post}
+                  handleLike={handleLike}
+                />
               ))
             ) : (
               <p>You have not made any posts yet.</p>
@@ -234,16 +283,20 @@ function Post({ post, handleLike }) {
 
         <div className="post-actions">
           <div>
-            <button className="likebutton" onClick={() => handleLike(post.id)}>
-              {post.is_liked_by_user ? (
-                <img className="likeimage" src={like} alt="liked"></img>
-              ) : (
-                <img className="unlikeimage" src={unlike} alt="unliked"></img>
-              )}
-            </button>
+            <motion.button
+              className="likebutton"
+              onClick={() => handleLike(post.id)}
+              whileTap={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <motion.img
+                className={post.is_liked_by_user ? "likeimage" : "unlikeimage"}
+                src={post.is_liked_by_user ? like : unlike}
+                alt={post.is_liked_by_user ? "liked" : "unliked"}
+              />
+            </motion.button>
             <p>{post.likes}</p>
           </div>
-
           <p className="date-post">
             {new Date(post.created_at).toLocaleDateString()}
           </p>
@@ -254,3 +307,18 @@ function Post({ post, handleLike }) {
 
 
 }
+const AnimatedPost = ({ post, handleLike }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <Post post={post} handleLike={handleLike} />
+    </motion.div>
+  );
+};

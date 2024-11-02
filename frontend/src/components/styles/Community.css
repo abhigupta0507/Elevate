@@ -93,7 +93,9 @@ h2 {
   height:40px;
   margin-left:10px;
 }
-
+.post-actions p{
+  margin-left:5px;
+}
 .likebutton{
   background-color: white;
   display: center;
