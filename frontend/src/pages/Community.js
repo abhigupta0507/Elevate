@@ -376,3 +376,5 @@ const AnimatedPost = ({ post, handleLike }) => {
     </motion.div>
   );
 };
+
+

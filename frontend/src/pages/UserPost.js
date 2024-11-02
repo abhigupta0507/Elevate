@@ -304,8 +304,9 @@ function Post({ post, handleLike }) {
       </div>
     </div>
   );
-}
 
+
+}
 const AnimatedPost = ({ post, handleLike }) => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true });

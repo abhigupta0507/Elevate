@@ -34,6 +34,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     height = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)  # height in cm
     weight = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)  # weight in kg
     join_date = models.DateTimeField(default=timezone.now)
+    
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

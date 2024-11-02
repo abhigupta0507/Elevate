@@ -197,6 +197,38 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
     navigate("/login");
   };
 
+  //remove account
+  const handleDeleteAccount = async () => {
+    if (!window.confirm("Are you sure you want to delete your account? This action is irreversible.")) {
+      return;
+    }
+
+    const accessToken = localStorage.getItem("accessToken");
+
+    try {
+      const response = await fetch("http://localhost:8000/api/users/delete_account/", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (response.status === 204) {
+        alert("Account deleted successfully.");
+        setIsAuthenticated(false);
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        navigate("/signup");
+      } else {
+        const data = await response.json();
+        alert(`Error: ${data.error || "Failed to delete account."}`);
+      }
+    } catch (error) {
+      console.error("Delete account error:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+
   // Helper function to refresh the access token
   const refreshAccessToken = async () => {
     const refreshToken = localStorage.getItem("refreshToken");
@@ -302,94 +334,99 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
 
   return (
     <div className="dashboard-container">
-      {/* User Profile Section */}
-      <div className="user-profile">
-        <img src={userImg} alt="User Profile" className="profile-picture" />
-        <div className="user-info">
-          <h2>
-            {user.first_name} {user.last_name}
-          </h2>
-          <button onClick={handleLogout}>LogOut</button>
-          <p>Email: {user.email}</p>
-          <p>
-            Age: {user.age} | Height: {user.height} cm | Weight: {user.weight}{" "}
-            kg
-          </p>
-          <p>Member since: {user.join_date}</p>
-        </div>
-      </div>
+  {/* User Profile Section */}
+  <div className="user-card">
+  <img src={userImg} alt="User Profile" className="profile-picture" />
+  <div className="user-info">
+    <h2>
+      {user.first_name} {user.last_name}
+    </h2>
+    <p><span>Email:</span> {user.email}</p>
+    <p>
+      <span>Age:</span> {user.age} | <span>Height:</span> {user.height} cm | <span>Weight:</span> {user.weight} kg
+    </p>
+    <p><span>Member since:</span> {user.join_date}</p>
+  </div>
+</div>
 
-      {/* Workout Plan Enrolled Section */}
-      <div className="plan-section">
-        <h3>Workout Plan Enrolled</h3>
-        {currentWorkoutPlan ? (
-          <div className="plan-details">
-            <p>
-              <strong>Plan:</strong> {currentWorkoutPlan?.workout_name}
-            </p>
-            <p>
-              <strong>Type:</strong> {currentWorkoutPlan?.workout_type}
-            </p>
-            <p>
-              <strong>Days per week:</strong>{" "}
-              {currentWorkoutPlan?.days_per_week}
-            </p>
-            <p>
-              <strong>Description:</strong> {currentWorkoutPlan?.description}
-            </p>
+  {/* Workout Plan Enrolled Section */}
+  <div className="plan-section card">
+    <h3>Workout Plan Enrolled</h3>
+    {currentWorkoutPlan ? (
+      <div className="plan-details">
+        <p>
+          <strong>Plan:</strong> {currentWorkoutPlan?.workout_name}
+        </p>
+        <p>
+          <strong>Type:</strong> {currentWorkoutPlan?.workout_type}
+        </p>
+        <p>
+          <strong>Days per week:</strong> {currentWorkoutPlan?.days_per_week}
+        </p>
+        <p>
+          <strong>Description:</strong> {currentWorkoutPlan?.description}
+        </p>
+      </div>
+    ) : (
+      <p>No workout plan enrolled yet.</p>
+    )}
+  </div>
+
+  {/* Diet Plan Enrolled Section */}
+  <div className="plan-section card">
+    <h3>Diet Plan Enrolled</h3>
+    {currentDietPlan ? (
+      <div className="plan-details">
+        <p>
+          <strong>Plan:</strong> {currentDietPlan?.diet_plan.plan_name}
+        </p>
+        <p>
+          <strong>Category:</strong>{" "}
+          {currentDietPlan?.diet_plan.category.category_name}
+        </p>
+        <p>
+          <strong>Description:</strong> {currentDietPlan?.diet_plan.description}
+        </p>
+      </div>
+    ) : (
+      <p>No diet plan enrolled yet.</p>
+    )}
+  </div>
+
+  {/* Badges Section */}
+  <div className="plan-section">
+    <h3>Collected Badges</h3>
+    <div className="badges-grid">
+      {badges.length > 0 ? (
+        badges.map((badgeData, index) => (
+          <div key={index} className="badge-card">
+            <img
+              src={badgeData.badge.badge_icon}
+              alt={`${badgeData.badge.badge_name} Icon`}
+              className="badge-icon"
+            />
+            <div className="badge-info">
+              <h4>{badgeData.badge.badge_name}</h4>
+              <p>{badgeData.badge.badge_description}</p>
+            </div>
           </div>
-        ) : (
-          <p>No workout plan enrolled yet.</p>
-        )}
-      </div>
-
-      {/* Diet Plan Enrolled Section */}
-      <div className="plan-section">
-        <h3>Diet Plan Enrolled</h3>
-        {currentDietPlan ? (
-          <div className="plan-details">
-            <p>
-              <strong>Plan:</strong> {currentDietPlan?.diet_plan.plan_name}
-            </p>
-            <p>
-              <strong>Category:</strong>{" "}
-              {currentDietPlan?.diet_plan.category.category_name}
-            </p>
-            <p>
-              <strong>Description:</strong>{" "}
-              {currentDietPlan?.diet_plan.description}
-            </p>
-          </div>
-        ) : (
-          <p>No diet plan enrolled yet.</p>
-        )}
-      </div>
-
-      {/* Badges Section */}
-      <div className="badges-section">
-        <h3>Collected Badges</h3>
-        <div className="badges-grid">
-          {badges.length > 0 ? (
-            badges.map((badgeData, index) => (
-              <div key={index} className="badge-card">
-                <img
-                  src={badgeData.badge.badge_icon}
-                  alt={`${badgeData.badge.badge_name} Icon`}
-                  className="badge-icon"
-                />
-                <div className="badge-info">
-                  <h4>{badgeData.badge.badge_name}</h4>
-                  <p>{badgeData.badge.badge_description}</p>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No badges earned yet.</p>
-          )}
-        </div>
-      </div>
+        ))
+      ) : (
+        <p>No badges earned yet.</p>
+      )}
     </div>
-  );
+  </div>
+
+  {/* Logout and Delete Account Buttons */}
+  <div className="action-buttons">
+    <button onClick={handleLogout} className="class-button">LogOut</button>
+    <button onClick={handleDeleteAccount} className="class-button delete-button">
+      Delete Account
+    </button>
+  </div>
+</div>
+
+);
 };
 
 export default Dashboard;

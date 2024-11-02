@@ -42,6 +42,10 @@ from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from .serializers import LoginSerializer
 from .models import CustomUser
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes
 
 class CustomUserLoginView(generics.GenericAPIView):
     permission_classes = [AllowAny]
@@ -84,3 +88,13 @@ class UserDetailView(generics.RetrieveAPIView):
         # Return data for the currently logged-in user
         serializer = self.get_serializer(request.user)
         return Response(serializer.data)
+    
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_account(request):
+    user = request.user
+    try:
+        user.delete()
+        return Response({"detail": "Account deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

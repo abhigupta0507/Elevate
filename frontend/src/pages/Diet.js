@@ -31,20 +31,30 @@ export default function TodaysMealsPage() {
   return (
     <div className="todays-meals-page">
       <ToastContainer />
-      <h2>Today's Meals</h2>
-      {meals.length > 0 ? (
-        <div className="meals-container">
-          {meals.map((meal) => (
-            <div className="meal-card" key={meal.id}>
-              <h3>{meal.meal_type.meal_type_name}</h3>
-              <p>Meal Name: {meal.meal_name}</p>
-              <p>Calories: {meal.calories} kcal</p>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>No meals found for today.</p>
-      )}
-    </div>
+  <h2>TODAY'S MEALS</h2>
+  {meals.length > 0 ? (
+    <table className="meals-table">
+      <thead>
+        <tr>
+          <th>TIME</th>
+          <th>MEAL</th>
+          <th>CALORIES (kcal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {meals.map((meal) => (
+          <tr key={meal.id}>
+            <td>{meal.meal_type.meal_type_name}</td>
+            <td>{meal.meal_name}</td>
+            <td>{meal.calories}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) : (
+    <p>No meals found for today.</p>
+  )}
+</div>
+
   );
 }
