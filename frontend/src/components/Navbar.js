@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logophoto from "../images/logo_final.png";
+import logophoto from "../images/ELELOGOF.png";
 import "./styles/navbar.css";
 import { jwtDecode } from "jwt-decode";
 

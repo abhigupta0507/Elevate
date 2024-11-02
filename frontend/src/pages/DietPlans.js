@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "../components/styles/Dietplans.css"; // Assuming you have some CSS for styling
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Toast notifications for feedback
+import { jwtDecode } from 'jwt-decode';
+import dietplanCoffeeImage from "../images/dietplan_coffee.jpg";
+
+
 
 export default function DietPlansPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -180,43 +184,75 @@ export default function DietPlansPage() {
       <div className="diet-plans-page">
         {!currentPlan ? (
           <div>
-            <h2>Select a Diet Plan</h2>
-            <div className="plans-container">
-              {dietPlans.length > 0 ? (
-                dietPlans.map((plan) => (
-                  <div className="plan-card" key={plan.id}>
-                    <h3>{plan.plan_name}</h3>
-                    <p>Category: {plan.category.category_name}</p> {/* Displaying category */}
-                    <p>Description: {plan.description || "No description available."}</p> {/* Displaying description */}
-                    <button
-                      onClick={() =>
-                        handleSelectPlan(plan.id, plan.plan_name)
-                      }
-                    >
-                      Choose Plan
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <p>No available diet plans. Refresh the page.</p>
-              )}
+            <h2 className="section-title">Select a Diet Plan</h2>
+            <div className="outer-container">
+              <div className="plans-container">
+                {dietPlans.length > 0 ? (
+                  dietPlans.map((plan) => (
+                    <div className="diet-plan-container" key={plan.id}>
+                      <div className="class-studio-video">
+                        <img
+                        src={dietplanCoffeeImage} 
+                        className="plan-image"
+                        />
+                      </div>
+                      <div className="class-studio-text">
+                        <h1>{plan.plan_name}</h1>
+                        <p>{plan.description || "No description available."}</p>
+                        <span className="plan-category">{plan.category.category_name}</span>
+                        <div className="button-group">
+                          <button
+                            className="class-button"
+                            onClick={() => handleSelectPlan(plan.id, plan.plan_name)}
+                          >
+                            Choose Plan
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>No available diet plans. Refresh the page.</p>
+                )}
+              </div>
             </div>
           </div>
         ) : (
           <div>
-            <h2>Your Current Diet Plan</h2>
-            {currentPlan && currentPlan.diet_plan ? (
-              <div className="current-plan-card">
-                <h3>{currentPlan.diet_plan.plan_name}</h3>
-                <p>Category: {currentPlan.diet_plan.category.category_name}</p> {/* Displaying category for current plan */}
-                <button onClick={() => navigate("/diet")}>
-                  Today's meals
-                </button>
-                <button onClick={() => handleExitPlan()}>Exit Plan</button>
-              </div>
-            ) : (
-              <p>Loading diet plan details...</p>
-            )}
+            <h2 className="section-title">Your Current Diet Plan</h2>
+            <div className="outer-container">
+              {currentPlan && currentPlan.diet_plan ? (
+                <div className="diet-plan-container">
+                  <div className="class-studio-video">
+                    <img
+                      src={dietplanCoffeeImage}  // Replace with actual path if available
+                      className="plan-image"
+                    />
+                  </div>
+                  <div className="class-studio-text">
+                    <h1>{currentPlan.diet_plan.plan_name}</h1>
+                    <p>{currentPlan.diet_plan.description || "No description available."}</p>
+                    <span className="plan-category">{currentPlan.diet_plan.category.category_name}</span>
+                    <div className="button-group">
+                      <button
+                        className="class-button"
+                        onClick={() => navigate("/diet")}
+                      >
+                        Today's meals
+                      </button>
+                      <button
+                        className="class-button"
+                        onClick={() => handleExitPlan()}
+                      >
+                        Exit Plan
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <p>Loading diet plan details...</p>
+              )}
+            </div>
           </div>
         )}
       </div>

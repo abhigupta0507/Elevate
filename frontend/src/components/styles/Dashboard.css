@@ -1,171 +1,131 @@
-/* Dashboard Container */
 .dashboard-container {
-  width: 85%;
-  margin: 0 auto;
-  font-family: "Arial", sans-serif;
-  padding: 30px;
-  background-color: #f7f9fc;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+  background-color: #f5f7fa;
+  color: #333;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
-/* User Profile Section */
-.user-profile {
+.user-card {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
-  padding: 25px;
-  background-color: #fff;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f3efe2;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto; /* Centers the card on the page */
 }
 
 .profile-picture {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin-right: 30px;
-  border: 4px solid #ddd;
-  transition: transform 0.3s ease;
-}
-
-.profile-picture:hover {
-  transform: scale(1.1);
-}
-
-.user-info {
-  font-size: 1.2rem;
-  line-height: 1.5;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .user-info h2 {
-  margin-bottom: 10px;
-  font-size: 2.2rem;
-  color: #333;
-}
-
-.user-info p {
-  margin-bottom: 8px;
-  color: #555;
-}
-
-/* Streak Container */
-.streak-container {
-  position: relative;
-  display: inline-block;
-}
-
-.streak {
-  background: linear-gradient(45deg, #ff4500, #ff8000);
-  color: white;
-  padding: 10px 20px;
   font-size: 1.5rem;
-  border-radius: 20px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Plan Section */
-.plan-section {
-  margin-bottom: 40px;
-  padding: 25px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-.plan-section h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  font-weight: bold;
   color: #333;
-}
-
-.plan-details p {
   margin: 10px 0;
 }
 
-/* Badges Section */
-.badges-section {
-    margin-top: 30px;
-  }
-  
-  .badges-section h3 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Grid layout for badges */
-  .badges-grid {
-    display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    justify-content: space-evenly;
-    justify-content: center;
-  }
-  
-  /* Badges Cards - Smaller Size */
-  .badge-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #e0f7fa;
-    padding: 15px;
-    border-radius: 8px;
-    width: 220px;
-    height: 220px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .badge-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .badge-icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-  }
-  
-  /* Badge Information */
-  .badge-info h4 {
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-    color: #333;
-    font-weight: medium;
-  }
-  
-  .badge-info p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
+.user-info p {
+  font-size: 1rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.user-info p span {
+  font-weight: bold;
+  color: #333;
+}
+
+
+ 
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 15px;
+}
+
+
+.badge-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.logout-button, .remove-account-button {
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #f18019;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #f1d55f;
+}
+
+.remove-account-button {
+  background-color: #f18019;
+}
+
+.remove-account-button:hover {
+  background-color: #f1d55f;
+}
+
+
+/* Center-align text in plan sections */
+.plan-section, .badge-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.plan-section h3 {
+  font-family: 'Arial', sans-serif; /* Choose your preferred font family here */
+  font-weight: bold;
+  font-size: 1.5em; /* Increase the size for emphasis */
+  color: #333; /* Adjust color if needed */
+  margin-bottom: 10px;
+}
+
+.plan-details {
+  font-family: 'Verdana', sans-serif; /* Different font for the details if needed */
+  font-size: 1em;
+  color: #555;
+  text-align: center;
+}
+
+.plan-details p {
+  margin: 5px 0;
+}

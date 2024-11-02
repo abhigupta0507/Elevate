@@ -4,6 +4,7 @@ import "../components/styles/WorkoutPlans.css"; // Assuming you have some CSS fo
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Toast notifications for feedback
 import { jwtDecode } from "jwt-decode";
+import dietplanCoffeeImage from "../images/dietplan_coffee.jpg";
 export default function WorkoutPlansPage() {
   const [workoutPlans, setWorkoutPlans] = useState([]);
   const [currentPlan, setCurrentPlan] = useState(null);
@@ -190,48 +191,73 @@ export default function WorkoutPlansPage() {
       <div className="workout-plans-page">
         {!currentPlan ? (
           <div>
-            <h2>Select a Workout Plan</h2>
-            <div className="plans-container">
-              {workoutPlans.length > 0 ? (
-                workoutPlans.map((plan) => (
-                  <div className="plan-card" key={plan.id}>
-                    <h3>{plan.workout_name}</h3>
-                    <p>Type: {plan.workout_type}</p>
-                    <p>Duration: {plan.program_duration} minutes</p>
-                    <p>Days per week: {plan.days_per_week}</p>
-                    <button
-                      onClick={() =>
-                        handleSelectPlan(plan.id, plan.workout_name)
-                      }
-                    >
-                      Choose Plan
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <p>No available workout plans. Refresh the page</p>
-              )}
+            <h2 className="section-title">Select a Workout Plan</h2>
+            <div className="outer-container">
+              <div className="workout-plan-container">
+                {workoutPlans.length > 0 ? (
+                  workoutPlans.map((plan) => (
+                    <div className="workout-plan-container" key={plan.id}>
+                      <div className="class-studio-video">
+                        <img
+                          src={dietplanCoffeeImage}
+                          className="plan-image"
+                        />
+                      </div>
+                      <div className="class-studio-text">
+                        <h1>{plan.workout_name}</h1>
+                        <p>{plan.description || "No description available."}</p>
+                        <span className="plan-category">Type: {plan.workout_type}</span>
+                        <span className="plan-category">Duration: {plan.program_duration} minutes</span>
+                        <span className="plan-category">Days per week: {plan.days_per_week}</span>
+                        <div className="button-group">
+                          <button
+                            className="class-button"
+                            onClick={() => handleSelectPlan(plan.id, plan.workout_name)}
+                          >
+                            Choose Plan
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>No available workout plans. Refresh the page.</p>
+                )}
+              </div>
             </div>
           </div>
         ) : (
           <div>
-            <h2>Your Current Workout Plan</h2>
-            {currentPlan && currentPlan.workout_plan ? ( // Add safety check
-              <div className="current-plan-card">
-                <h3>{currentPlan.workout_plan.workout_name}</h3>
-                <p>Type: {currentPlan.workout_plan.workout_type}</p>
-                <p>
-                  Duration: {currentPlan.workout_plan.program_duration} minutes
-                </p>
-                <p>Days per week: {currentPlan.workout_plan.days_per_week}</p>
-                <button onClick={() => navigate("/workout")}>
-                  Today's exercises
-                </button>
-                <button onClick={() => handleExitPlan()}>Exit Plan</button>
-              </div>
-            ) : (
-              <p>Loading workout plan details...</p> // Fallback in case data is not available yet
-            )}
+            <h2 className="section-title">Your Current Workout Plan</h2>
+            <div className="outer-container">
+              {currentPlan && currentPlan.workout_plan ? (
+                <div className="workout-plan-container">
+                  <div className="class-studio-video">
+                    <img
+                      src={dietplanCoffeeImage}
+                      className="plan-image"
+                      
+                    />
+                  </div>
+                  <div className="class-studio-text">
+                    <h1>{currentPlan.workout_plan.workout_name}</h1>
+                    <p>{currentPlan.workout_plan.description || "No description available."}</p>
+                    <span className="plan-category">{currentPlan.workout_plan.workout_type}</span>
+                    <span className="plan-category">{currentPlan.workout_plan.days_per_week} days a week</span>
+                    <div className="button-group">
+                      <button onClick={() => navigate("/workout")} className="class-button">
+                        Today's exercises
+                      </button>
+                      <button onClick={handleExitPlan} className="class-button exit-button">
+                        Exit Plan
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <p>Loading workout plan details...</p>
+              )}
+            </div>
           </div>
         )}
       </div>
