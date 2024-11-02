@@ -4,7 +4,7 @@ import "../components/styles/Login.css";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { motion } from "framer-motion";
 const Login = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -47,7 +47,6 @@ const Login = ({ setIsAuthenticated }) => {
         localStorage.setItem("accessToken", data?.access); // Store the user's first name
         localStorage.setItem("refreshToken", data?.refresh);
         alert("You have successfully logged in!!");
-        alert(data);
         navigate("/dashboard"); // Redirect to dashboard
       } else {
         const errorData = await response.json();
@@ -60,45 +59,151 @@ const Login = ({ setIsAuthenticated }) => {
     }
   };
 
+  //return (
+  // <div className="login-container">
+  //   <ToastContainer />
+  //   <section class="bg-gray-50 dark:bg-gray-900">
+  //     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+  //       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+  //         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+  //           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+  //             Sign in to your account
+  //           </h1>
+  //           <form class="space-y-4 md:space-y-6" action="#">
+  //             <div>
+  //               <label
+  //                 for="email"
+  //                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  //               >
+  //                 Your email
+  //               </label>
+  //               <input
+  //                 type="email"
+  //                 name="email"
+  //                 id="email"
+  //                 value={formData.email}
+  //                 onChange={handleChange}
+  //                 class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+  //                 placeholder="name@gmail.com"
+  //                 required
+  //               />
+  //             </div>
+  //             <div>
+  //               <label
+  //                 for="password"
+  //                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  //               >
+  //                 Password
+  //               </label>
+  //               <input
+  //                 type="password"
+  //                 name="password"
+  //                 value={formData.password}
+  //                 onChange={handleChange}
+  //                 id="password"
+  //                 placeholder="••••••••"
+  //                 class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+  //                 required
+  //               />
+  //             </div>
+  //             <button
+  //               type="submit"
+  //               onClick={handleSubmit}
+  //               class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+  //             >
+  //               Sign in
+  //             </button>
+  //             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+  //               Don't have an account yet?{" "}
+  //               <a
+  //                 href="/signup"
+  //                 class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+  //               >
+  //                 Sign up
+  //               </a>
+  //             </p>
+  //           </form>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </section>
+  // </div>
+  //);
+
   return (
-    <div className="login-container">
+    <motion.div
+      className="login-container"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 20 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <ToastContainer />
-      <h2>Login to Your Account</h2>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+      <section className="bg-gray-50 dark:bg-gray-900 pt-20">
+        <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                Sign in to your account
+              </h1>
+              <form className="space-y-4 md:space-y-6" action="#">
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Your email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="name@gmail.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    id="password"
+                    placeholder="••••••••"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                >
+                  Sign in
+                </button>
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                  Don't have an account yet?{" "}
+                  <a
+                    href="/signup"
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
+                    Sign up
+                  </a>
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="submit-btn">
-          Login
-        </button>
-        <p className="already-text">
-          Create a account{" "}
-          <span style={{ color: "#007bff" }}>
-            <Link to="/signup">Sign Up</Link>
-          </span>
-        </p>
-      </form>
-    </div>
+      </section>
+    </motion.div>
   );
 };
 

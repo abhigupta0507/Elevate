@@ -6,6 +6,7 @@ from django.utils import timezone
 
 def award_badges(user):
     today = timezone.now().date()
+    newly_awarded_badges = []
 
     # Check if the user has already earned the badge
     def has_badge(badge_name):
@@ -20,12 +21,15 @@ def award_badges(user):
     total_workouts = UserWorkouts.objects.filter(user=user).count()
     if total_workouts >= 5 and not has_badge('Workout Beginner'):
         UserBadge.objects.create(user=user, badge=get_badge('Workout Beginner'))
-
+        newly_awarded_badges.append('Workout Beginner')
     # 2. Award for burning 500 calories ('Calorie Burner')
     total_calories = UserWorkouts.objects.filter(user=user).aggregate(Sum('calories_burned'))['calories_burned__sum'] or 0
     if total_calories >= 500 and not has_badge('Calorie Burner'):
         UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner'))
+        newly_awarded_badges.append('Calorie Burner')
 
+
+    return newly_awarded_badges
     # 3. Award for completing workouts for 7 consecutive days ('Consistent Performer')
     # streak = UserWorkouts.objects.filter(
     #     user=user,

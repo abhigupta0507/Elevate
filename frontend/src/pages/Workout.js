@@ -2,6 +2,32 @@ import React, { useState, useEffect } from "react";
 import "../components/styles/Workout.css"; // Import appropriate styles
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FaCheckCircle } from "react-icons/fa";
+
+const BadgeModal = ({ badge, onClose }) => (
+  <div
+    className="modal-overlay"
+    onClick={(e) => e.target.classList.contains("modal-overlay") && onClose()}
+  >
+    <motion.div
+      className="modal-content"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      <div className="modal-icon">
+        <FaCheckCircle size={60} color="#4CAF50" />
+      </div>
+      <h2 className="modal-title">Congratulations!</h2>
+      <p className="modal-message">You've earned the {badge} badge!</p>
+      <button onClick={onClose} className="modal-close-button">
+        Okay
+      </button>
+    </motion.div>
+  </div>
+);
 export default function WorkoutPage() {
   const [currentExercise, setCurrentExercise] = useState(null);
   const [totalCaloriesBurned, setTotalCaloriesBurned] = useState(0);
@@ -9,6 +35,10 @@ export default function WorkoutPage() {
   const [completedExercises, setCompletedExercises] = useState([]);
   const [message, setMessage] = useState(""); // Message for feedback
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showBadgeModal, setShowBadgeModal] = useState(false);
+  const [newlyAwardedBadges, setNewlyAwardedBadges] = useState([]);
+  const [badgeIndex, setBadgeIndex] = useState(0);
+
   const navigate = useNavigate();
   const checkAuthentication = async () => {
     const accessToken = localStorage.getItem("accessToken");
@@ -80,9 +110,7 @@ export default function WorkoutPage() {
   const fetchCompletedExercises = () => {
     //const userDetails = JSON.parse(localStorage.getItem("userDetails"));
     const token = localStorage.getItem("accessToken");
-    // if (!token) {
-    //   navigate("/login");
-    // }
+
     fetch(`http://127.0.0.1:8000/api/workouts/completed_exercises/`, {
       method: "GET",
       headers: {
@@ -98,6 +126,14 @@ export default function WorkoutPage() {
       .catch((error) =>
         console.error("Error fetching completed exercises:", error)
       );
+  };
+
+  const closeModal = () => {
+    if (badgeIndex < newlyAwardedBadges.length - 1) {
+      setBadgeIndex(badgeIndex + 1); // Show next badge
+    } else {
+      setShowBadgeModal(false); // Close modal if all badges are shown
+    }
   };
 
   // Calculate total calories burned
@@ -159,9 +195,16 @@ export default function WorkoutPage() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          // Update message and fetch completed exercises again
           setMessage("Exercise marked as done!");
-          fetchCompletedExercises(); // Fetch completed exercises again to update state
+          fetchCompletedExercises();
+          console.log(data.newly_awarded_badges);
+
+          // Show the modal if there are newly awarded badges
+          if (data.newly_awarded_badges.length > 0) {
+            setNewlyAwardedBadges(data.newly_awarded_badges);
+            setShowBadgeModal(true);
+            setBadgeIndex(0); // Start from the first badge
+          }
         } else {
           setMessage(data.message || "Failed to mark exercise as done.");
         }
@@ -174,6 +217,12 @@ export default function WorkoutPage() {
 
   return (
     <div className="workout-container">
+      {showBadgeModal && (
+        <BadgeModal
+          badge={newlyAwardedBadges[badgeIndex]}
+          onClose={closeModal}
+        />
+      )}
       {/* Left Section: List of Exercises */}
       {exerciseList.length > 0 ? (
         <div className="exercise-list">

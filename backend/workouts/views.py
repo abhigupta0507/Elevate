@@ -121,6 +121,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from datetime import date
 from .models import User, WorkoutExercise, UserWorkouts
+from badges.models import UserBadge
 from .serializers import UserWorkoutSerializer
 import pytz
 
@@ -154,9 +155,17 @@ class MarkExerciseDoneView(APIView):
         )
 
         serializer = UserWorkoutSerializer(user_workout)
-        award_badges(user)
-
-        return Response({"success": True, "data": serializer.data, "calories_burned": calories_burned}, status=status.HTTP_201_CREATED)
+        newly_awarded_badges = award_badges(user)
+        
+        
+        
+        return Response({
+            "success": True,
+            "data": serializer.data,
+            "calories_burned": calories_burned,
+            "newly_awarded_badges": newly_awarded_badges
+        }, status=status.HTTP_201_CREATED)
+        #return Response({"success": True, "data": serializer.data, "calories_burned": calories_burned}, status=status.HTTP_201_CREATED)
 
 class UserCompletedExercisesView(APIView):
     permission_classes = [IsAuthenticated]
