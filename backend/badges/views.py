@@ -53,7 +53,7 @@ def award_badges(user):
         newly_awarded_badges.append('Calorie Burner 2')
 
     if total_calories >= 2000 and not has_badge('Calorie Burner 3'):
-        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner 2'))
+        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner 3'))
         newly_awarded_badges.append('Calorie Burner 3')
 
     if total_calories >= 5000 and not has_badge('Calorie Burner 4'):

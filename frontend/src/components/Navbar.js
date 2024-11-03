@@ -26,7 +26,7 @@ const NavBar = () => {
     if (accessToken) {
       // Decode the token and check its expiration
       const { exp } = jwtDecode(accessToken);
-      console.log("hi");
+      // console.log("hi");
       if (Date.now() >= exp * 1000) {
         console.log("expired");
         // Access token expired, try to refresh

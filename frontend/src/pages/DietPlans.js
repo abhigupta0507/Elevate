@@ -8,6 +8,7 @@ import plan1 from "../images/dietplan_coffee.jpg";
 import { motion } from "framer-motion"; // Import Framer Motion
 import plan2 from "../images/diet_Home.jpg";
 import plan3 from "../images/Community_Home.png";
+import { FaSpinner } from "react-icons/fa";
 
 const dietPlanImages = {
   1: plan1,
@@ -19,6 +20,9 @@ export default function DietPlansPage() {
   const [dietPlans, setDietPlans] = useState([]);
   const [currentPlan, setCurrentPlan] = useState(null);
   const navigate = useNavigate();
+  const [selectButtonLoading, setSelectButtonLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [exitButtonLoading, setExitButtonLoading] = useState(false);
 
   const notifyError = (message) =>
     toast.error(message, { position: "top-right" });
@@ -62,6 +66,7 @@ export default function DietPlansPage() {
 
   useEffect(() => {
     async function fetchPlans() {
+      setLoading(true);
       await checkAuthentication();
       const token = localStorage.getItem("accessToken");
       const headersNoauth = { "Content-Type": "application/json" };
@@ -101,7 +106,7 @@ export default function DietPlansPage() {
         }
       }
     }
-    fetchPlans();
+    fetchPlans().finally(() => setLoading(false));
   }, [isAuthenticated]);
 
   const handleSelectPlan = async (planId, planName) => {
@@ -114,6 +119,8 @@ export default function DietPlansPage() {
 
     const ans = window.confirm(`Confirm your workout plan: ${planName}`);
     if (!ans) return;
+
+    setSelectButtonLoading(true);
 
     fetch("http://localhost:8000/api/diet/user-diet-plan/", {
       method: "POST",
@@ -128,7 +135,8 @@ export default function DietPlansPage() {
         setCurrentPlan(data);
         notifySuccess("Plan selected successfully!");
       })
-      .catch(() => notifyError("Error selecting plan!"));
+      .catch(() => notifyError("Error selecting plan!"))
+      .finally(() => setSelectButtonLoading(false));
   };
 
   const handleExitPlan = async () => {
@@ -141,6 +149,7 @@ export default function DietPlansPage() {
 
     const ans = window.confirm("Do you want to remove the current plan?");
     if (!ans) return;
+    setExitButtonLoading(true);
 
     fetch("http://localhost:8000/api/diet/exit-diet-plan/", {
       method: "POST",
@@ -160,275 +169,13 @@ export default function DietPlansPage() {
           .then((response) => response.json())
           .then((plansData) => setDietPlans(plansData))
           .catch(() => notifyError("Error fetching workout plans!"))
-      );
+      )
+      .finally(() => setExitButtonLoading(false));
   };
 
   return (
     <>
       <ToastContainer />
-      {/* <div className="diet-plans-page">
-        {!currentPlan ? (
-          <div>
-            <motion.h2
-              className="section-title"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="diet-heading">Discover Your Perfect Diet Plan</h1>
-            </motion.h2>
-            <motion.div
-              className="outer-container"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <div className="plans-container">
-                {dietPlans.length > 0 ? (
-                  dietPlans.map((plan) => (
-                    <motion.div
-                      className="diet-plan-container"
-                      key={plan.id}
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <div className="class-studio-video">
-                        <img
-                          src={dietplanCoffeeImage}
-                          className="plan-image"
-                          alt="Diet plan"
-                        />
-                      </div>
-                      <div className="class-studio-text">
-                        <h1>{plan.plan_name}</h1>
-                        <p>{plan.description || "No description available."}</p>
-                        <span className="plan-category">
-                          {plan.category.category_name}
-                        </span>
-                        <div className="button-group">
-                          <motion.button
-                            className="class-button"
-                            onClick={() =>
-                              handleSelectPlan(plan.id, plan.plan_name)
-                            }
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            Choose Plan
-                          </motion.button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))
-                ) : (
-                  <p>No available diet plans. Refresh the page.</p>
-                )}
-              </div>
-            </motion.div>
-          </div>
-        ) : (
-          <div>
-            <motion.h2
-              className="section-title"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              Your Current Diet Plan
-            </motion.h2>
-            <motion.div
-              className="outer-container"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              {currentPlan && currentPlan.diet_plan ? (
-                <motion.div
-                  className="diet-plan-container"
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="class-studio-video">
-                    <img
-                      src={dietplanCoffeeImage}
-                      className="plan-image"
-                      alt="Current Diet Plan"
-                    />
-                  </div>
-                  <div className="class-studio-text">
-                    <h1>{currentPlan.diet_plan.plan_name}</h1>
-                    <p>
-                      {currentPlan.diet_plan.description ||
-                        "No description available."}
-                    </p>
-                    <span className="plan-category">
-                      {currentPlan.diet_plan.category.category_name}
-                    </span>
-                    <div className="button-group">
-                      <motion.button
-                        className="class-button"
-                        onClick={() => navigate("/diet")}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Today's meals
-                      </motion.button>
-                      <motion.button
-                        className="class-button"
-                        onClick={handleExitPlan}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Exit Plan
-                      </motion.button>
-                    </div>
-                  </div>
-                </motion.div>
-              ) : (
-                <p>Loading diet plan details...</p>
-              )}
-            </motion.div>
-          </div>
-        )}
-      </div> */}
-      {/* <div className="p-6 max-w-4xl mx-auto">
-        {!currentPlan ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-              Discover Your Perfect Diet Plan
-            </h2>
-
-            <div className="space-y-6">
-              {dietPlans.length > 0 ? (
-                dietPlans.map((plan) => (
-                  <motion.div
-                    key={plan.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-white rounded-xl shadow-md overflow-hidden"
-                  >
-                    <div className="p-6 flex flex-col sm:flex-row gap-6">
-                      <div className="w-full sm:w-48 h-48 flex-shrink-0">
-                        <img
-                          src={dietplanCoffeeImage}
-                          className="w-full h-full object-cover rounded-lg"
-                          alt="Diet plan"
-                        />
-                      </div>
-
-                      <div className="flex-1 space-y-4">
-                        <h3 className="text-2xl font-bold text-gray-900">
-                          {plan.plan_name}
-                        </h3>
-
-                        <p className="text-gray-600">
-                          {plan.description || "No description available."}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                          <span className="px-3 py-1 text-sm bg-orange-100 text-orange-800 rounded-full">
-                            {plan.category.category_name}
-                          </span>
-                        </div>
-
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() =>
-                            handleSelectPlan(plan.id, plan.plan_name)
-                          }
-                          className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
-                        >
-                          Choose Plan
-                        </motion.button>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))
-              ) : (
-                <p className="text-center text-gray-500">
-                  No available diet plans. Refresh the page.
-                </p>
-              )}
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-              Your Current Diet Plan
-            </h2>
-
-            {currentPlan && currentPlan.diet_plan ? (
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="p-6 flex flex-col sm:flex-row gap-6">
-                  <div className="w-full sm:w-48 h-48 flex-shrink-0">
-                    <img
-                      src={dietplanCoffeeImage}
-                      className="w-full h-full object-cover rounded-lg"
-                      alt="Current Diet Plan"
-                    />
-                  </div>
-
-                  <div className="flex-1 space-y-4">
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      {currentPlan.diet_plan.plan_name}
-                    </h3>
-
-                    <p className="text-gray-600">
-                      {currentPlan.diet_plan.description ||
-                        "No description available."}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 text-sm bg-orange-100 text-orange-800 rounded-full">
-                        {currentPlan.diet_plan.category.category_name}
-                      </span>
-                    </div>
-
-                    <div className="flex gap-3 pt-2">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => navigate("/diet")}
-                        className="px-6 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
-                      >
-                        Today's meals
-                      </motion.button>
-
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={handleExitPlan}
-                        className="px-6 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition-colors"
-                      >
-                        Exit Plan
-                      </motion.button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <p className="text-center text-gray-500">
-                Loading diet plan details...
-              </p>
-            )}
-          </motion.div>
-        )}
-      </div> */}
       <div className="p-6 max-w-3xl mx-auto">
         {!currentPlan ? (
           <motion.div
@@ -483,7 +230,14 @@ export default function DietPlansPage() {
                             }
                             className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
                           >
-                            Choose Plan
+                            {selectButtonLoading ? (
+                              <div className="flex justify-center items-center">
+                                <FaSpinner className="animate-spin text-blue-500" />
+                                <span className="ml-2 text-l">Loading...</span>
+                              </div>
+                            ) : (
+                              " Choose Plan"
+                            )}
                           </motion.button>
                         </div>
                       </div>
@@ -491,9 +245,10 @@ export default function DietPlansPage() {
                   </motion.div>
                 ))
               ) : (
-                <p className="text-left text-gray-500 px-4">
-                  No available diet plans. Refresh the page.
-                </p>
+                <div className="flex justify-center items-center">
+                  <FaSpinner className="animate-spin text-blue-500" />
+                  <span className="ml-2 text-l">Loading...</span>
+                </div>
               )}
             </div>
           </motion.div>
@@ -550,16 +305,27 @@ export default function DietPlansPage() {
                         onClick={handleExitPlan}
                         className="px-6 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition-colors"
                       >
-                        Exit Plan
+                        {exitButtonLoading ? (
+                          <div className="flex justify-center items-center">
+                            <FaSpinner className="animate-spin text-blue-500" />
+                            <span className="ml-2 text-l">Loading...</span>
+                          </div>
+                        ) : (
+                          "Exit plan"
+                        )}
                       </motion.button>
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
-              <p className="text-left text-gray-500 px-4">
+              <div className="text-left text-gray-500 px-4">
                 Loading diet plan details...
-              </p>
+                <div className="flex justify-center items-center">
+                  <FaSpinner className="animate-spin text-blue-500" />
+                  <span className="ml-2 text-l">Loading...</span>
+                </div>
+              </div>
             )}
           </motion.div>
         )}

@@ -8,10 +8,10 @@ import like from "../images/like.png";
 import unlike from "../images/unlike.svg";
 import { jwtDecode } from "jwt-decode";
 import { motion, useInView } from "framer-motion";
-
+import { FaSpinner } from "react-icons/fa";
 export default function Community() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const checkAuthentication = async () => {
     const accessToken = localStorage.getItem("accessToken");
     const refreshToken = localStorage.getItem("refreshToken");
@@ -56,7 +56,7 @@ export default function Community() {
     checkAuthentication();
   }, []);
   const [posts, setPosts] = useState([]);
-  const [sortType, setSortType] = useState("top");
+  const [sortType, setSortType] = useState("recent");
   const navigate = useNavigate();
 
   const notifyInfo = (message, position) => {
@@ -70,10 +70,12 @@ export default function Community() {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetch("http://localhost:8000/api/community/posts")
       .then((response) => response.json())
       .then((data) => setPosts(data))
-      .catch((error) => console.error("Error fetching posts:", error));
+      .catch((error) => console.error("Error fetching posts:", error))
+      .finally(() => setLoading(false));
   }, []);
 
   const sortedPosts = posts.sort((a, b) => {
@@ -229,38 +231,51 @@ export default function Community() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Sort Options with Button Hover Animations */}
-          <div className="sort-options">
-            <motion.button
-              onClick={() => setSortType("recent")}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Recent Posts
-            </motion.button>
-            <motion.button
-              onClick={() => setSortType("top")}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Top Posts
-            </motion.button>
-            <motion.button
-              style={{ backgroundColor: "#4CAF50" }}
-              onClick={handleNavigate}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Your Posts
-            </motion.button>
-          </div>
+          {loading ? (
+            <div className="mx-auto flex justify-center flex-col items-center">
+              <p className="ml-2 text-xl">Posts are being loaded...</p>
+              <FaSpinner className="animate-spin text-blue-500" />
+            </div>
+          ) : (
+            <>
+              <div className="sort-options">
+                <motion.button
+                  onClick={() => setSortType("recent")}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Recent Posts
+                </motion.button>
+                <motion.button
+                  onClick={() => setSortType("top")}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Top Posts
+                </motion.button>
+                <motion.button
+                  style={{ backgroundColor: "#4CAF50" }}
+                  onClick={handleNavigate}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Your Posts
+                </motion.button>
+              </div>
 
-          {/* Posts Container with Scroll Animation */}
-          <div className="posts-container">
-            {sortedPosts.map((post) => (
-              <AnimatedPost key={post.id} post={post} handleLike={handleLike} />
-            ))}
-          </div>
+              {/* Posts Container with Scroll Animation */}
+              <div className="posts-container">
+                {sortedPosts.map((post) => (
+                  <AnimatedPost
+                    key={post.id}
+                    post={post}
+                    handleLike={handleLike}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+          {/* Sort Options with Button Hover Animations */}
         </motion.div>
       </div>
     </>
@@ -376,5 +391,3 @@ const AnimatedPost = ({ post, handleLike }) => {
     </motion.div>
   );
 };
-
-

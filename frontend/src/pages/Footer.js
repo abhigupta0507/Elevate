@@ -96,29 +96,29 @@ export default function Footer() {
             <ul className="mt-6  space-y-4 ">
               <li className="text-center ">
                 <a
-                  href="diet"
+                  href="/community"
                   title=""
                   className="justify-center flex text-center text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
-                  <p className="text-center">About </p>
+                  <p className="text-center">Community </p>
                 </a>
               </li>
 
               <li>
                 <a
-                  href="recipies"
+                  href="/progress"
                   title=""
                   className="justify-center flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
                   {" "}
-                  Recipies{" "}
+                  Progress{" "}
                 </a>
               </li>
 
               <li>
                 <a
-                  href="workout"
+                  href="/workoutplans"
                   title=""
                   className="justify-center flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
@@ -129,7 +129,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="diet"
+                  href="/dietplans"
                   title=""
                   className="justify-center flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
@@ -148,7 +148,7 @@ export default function Footer() {
             <ul className="mt-6 space-y-4">
               <li>
                 <a
-                  href="support"
+                  href="#"
                   title=""
                   className="justify-center flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
@@ -159,7 +159,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="delivery"
+                  href="#"
                   title=""
                   className="justify-center flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
@@ -170,7 +170,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="tnc"
+                  href="#"
                   title=""
                   className="justify-centerflex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
@@ -181,7 +181,7 @@ export default function Footer() {
 
               <li>
                 <a
-                  href="privacy"
+                  href="#"
                   title=""
                   className="justify-center flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"
                 >
