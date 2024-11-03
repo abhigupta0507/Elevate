@@ -393,29 +393,7 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
     )}
   </div>
 
-  {/* Badges Section */}
-  <div className="plan-section">
-    <h3>Collected Badges</h3>
-    <div className="badges-grid">
-      {badges.length > 0 ? (
-        badges.map((badgeData, index) => (
-          <div key={index} className="badge-card">
-            <img
-              src={badgeData.badge.badge_icon}
-              alt={`${badgeData.badge.badge_name} Icon`}
-              className="badge-icon"
-            />
-            <div className="badge-info">
-              <h4>{badgeData.badge.badge_name}</h4>
-              <p>{badgeData.badge.badge_description}</p>
-            </div>
-          </div>
-        ))
-      ) : (
-        <p>No badges earned yet.</p>
-      )}
-    </div>
-  </div>
+  
 
   {/* Logout and Delete Account Buttons */}
   <div className="action-buttons">
