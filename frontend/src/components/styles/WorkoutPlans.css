@@ -21,8 +21,7 @@
 .workout-plan-container {
   background-color: #ffffff;
   border-radius: 10px;
-  width: 1000px;
-  
+  width: 800px;
   padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -32,9 +31,9 @@
 }
 
 .class-studio-text {
-  text-align: left; 
-  margin-left: 20px; 
-  flex: 1; 
+  text-align: left;
+  margin-left: 20px;
+  flex: 1;
   max-width: 400px;
 }
 
@@ -54,7 +53,6 @@
   margin-top: 0; /* Resetting any top margin */
 }
 
-
 .plan-category {
   font-size: 14px;
   color: #333;
@@ -64,7 +62,7 @@
   border-radius: 5px;
   margin-top: 10px;
   text-transform: uppercase;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .button-group {
@@ -72,7 +70,7 @@
   gap: 15px;
   flex-wrap: wrap;
   margin-top: 20px;
-   /* Push button to the bottom of the container */
+  /* Push button to the bottom of the container */
   align-self: flex-end; /* Align button to the bottom right */
 }
 

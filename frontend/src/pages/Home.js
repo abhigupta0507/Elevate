@@ -60,7 +60,7 @@ export default function Home({ isAuthenticated }) {
         buttontext="LEARN MORE"
         path="/workoutplans"
       />
-      <div className="Progress-Home">
+      <div className="Progress-Home-home">
         <Heading text="Monitor Your Progress" />
         <CardOfTwo
           title1="PROGRESS"
@@ -87,7 +87,7 @@ export default function Home({ isAuthenticated }) {
       <Heading text="Reviews of our Users" />
       <ReviewSlider />
 
-      <div className="Progress-Home">
+      <div className="Progress-Home-home">
         <Heading text="Be a part of Elevate Community" />
         <DescribeBlockCard
           title="Community"
@@ -102,25 +102,25 @@ export default function Home({ isAuthenticated }) {
 }
 
 function Heading({ text }) {
-  return <h1 className="heading-text">{text}</h1>;
+  return <h1 className="heading-text-home">{text}</h1>;
 }
 function DescribeBlockCard({ title, content, photo, buttontext, path }) {
   const navigate = useNavigate();
 
   return (
-    <div className="class-studio-container">
-      <div className="class-studio-text">
+    <div className="class-studio-container-home">
+      <div className="class-studio-text-home">
         <h1>{title}</h1>
         <p>{content}</p>
-        <button className="class-button" onClick={() => navigate(path)}>
+        <button className="class-button-home" onClick={() => navigate(path)}>
           {buttontext}
         </button>
       </div>
-      <div className="class-studio-video">
+      <div className="class-studio-video-home">
         <img
           src={photo}
           alt="Workout Class"
-          className="class-video-placeholder"
+          className="class-video-placeholder-home"
           loading="lazy"
         />
       </div>
@@ -134,21 +134,21 @@ const MainPage = ({ isAuthenticated, navigate }) => {
     else navigate("/dashboard");
   }
   return (
-    <div className="main-container">
-      <div className="left-section">
-        <p className="left-section-name">ELEVATE</p>
-        <p className="left-section-detail">
+    <div className="main-container-home">
+      <div className="left-section-home">
+        <p className="left-section-name-home">ELEVATE</p>
+        <p className="left-section-detail-home">
           IT'S TIME TO BE HEALTHY AND IN GREAT SHAPE
         </p>
-        <button className="signup-button" onClick={handleTakemeaway}>
+        <button className="signup-button-home" onClick={handleTakemeaway}>
           {isAuthenticated ? "WELCOME BACK" : "SIGN UP NOW"}
         </button>
       </div>
-      <div className="right-section">
+      <div className="right-section-home">
         <img
           src={professionalHome}
           alt="fitness"
-          className="fitness-image"
+          className="fitness-image-home"
           loading="lazy"
         />
         <div className="circle-text">
@@ -172,20 +172,20 @@ function CardOfTwo({
 }) {
   const navigate = useNavigate();
   return (
-    <div className="cardoftwo-main-container" onLoad={lazy}>
-      <div className="cardoftwo-inner-container">
+    <div className="cardoftwo-main-container-home" onLoad={lazy}>
+      <div className="cardoftwo-inner-container-home">
         <h1>{title1}</h1>
-        <p className="cardoftwo-inner-container-detail">{content1}</p>
+        <p className="cardoftwo-inner-container-detail-home">{content1}</p>
         <img src={photo1} alt={title1} loading="lazy"></img>
-        <button className="class-button" onClick={() => navigate(path1)}>
+        <button className="class-button-home" onClick={() => navigate(path1)}>
           {buttontext}
         </button>
       </div>
-      <div className="cardoftwo-inner-container">
+      <div className="cardoftwo-inner-container-home">
         <h1>{title2}</h1>
-        <p className="cardoftwo-inner-container-detail">{content2}</p>
+        <p className="cardoftwo-inner-container-detail-home">{content2}</p>
         <img src={photo2} alt={title2} loading="lazy"></img>
-        <button className="class-button" onClick={() => navigate(path2)}>
+        <button className="class-button-home" onClick={() => navigate(path2)}>
           {buttontext}
         </button>
       </div>
@@ -268,13 +268,6 @@ const ReviewSlider = () => {
           </div>
         ))}
       </div>
-
-      {/* <button className="prev" onClick={handlePrevious}>
-        &#10094;
-      </button>
-      <button className="next" onClick={handleNext}>
-        &#10095;
-      </button> */}
 
       {/* Dots Navigation */}
       <div className="dots-container">

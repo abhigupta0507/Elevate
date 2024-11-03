@@ -51,23 +51,6 @@
   color: #333;
 }
 
-
- 
-
-.badges-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 15px;
-}
-
-
-.badge-icon {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
 .action-buttons {
   display: flex;
   justify-content: center;
@@ -100,7 +83,7 @@
 
 
 /* Center-align text in plan sections */
-.plan-section, .badge-card {
+.plan-section {
   background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
