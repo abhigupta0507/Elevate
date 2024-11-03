@@ -21,11 +21,7 @@
 .workout-plan-container {
   background-color: #ffffff;
   border-radius: 10px;
-<<<<<<< HEAD
-  width: 100%;
-=======
   width: 800px;
->>>>>>> b1e035aa60bb4d70abf7a7827dd81d5ba5bd8d5d
   padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import badge3 from "../images/badge_3.png";
 import userImg from "../images/user.png";
 import EditProfileModal from "./EditProfileModal";
-import { parseISO, format } from "date-fns";
+
 const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
   const [currentWorkoutPlan, setCurrentWorkoutPlan] = useState(null);
   const [currentDietPlan, setCurrentDietPlan] = useState(null);
@@ -211,41 +211,6 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
         </button>
       </div>
 
-<<<<<<< HEAD
-  {/* Diet Plan Enrolled Section */}
-  <div className="plan-section card">
-    <h3>Diet Plan Enrolled</h3>
-    {currentDietPlan ? (
-      <div className="plan-details">
-        <p>
-          <strong>Plan:</strong> {currentDietPlan?.diet_plan.plan_name}
-        </p>
-        <p>
-          <strong>Category:</strong>{" "}
-          {currentDietPlan?.diet_plan.category.category_name}
-        </p>
-        <p>
-          <strong>Description:</strong> {currentDietPlan?.diet_plan.description}
-        </p>
-      </div>
-    ) : (
-      <p>No diet plan enrolled yet.</p>
-    )}
-  </div>
-
-  
-
-  {/* Logout and Delete Account Buttons */}
-  <div className="action-buttons">
-    <button onClick={handleLogout} className="class-button">LogOut</button>
-    <button onClick={handleDeleteAccount} className="class-button delete-button">
-      Delete Account
-    </button>
-  </div>
-</div>
-
-);
-=======
       {/* Workout Plan Enrolled Section */}
       <div className="plan-section card">
         <h3>Workout Plan Enrolled</h3>
@@ -312,7 +277,6 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
       />
     </div>
   );
->>>>>>> b1e035aa60bb4d70abf7a7827dd81d5ba5bd8d5d
 };
 
 export default Dashboard;
