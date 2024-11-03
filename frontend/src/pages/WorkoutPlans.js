@@ -4,8 +4,16 @@ import "../components/styles/WorkoutPlans.css"; // Assuming you have some CSS fo
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Toast notifications for feedback
 import { jwtDecode } from "jwt-decode";
-import dietplanCoffeeImage from "../images/dietplan_coffee.jpg";
+import plan1 from "../images/dietplan_coffee.jpg";
 import { motion } from "framer-motion";
+import plan2 from "../images/diet_Home.jpg";
+import plan3 from "../images/Community_Home.png";
+
+const WorkoutPlanImages = {
+  1: plan1,
+  2: plan2,
+  3: plan3,
+};
 export default function WorkoutPlansPage() {
   const [workoutPlans, setWorkoutPlans] = useState([]);
   const [currentPlan, setCurrentPlan] = useState(null);
@@ -213,7 +221,7 @@ export default function WorkoutPlansPage() {
                     <div className="p-6 flex flex-col sm:flex-row gap-6">
                       <div className="w-48 sm:w-48 h-48 flex-shrink-0">
                         <img
-                          src={dietplanCoffeeImage}
+                          src={WorkoutPlanImages[plan.id]}
                           className="w-full h-full object-cover rounded-lg"
                           alt="workout-image"
                         />
@@ -276,7 +284,7 @@ export default function WorkoutPlansPage() {
                 <div className="p-6 flex flex-col sm:flex-row gap-6">
                   <div className="w-full sm:w-48 h-48 flex-shrink-0">
                     <img
-                      src={dietplanCoffeeImage}
+                      src={WorkoutPlanImages[currentPlan?.workout_plan.id]}
                       className="w-full h-full object-cover rounded-lg"
                       alt="current-plan"
                     />
@@ -284,20 +292,20 @@ export default function WorkoutPlansPage() {
 
                   <div className="flex-1 space-y-4">
                     <h3 className="text-left pl-10 text-2xl font-bold text-gray-900">
-                      {currentPlan.workout_plan.workout_name}
+                      {currentPlan?.workout_plan.workout_name}
                     </h3>
 
                     <p className="text-left pl-10 text-gray-600">
-                      {currentPlan.workout_plan.description ||
+                      {currentPlan?.workout_plan.description ||
                         "No description available."}
                     </p>
 
                     <div className="flex flex-wrap gap-2 pl-10">
                       <span className="px-3 py-1 text-sm bg-orange-100 text-orange-800 rounded-full">
-                        {currentPlan.workout_plan.workout_type}
+                        {currentPlan?.workout_plan.workout_type}
                       </span>
                       <span className="px-3 py-1 text-sm bg-green-100 text-green-800 rounded-full">
-                        {currentPlan.workout_plan.days_per_week} days/week
+                        {currentPlan?.workout_plan.days_per_week} days/week
                       </span>
                     </div>
 
