@@ -1,4 +1,4 @@
-import logophoto from "../images/logo_transparent.png";
+import logophoto from "../images/ELELOGOF.png";
 export default function Footer() {
   return (
     <section className="mt-10 py-10 bg-[#f1d55f] sm:pt-16 lg:pt-24 border-t border-0.5 border-gray-300">

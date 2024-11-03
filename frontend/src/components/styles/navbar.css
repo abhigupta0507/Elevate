@@ -11,7 +11,9 @@
   }
   
   .logo-navbar{
-    z-index: 12;
+    z-index: 15;
+    height: 50px;
+    width: auto;
   }
   .container {
     display: flex;

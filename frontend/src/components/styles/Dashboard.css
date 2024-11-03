@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #f3efe2;
+  background-color: #bae2e8;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -42,7 +42,7 @@
 
 .user-info p {
   font-size: 1rem;
-  color: #666;
+  color: #333;
   margin: 5px 0;
 }
 
@@ -51,6 +51,10 @@
   color: #333;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> b1e035aa60bb4d70abf7a7827dd81d5ba5bd8d5d
 .action-buttons {
   display: flex;
   justify-content: center;
