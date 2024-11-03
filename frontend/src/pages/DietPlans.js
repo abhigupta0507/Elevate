@@ -4,8 +4,16 @@ import "../components/styles/Dietplans.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { jwtDecode } from "jwt-decode";
-import dietplanCoffeeImage from "../images/dietplan_coffee.jpg";
+import plan1 from "../images/dietplan_coffee.jpg";
 import { motion } from "framer-motion"; // Import Framer Motion
+import plan2 from "../images/diet_Home.jpg";
+import plan3 from "../images/Community_Home.png";
+
+const dietPlanImages = {
+  1: plan1,
+  2: plan2,
+  3: plan3,
+};
 export default function DietPlansPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [dietPlans, setDietPlans] = useState([]);
@@ -50,16 +58,19 @@ export default function DietPlansPage() {
       setIsAuthenticated(false);
     }
   };
+  console.log(dietPlans);
 
   useEffect(() => {
     async function fetchPlans() {
       await checkAuthentication();
       const token = localStorage.getItem("accessToken");
-      const headersNoauth = { Authorization: `Bearer ${token}` };
+      const headersNoauth = { "Content-Type": "application/json" };
 
       if (!token) {
         fetch("http://localhost:8000/api/diet/diet-plans/", {
-          headers: headersNoauth,
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
           .then((response) => response.json())
           .then((plansData) => setDietPlans(plansData))
@@ -80,7 +91,9 @@ export default function DietPlansPage() {
             .catch(() => notifyError("Error fetching current workout plan!"));
         } else {
           fetch("http://localhost:8000/api/diet/diet-plans/", {
-            headers: headersNoauth,
+            headers: {
+              "Content-Type": "application/json",
+            },
           })
             .then((response) => response.json())
             .then((plansData) => setDietPlans(plansData))
@@ -441,7 +454,7 @@ export default function DietPlansPage() {
                     <div className="p-6 flex flex-col sm:flex-row gap-6">
                       <div className="w-full sm:w-48 h-48 flex-shrink-0">
                         <img
-                          src={dietplanCoffeeImage}
+                          src={dietPlanImages[plan.id]}
                           className="w-full h-full object-cover rounded-lg"
                           alt="Diet plan"
                         />
@@ -499,7 +512,7 @@ export default function DietPlansPage() {
                 <div className="p-6 flex flex-col sm:flex-row gap-6">
                   <div className="w-full sm:w-48 h-48 flex-shrink-0">
                     <img
-                      src={dietplanCoffeeImage}
+                      src={dietPlanImages[currentPlan.diet_plan.id]}
                       className="w-full h-full object-cover rounded-lg"
                       alt="Current Diet Plan"
                     />
