@@ -18,6 +18,11 @@ import DietPlansPage from "./DietPlans";
 
 import "../App.css";
 import { jwtDecode } from "jwt-decode";
+import { Navigate } from "react-router-dom";
+
+const ProtectedRoute = ({ isAuthenticated, children }) => {
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -32,7 +37,6 @@ function App() {
       // console.log(exp);
       // console.log("hi");
       if (Date.now() >= exp * 1000) {
-        console.log("exp");
         // Access token expired, try to refresh
         if (refreshToken) {
           const response = await fetch(
@@ -69,6 +73,88 @@ function App() {
   useEffect(() => {
     checkAuthentication();
   }, []);
+  // return (
+
+  //   <Router>
+  //     <div>
+  //       <NavBar isAuthenticated={isAuthenticated} />
+  //       <Routes>
+  //         <Route
+  //           path="/diet"
+  //           element={
+  //             isAuthenticated ? (
+  //               <Diet isAuthenticated={isAuthenticated} />
+  //             ) : (
+  //               <Login
+  //                 isAuthenticated={isAuthenticated}
+  //                 setIsAuthenticated={setIsAuthenticated}
+  //               />
+  //             )
+  //           }
+  //         />
+  //         <Route
+  //           path="/workout"
+  //           element={<Workout isAuthenticated={isAuthenticated} />}
+  //         />
+  //         <Route
+  //           path="/workoutplans"
+  //           element={<WorkoutPlansPage isAuthenticated={isAuthenticated} />}
+  //         />
+  //         <Route
+  //           path="/progress"
+  //           element={<Progress isAuthenticated={isAuthenticated} />}
+  //         />
+  //         <Route
+  //           path="/community"
+  //           element={<Community isAuthenticated={isAuthenticated} />}
+  //         />
+  //         <Route
+  //           path="/login"
+  //           element={
+  //             <Login
+  //               isAuthenticated={isAuthenticated}
+  //               setIsAuthenticated={setIsAuthenticated}
+  //             />
+  //           }
+  //         />
+  //         <Route
+  //           path="/dashboard"
+  //           element={
+  //             <Dashboard
+  //               isAuthenticated={isAuthenticated}
+  //               setIsAuthenticated={setIsAuthenticated}
+  //             />
+  //           }
+  //         />
+  //         <Route
+  //           path="/dietplans"
+  //           element={<DietPlansPage isAuthenticated={isAuthenticated} />}
+  //         />
+
+  //         <Route
+  //           path="/signup"
+  //           element={<Signup isAuthenticated={isAuthenticated} />}
+  //         />
+  //         <Route
+  //           path="/dashboard"
+  //           element={
+  //             <Dashboard
+  //               isAuthenticated={isAuthenticated}
+  //               setIsAuthenticated={setIsAuthenticated}
+  //             />
+  //           }
+  //         />
+  //         <Route
+  //           path="/"
+  //           element={<Home isAuthenticated={isAuthenticated} />}
+  //         />
+  //         <Route path="/Knowledge" element={<Knowledge />} />
+  //         <Route path="/UserPost" element={<UserPost />} />
+  //       </Routes>
+  //       <Footer />
+  //     </div>
+  //   </Router>
+  // );
   return (
     <Router>
       <div>
@@ -77,19 +163,18 @@ function App() {
           <Route
             path="/diet"
             element={
-              isAuthenticated ? (
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <Diet isAuthenticated={isAuthenticated} />
-              ) : (
-                <Login
-                  isAuthenticated={isAuthenticated}
-                  setIsAuthenticated={setIsAuthenticated}
-                />
-              )
+              </ProtectedRoute>
             }
           />
           <Route
             path="/workout"
-            element={<Workout isAuthenticated={isAuthenticated} />}
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Workout isAuthenticated={isAuthenticated} />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/workoutplans"
@@ -115,29 +200,21 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Dashboard
-                isAuthenticated={isAuthenticated}
-                setIsAuthenticated={setIsAuthenticated}
-              />
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Dashboard
+                  isAuthenticated={isAuthenticated}
+                  setIsAuthenticated={setIsAuthenticated}
+                />
+              </ProtectedRoute>
             }
           />
           <Route
             path="/dietplans"
             element={<DietPlansPage isAuthenticated={isAuthenticated} />}
           />
-
           <Route
             path="/signup"
             element={<Signup isAuthenticated={isAuthenticated} />}
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <Dashboard
-                isAuthenticated={isAuthenticated}
-                setIsAuthenticated={setIsAuthenticated}
-              />
-            }
           />
           <Route
             path="/"
@@ -145,6 +222,7 @@ function App() {
           />
           <Route path="/Knowledge" element={<Knowledge />} />
           <Route path="/UserPost" element={<UserPost />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
       </div>

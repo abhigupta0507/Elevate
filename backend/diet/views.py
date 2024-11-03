@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -7,7 +7,6 @@ from .models import DietPlan, DietPlanMeal, UserDietPlan
 from .serializers import DietPlanSerializer, UserDietPlanSerializer, DietPlanMealSerializer
 from datetime import datetime
 
-# List available diet plans for users not enrolled in one
 class DietPlanView(APIView):
     permission_classes = [AllowAny]
 
@@ -16,7 +15,8 @@ class DietPlanView(APIView):
         serializer = DietPlanSerializer(diet_plans, many=True)
         return Response(serializer.data)
 
-# Retrieve or assign a diet plan to a user
+
+
 class UserDietPlanView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -43,7 +43,8 @@ class UserDietPlanView(APIView):
         serializer = UserDietPlanSerializer(user_diet_plan)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-# Exit the user's current diet plan
+
+
 class ExitDietPlanView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -56,7 +57,8 @@ class ExitDietPlanView(APIView):
         except UserDietPlan.DoesNotExist:
             return Response({"error": "No active diet plan found."}, status=status.HTTP_400_BAD_REQUEST)
 
-# Display today's meals for the user's diet plan
+
+
 class TodaysMealsView(APIView):
     permission_classes = [IsAuthenticated]
 

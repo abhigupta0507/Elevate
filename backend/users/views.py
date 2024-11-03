@@ -1,27 +1,19 @@
-from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from .models import CustomUser
 from .serializers import UserSerializer, LoginSerializer,UserUpdateSerializer
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import generics, status,permissions
-from rest_framework.response import Response
-from django.contrib.auth import authenticate
-from .serializers import LoginSerializer
-from .models import CustomUser
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
-from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 
-
+#API to signup
 class UserSignupView(generics.CreateAPIView):
     permission_classes = [AllowAny]
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
 
+#API to login
 class CustomUserLoginView(generics.GenericAPIView):
     permission_classes = [AllowAny]
     serializer_class = LoginSerializer
@@ -43,6 +35,7 @@ class CustomUserLoginView(generics.GenericAPIView):
         
         return Response({'detail': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
+#API to retrieve all user details we have 
 class UserDetailView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -51,6 +44,8 @@ class UserDetailView(generics.RetrieveAPIView):
         serializer = self.get_serializer(request.user)
         return Response(serializer.data)
     
+
+#API to delete a account
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_account(request):
@@ -61,6 +56,8 @@ def delete_account(request):
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
+
+#API to update details of user
 class UpdateUserDetailsView(generics.UpdateAPIView):
     serializer_class = UserUpdateSerializer
     permission_classes = [permissions.IsAuthenticated]

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import badge3 from "../images/badge_3.png";
 import userImg from "../images/user.png";
 import EditProfileModal from "./EditProfileModal";
-import { parseISO, format } from "date-fns";
+
 const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
   const [currentWorkoutPlan, setCurrentWorkoutPlan] = useState(null);
   const [currentDietPlan, setCurrentDietPlan] = useState(null);

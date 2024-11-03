@@ -12,7 +12,6 @@ class Badge(models.Model):
     def __str__(self):
         return self.badge_name
 
-
 class UserBadge(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     badge = models.ForeignKey(Badge, on_delete=models.CASCADE)

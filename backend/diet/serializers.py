@@ -27,7 +27,7 @@ class DietPlanMealSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DietPlanMeal
-        fields = ['diet_plan', 'meal_type', 'meal_name', 'calories']  # Include diet_plan here
+        fields = ['diet_plan', 'meal_type', 'meal_name', 'calories'] 
 
 
 class UserDietPlanSerializer(serializers.ModelSerializer):

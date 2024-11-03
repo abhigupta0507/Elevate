@@ -16,7 +16,7 @@ class CommunityPostCreateView(generics.CreateAPIView):
     authentication_classes = [JWTAuthentication]
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)  # Save with the authenticated user
+        serializer.save(user=self.request.user) 
 
 class UserPostsView(generics.ListAPIView):
     serializer_class = CommunityPostSerializer
@@ -36,15 +36,14 @@ class LikePostView(generics.UpdateAPIView):
         post = self.get_object()
         user = request.user
 
-        # Check if the user has already liked the post
         if post.liked_by.filter(id=user.id).exists():
-            # Unlike the post
+            # Unlike
             post.liked_by.remove(user)
             post.likes -= 1
             post.save()
             return Response({'message': 'Post unliked successfully!', 'likes': post.likes, 'is_liked_by_user': False})
 
-        # Like the post
+        # Like
         post.liked_by.add(user)
         post.likes += 1
         post.save()

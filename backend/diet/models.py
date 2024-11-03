@@ -1,10 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-
-# Create your models here.
-from django.db import models
-
 class DietPlanCategory(models.Model):
     category_name = models.CharField(max_length=255)
 
@@ -26,12 +22,7 @@ class MealType(models.Model):
 
     def __str__(self):
         return self.meal_type_name
-
-
-# In models.py
-
-from django.db import models
-
+    
 class DietPlanMeal(models.Model):
     diet_plan = models.ForeignKey(DietPlan, on_delete=models.CASCADE)
     meal_type = models.ForeignKey(MealType, on_delete=models.CASCADE)
@@ -39,7 +30,7 @@ class DietPlanMeal(models.Model):
     calories = models.IntegerField()
     day_of_week = models.IntegerField(choices=[(i, day) for i, day in enumerate(
         ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    )], default=0)  # Default is Monday
+    )], default=0)
 
     def __str__(self):
         return f"{self.meal_name} ({self.get_day_of_week_display()})"

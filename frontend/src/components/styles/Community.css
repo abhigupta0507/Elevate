@@ -74,11 +74,15 @@ h2 {
   border: none;
   padding:10px;
   font-family: 'Arial';
+  border: 1px solid rgb(215, 215, 215);
+  margin-bottom:5px;
+  margin-top:10px;
 }
 .post-detail{
   border:none;
   padding:10px;
   font-family: 'Roboto',sans-serif;
+  border: 1px solid rgb(215, 215, 215);
 }
 
 .post-actions{

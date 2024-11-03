@@ -8,6 +8,17 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from badges.views import award_badges
+from datetime import date
+from .models import UserWorkouts, WorkoutExercise, User
+from .serializers import UserWorkoutSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from datetime import date
+from .models import User, WorkoutExercise, UserWorkouts
+from badges.models import UserBadge
+from .serializers import UserWorkoutSerializer
+import pytz
 
 User = get_user_model()
 
@@ -66,35 +77,30 @@ class ExitWorkoutPlanView(APIView):
             return Response({"error": "No active workout plan found."}, status=status.HTTP_400_BAD_REQUEST)
 
 
-#TO display the list of exercises he has to do
+#To display the list of exercises he has to do
 class TodaysExercisesView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        # Get the user_id from query parameters
         user_id = request.user.id
 
         if user_id is None:
             return Response({"detail": "User ID is required"}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Get the active user workout plan
         user_workout_plan = UserWorkoutPlan.objects.filter(user_id=user_id, is_active=True).first()
 
         if not user_workout_plan:
             return Response({"detail": "No active workout plan found for the user"}, status=status.HTTP_404_NOT_FOUND)
 
-        # Get today's exercises based on the workout plan
-        today = timezone.now().strftime('%A')  # Get current day of the week (e.g., 'Monday')
+        today = timezone.now().strftime('%A')  # Get day 'Monday'
         workout_exercises = WorkoutExercise.objects.filter(workout=user_workout_plan.workout_plan, day_of_week=today)
 
 
         if not workout_exercises.exists():
             return Response({"detail": "No exercises for today","exercises":[]})
 
-        # Get the exercise details
         exercises = workout_exercises.select_related('exercise').values('exercise', 'sets', 'reps', 'day_of_week')
 
-        # Fetch the actual exercise objects and append the additional fields like sets and reps
         exercise_details = []
         for x in exercises:
             exercise = Exercise.objects.get(id=x['exercise'])
@@ -110,27 +116,13 @@ class TodaysExercisesView(APIView):
             }
             exercise_details.append(exercise_data)
 
-        # Serialize the exercise details
         return Response({"exercises": exercise_details})
-
-from datetime import date
-from .models import UserWorkouts, WorkoutExercise, User
-from .serializers import UserWorkoutSerializer
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from datetime import date
-from .models import User, WorkoutExercise, UserWorkouts
-from badges.models import UserBadge
-from .serializers import UserWorkoutSerializer
-import pytz
 
 class MarkExerciseDoneView(APIView):
     def post(self, request):
         user_id = request.user.id
         workout_exercise_id = request.data.get("workout_exercise_id")
 
-        # Get the user and workout exercise
         try:
             user = User.objects.get(id=user_id)
         except User.DoesNotExist:
@@ -141,12 +133,10 @@ class MarkExerciseDoneView(APIView):
         except WorkoutExercise.DoesNotExist:
             return Response({"error": "Workout exercise not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        # Check if the exercise is already marked as done for today
         today = date.today()
         if UserWorkouts.objects.filter(user=user, workout_exercise=workout_exercise, completed_date=today).exists():
             return Response({"message": "Exercise already marked as done for today"}, status=status.HTTP_200_OK)
 
-        # If not marked done for today, create a new entry
         calories_burned = workout_exercise.exercise.calories_burned
         user_workout = UserWorkouts.objects.create(
             user=user,
@@ -156,8 +146,6 @@ class MarkExerciseDoneView(APIView):
 
         serializer = UserWorkoutSerializer(user_workout)
         newly_awarded_badges = award_badges(user)
-        
-        
         
         return Response({
             "success": True,

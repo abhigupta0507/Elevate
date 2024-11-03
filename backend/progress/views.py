@@ -1,11 +1,11 @@
-from django.db.models import Sum,F,DateField
-from django.db.models.functions import TruncDate,Cast
+from django.db.models import Sum,DateField
+from django.db.models.functions import Cast
 from django.utils import timezone
 from datetime import timedelta
 from workouts.models import UserWorkouts
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny,IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 
 class CaloriesBurnedLast7Days(APIView):
     permission_classes = [IsAuthenticated]
@@ -13,7 +13,7 @@ class CaloriesBurnedLast7Days(APIView):
     def get(self, request):
         user_id = request.user.id
         today = timezone.now().date()
-        start_date = today - timedelta(days=6)  # Get data from the last 7 days
+        start_date = today - timedelta(days=6) 
 
         if not user_id:
             return Response({"error": "user_id is required"}, status=400)
@@ -28,7 +28,6 @@ class CaloriesBurnedLast7Days(APIView):
                 total_calories=Sum('calories_burned')
             ).order_by('day')
 
-            # Prepare the data
             data = []
             for i in range(7):
                 day = start_date + timedelta(days=i)
@@ -44,7 +43,7 @@ class CaloriesBurnedLast7Days(APIView):
             return Response({"calories_data": data})
 
         except Exception as e:
-            print(f"An error occurred: {e}")  # Debugging output
+            print(f"An error occurred: {e}")  
             return Response({"error": str(e)}, status=500)
 
 
