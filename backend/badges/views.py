@@ -19,15 +19,46 @@ def award_badges(user):
     # Check conditions and award badges if conditions are met
     # 1. Award for completing 5 workouts ('Workout Beginner')
     total_workouts = UserWorkouts.objects.filter(user=user).count()
-    if total_workouts >= 5 and not has_badge('Workout Beginner'):
-        UserBadge.objects.create(user=user, badge=get_badge('Workout Beginner'))
-        newly_awarded_badges.append('Workout Beginner')
+    if total_workouts >= 5 and not has_badge('Workout Beginner 1'):
+        UserBadge.objects.create(user=user, badge=get_badge('Workout Beginner 1'))
+        newly_awarded_badges.append('Workout Beginner 1')
+
+    if total_workouts >= 10 and not has_badge('Workout Beginner 2'):
+        UserBadge.objects.create(user=user, badge=get_badge('Workout Beginner 2'))
+        newly_awarded_badges.append('Workout Beginner 2')
+
+    if total_workouts >= 20 and not has_badge('Workout Beginner 3'):
+        UserBadge.objects.create(user=user, badge=get_badge('Workout Beginner 3'))
+        newly_awarded_badges.append('Workout Beginner 3')
+
+    if total_workouts >= 50 and not has_badge('Workout Beginner 4'):
+        UserBadge.objects.create(user=user, badge=get_badge('Workout Beginner 4'))
+        newly_awarded_badges.append('Workout Beginner 4')
+
+    if total_workouts >= 100 and not has_badge('Workout Beginner 5'):
+        UserBadge.objects.create(user=user, badge=get_badge('Workout Beginner 5'))
+        newly_awarded_badges.append('Workout Beginner 5')
     # 2. Award for burning 500 calories ('Calorie Burner')
     total_calories = UserWorkouts.objects.filter(user=user).aggregate(Sum('calories_burned'))['calories_burned__sum'] or 0
-    if total_calories >= 500 and not has_badge('Calorie Burner'):
-        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner'))
-        newly_awarded_badges.append('Calorie Burner')
+    if total_calories >= 500 and not has_badge('Calorie Burner 1'):
+        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner 1'))
+        newly_awarded_badges.append('Calorie Burner 1')
 
+    if total_calories >= 1000 and not has_badge('Calorie Burner 2'):
+        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner 2'))
+        newly_awarded_badges.append('Calorie Burner 2')
+
+    if total_calories >= 2000 and not has_badge('Calorie Burner 3'):
+        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner 2'))
+        newly_awarded_badges.append('Calorie Burner 3')
+
+    if total_calories >= 5000 and not has_badge('Calorie Burner 4'):
+        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner 4'))
+        newly_awarded_badges.append('Calorie Burner 4')
+
+    if total_calories >= 10000 and not has_badge('Calorie Burner 5'):
+        UserBadge.objects.create(user=user, badge=get_badge('Calorie Burner 5'))
+        newly_awarded_badges.append('Calorie Burner 5')
 
     return newly_awarded_badges
     # 3. Award for completing workouts for 7 consecutive days ('Consistent Performer')

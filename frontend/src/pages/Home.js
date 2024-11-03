@@ -6,6 +6,7 @@ import dietHome from "../images/diet_Home.jpg";
 import professionalHome from "../images/professionals_Home.jpg";
 import progressImg from "../images/progress_Home.png";
 import BadgeImg from "../images/badge_Home.png";
+import { motion } from "framer-motion";
 import CommunityImg from "../images/Community_Home.png";
 import WorkoutImg from "../images/workoutplans_Home.png";
 const reviews = [
@@ -45,6 +46,30 @@ const reviews = [
     image: "https://randomuser.me/api/portraits/women/3.jpg",
   },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 export default function Home({ isAuthenticated }) {
   const navigate = useNavigate();
   const access = localStorage.getItem("accessToken");
@@ -102,19 +127,76 @@ export default function Home({ isAuthenticated }) {
 }
 
 function Heading({ text }) {
-  return <h1 className="heading-text-home">{text}</h1>;
+  return (
+    <motion.h1
+      className="heading-text-home"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.8 }}
+      variants={headingVariants}
+    >
+      {text}
+    </motion.h1>
+  );
 }
+// function DescribeBlockCard({ title, content, photo, buttontext, path }) {
+//   const navigate = useNavigate();
+
+//   return (
+//     <div className="class-studio-container-home">
+//       <div className="class-studio-text-home">
+//         <h1>{title}</h1>
+//         <p>{content}</p>
+//         <button className="class-button-home" onClick={() => navigate(path)}>
+//           {buttontext}
+//         </button>
+//       </div>
+//       <div className="class-studio-video-home">
+//         <img
+//           src={photo}
+//           alt="Workout Class"
+//           className="class-video-placeholder-home"
+//           loading="lazy"
+//         />
+//       </div>
+//     </div>
+//   );
+// }
+
 function DescribeBlockCard({ title, content, photo, buttontext, path }) {
   const navigate = useNavigate();
 
   return (
-    <div className="class-studio-container-home">
+    <motion.div
+      className="class-studio-container-home"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
+    >
       <div className="class-studio-text-home">
-        <h1>{title}</h1>
-        <p>{content}</p>
-        <button className="class-button-home" onClick={() => navigate(path)}>
+        <motion.h1
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {title}
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          {content}
+        </motion.p>
+        <motion.button
+          className="class-button-home"
+          onClick={() => navigate(path)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           {buttontext}
-        </button>
+        </motion.button>
       </div>
       <div className="class-studio-video-home">
         <img
@@ -124,26 +206,87 @@ function DescribeBlockCard({ title, content, photo, buttontext, path }) {
           loading="lazy"
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
+// const MainPage = ({ isAuthenticated, navigate }) => {
+//   function handleTakemeaway() {
+//     if (!isAuthenticated) navigate("/login");
+//     else navigate("/dashboard");
+//   }
+//   return (
+//     <div className="main-container-home">
+//       <div className="left-section-home">
+//         <p className="left-section-name-home">ELEVATE</p>
+//         <p className="left-section-detail-home">
+//           IT'S TIME TO BE HEALTHY AND IN GREAT SHAPE
+//         </p>
+//         <button className="signup-button-home" onClick={handleTakemeaway}>
+//           {isAuthenticated ? "WELCOME BACK" : "SIGN UP NOW"}
+//         </button>
+//       </div>
+//       <div className="right-section-home">
+//         <img
+//           src={professionalHome}
+//           alt="fitness"
+//           className="fitness-image-home"
+//           loading="lazy"
+//         />
+//         <div className="circle-text">
+//           <p>Elevate your physical fitness by our workout and diet plans</p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 const MainPage = ({ isAuthenticated, navigate }) => {
   function handleTakemeaway() {
     if (!isAuthenticated) navigate("/login");
     else navigate("/dashboard");
   }
+
   return (
-    <div className="main-container-home">
-      <div className="left-section-home">
-        <p className="left-section-name-home">ELEVATE</p>
-        <p className="left-section-detail-home">
+    <motion.div
+      className="main-container-home"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.div
+        className="left-section-home"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <motion.p
+          className="left-section-name-home"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          ELEVATE
+        </motion.p>
+        <motion.p
+          className="left-section-detail-home"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
           IT'S TIME TO BE HEALTHY AND IN GREAT SHAPE
-        </p>
-        <button className="signup-button-home" onClick={handleTakemeaway}>
+        </motion.p>
+        <motion.button
+          className="signup-button-home"
+          onClick={handleTakemeaway}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
           {isAuthenticated ? "WELCOME BACK" : "SIGN UP NOW"}
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
       <div className="right-section-home">
         <img
           src={professionalHome}
@@ -151,13 +294,51 @@ const MainPage = ({ isAuthenticated, navigate }) => {
           className="fitness-image-home"
           loading="lazy"
         />
-        <div className="circle-text">
+        <motion.div
+          className="circle-text"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
+        >
           <p>Elevate your physical fitness by our workout and diet plans</p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
+// function CardOfTwo({
+//   title1,
+//   content1,
+//   photo1,
+//   path1,
+//   buttontext,
+//   title2,
+//   content2,
+//   photo2,
+//   path2,
+// }) {
+//   const navigate = useNavigate();
+//   return (
+//     <div className="cardoftwo-main-container-home" onLoad={lazy}>
+//       <div className="cardoftwo-inner-container-home">
+//         <h1>{title1}</h1>
+//         <p className="cardoftwo-inner-container-detail-home">{content1}</p>
+//         <img src={photo1} alt={title1} loading="lazy"></img>
+//         <button className="class-button-home" onClick={() => navigate(path1)}>
+//           {buttontext}
+//         </button>
+//       </div>
+//       <div className="cardoftwo-inner-container-home">
+//         <h1>{title2}</h1>
+//         <p className="cardoftwo-inner-container-detail-home">{content2}</p>
+//         <img src={photo2} alt={title2} loading="lazy"></img>
+//         <button className="class-button-home" onClick={() => navigate(path2)}>
+//           {buttontext}
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
 
 function CardOfTwo({
   title1,
@@ -171,25 +352,53 @@ function CardOfTwo({
   path2,
 }) {
   const navigate = useNavigate();
+
   return (
-    <div className="cardoftwo-main-container-home" onLoad={lazy}>
-      <div className="cardoftwo-inner-container-home">
+    <motion.div
+      className="cardoftwo-main-container-home"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
+    >
+      <motion.div
+        className="cardoftwo-inner-container-home"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         <h1>{title1}</h1>
         <p className="cardoftwo-inner-container-detail-home">{content1}</p>
-        <img src={photo1} alt={title1} loading="lazy"></img>
-        <button className="class-button-home" onClick={() => navigate(path1)}>
+        <img src={photo1} alt={title1} loading="lazy" />
+        <motion.button
+          className="class-button-home"
+          onClick={() => navigate(path1)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           {buttontext}
-        </button>
-      </div>
-      <div className="cardoftwo-inner-container-home">
+        </motion.button>
+      </motion.div>
+
+      <motion.div
+        className="cardoftwo-inner-container-home"
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
         <h1>{title2}</h1>
         <p className="cardoftwo-inner-container-detail-home">{content2}</p>
-        <img src={photo2} alt={title2} loading="lazy"></img>
-        <button className="class-button-home" onClick={() => navigate(path2)}>
+        <img src={photo2} alt={title2} loading="lazy" />
+        <motion.button
+          className="class-button-home"
+          onClick={() => navigate(path2)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           {buttontext}
-        </button>
-      </div>
-    </div>
+        </motion.button>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -246,7 +455,13 @@ const ReviewSlider = () => {
   };
 
   return (
-    <div className="slider-container">
+    <motion.div
+      className="slider-container"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
+    >
       {/* <h1 className="slider-header">Reviews of our Customers</h1> */}
       <div
         className="slider"
@@ -282,6 +497,6 @@ const ReviewSlider = () => {
           )
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
