@@ -292,12 +292,6 @@ export default function WorkoutPage() {
           </button>
         </div>
       )}
-
-      {/* Bottom Section: Total Calories Burned
-      <div className="calories-burned-section">
-        <h2>Total Calories Burned Today: {totalCaloriesBurned}</h2>
-        {message && <p className="feedback-message">{message}</p>}
-      </div> */}
     </div>
   );
 }

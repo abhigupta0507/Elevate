@@ -5,21 +5,21 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.cardoftwo-main-container {
+.cardoftwo-main-container-home {
   display: flex;
   column-gap: 50px;
   width: 1000px;
   margin: auto;
   margin-top: 40px;
 }
-.Progress-Home{
+.Progress-Home-home{
   background-color: rgb(249, 249, 249);
   padding-top:20px;
   padding-bottom:80px;
   margin-top:50px;
 }
 
-.cardoftwo-inner-container {
+.cardoftwo-inner-container-home {
   background-color: rgb(241, 234, 207);
   border-radius: 10px;
   display: flex;
@@ -31,26 +31,26 @@ body {
   border-radius:60px;
 }
 
-.cardoftwo-inner-container img {
+.cardoftwo-inner-container-home img {
   width: 300px;
   height: auto;
   margin-bottom: 10px;
 }
 
 
-.cardoftwo-inner-container h1 {
+.cardoftwo-inner-container-home h1 {
   font-size: 40px;
   margin-bottom: 10px;
   color: black;
   font-family: "Roboto", sans-serif;
 }
-.cardoftwo-inner-container-detail {
+.cardoftwo-inner-container-detail-home {
   color: rgb(71, 71, 71);
   font-size:18px;
   font-family: "Hind", sans-serif;
 }
 
-.heading-text{
+.heading-text-home{
   font-size:48px;
   font-weight:bold;
   font-family: 'Hind',sans-serif;
@@ -58,7 +58,7 @@ body {
 }
 
 
-.class-studio-container {
+.class-studio-container-home {
   font-family: "Roboto", sans-serif;
   border-radius: 10px;
   background-color: rgb(241, 234, 207);
@@ -76,19 +76,19 @@ body {
   padding-left: 50px;
 }
 
-.class-studio-text h1 {
+.class-studio-text-home h1 {
   font-size: 48px;
   margin-bottom: 20px;
 }
 
-.class-studio-text p {
+.class-studio-text-home p {
   font-size: 16px;
   margin-bottom: 30px;
   max-width: 400px;
   font-family: "Hind", sans-serif;
 }
 
-.class-button {
+.class-button-home {
   background-color: #f18019;
   color: #fff;
   padding: 15px 30px;
@@ -99,22 +99,22 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.class-button:hover {
+.class-button-home:hover {
   background-color: #f1d55f;
 }
 
-.class-studio-video {
+.class-studio-video-home {
   position: relative;
   width: 450px;
   height: auto;
 }
 
-.class-video-placeholder {
+.class-video-placeholder-home {
   width: 100%;
   height: auto;
 }
 
-.main-container {
+.main-container-home {
   display: flex;
   justify-content: space-between;
   margin: auto;
@@ -127,7 +127,7 @@ body {
   background: radial-gradient(circle, #ffffff 0%, #f1eacf 100%);
 }
 
-.left-section {
+.left-section-home {
   flex: 1;
   padding: 20px;
   display: flex;
@@ -135,7 +135,7 @@ body {
   justify-content: center;
 }
 
-.left-section-name {
+.left-section-name-home {
   font-size: 3rem;
   color: black;
   margin-bottom: 20px;
@@ -143,7 +143,7 @@ body {
   text-align: left;
 }
 
-.left-section-detail {
+.left-section-detail-home {
   text-align: left;
   font-size: 24px;
   font-weight: regular;
@@ -151,7 +151,7 @@ body {
   margin-bottom: 40px;
 }
 
-.signup-button {
+.signup-button-home {
   background-color: #f18019;
   color: white;
   padding: 15px 30px;
@@ -163,12 +163,12 @@ body {
   transition: background 0.3s ease;
 }
 
-.signup-button:hover {
+.signup-button-home:hover {
   background-color: #f1d55f;
   color: black;
 }
 
-.right-section {
+.right-section-home {
   position: relative;
   flex: 1;
   display: flex;
@@ -176,7 +176,7 @@ body {
   align-items: center;
 }
 
-.fitness-image {
+.fitness-image-home {
   width: 100%;
   border-radius: 10px;
   height: 100%;
@@ -208,7 +208,7 @@ body {
     align-items: center;
   }
 
-  .right-section {
+  .right-section-home {
     margin-top: 20px;
   }
 

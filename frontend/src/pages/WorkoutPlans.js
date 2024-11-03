@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Toast notifications for feedback
 import { jwtDecode } from "jwt-decode";
 import dietplanCoffeeImage from "../images/dietplan_coffee.jpg";
+import { motion } from "framer-motion";
 export default function WorkoutPlansPage() {
   const [workoutPlans, setWorkoutPlans] = useState([]);
   const [currentPlan, setCurrentPlan] = useState(null);
@@ -149,7 +150,6 @@ export default function WorkoutPlansPage() {
   };
 
   const handleExitPlan = async () => {
-    alert("Do you want to leave your current plan?");
     const token = localStorage.getItem("accessToken");
     await checkAuthentication();
     if (!token) {
@@ -188,57 +188,100 @@ export default function WorkoutPlansPage() {
   return (
     <>
       <ToastContainer />
-      <div className="workout-plans-page">
+      <div className="p-6 max-w-3xl mx-auto">
         {!currentPlan ? (
-          <div>
-            <h2 className="section-title">Select a Workout Plan</h2>
-            <div className="outer-container">
-              <div className="workout-plan-container">
-                {workoutPlans.length > 0 ? (
-                  workoutPlans.map((plan) => (
-                    <div className="workout-plan-container" key={plan.id}>
-                      <div className="class-studio-video">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+              Uncover the Perfect Workout for You!
+            </h2>
+
+            <div className="space-y-6">
+              {workoutPlans.length > 0 ? (
+                workoutPlans.map((plan) => (
+                  <motion.div
+                    key={plan.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white rounded-xl shadow-md overflow-hidden"
+                  >
+                    <div className="p-6 flex flex-col sm:flex-row gap-6">
+                      <div className="w-48 sm:w-48 h-48 flex-shrink-0">
                         <img
                           src={dietplanCoffeeImage}
-                          className="plan-image"
+                          className="w-full h-full object-cover rounded-lg"
+                          alt="workout-image"
                         />
                       </div>
-                      <div className="class-studio-text">
-                        <h1>{plan.workout_name}</h1>
-                        <p>{plan.description || "No description available."}</p>
-                        <span className="plan-category">Type: {plan.workout_type}</span>
-                        <span className="plan-category">Duration: {plan.program_duration} minutes</span>
-                        <span className="plan-category">Days per week: {plan.days_per_week}</span>
-                        <div className="button-group">
-                          <button
-                            className="class-button"
-                            onClick={() => handleSelectPlan(plan.id, plan.workout_name)}
-                          >
-                            Choose Plan
-                          </button>
+
+                      <div className="flex-1 space-y-4">
+                        <h3 className="text-2xl font-bold text-gray-900">
+                          {plan.workout_name}
+                        </h3>
+
+                        <p className="text-gray-600">
+                          {plan.description || "No description available."}
+                        </p>
+
+                        <div className="ml-10 flex flex-wrap gap-2">
+                          <span className="px-3 py-1 text-sm bg-orange-100 text-orange-800 rounded-full">
+                            Type: {plan.workout_type}
+                          </span>
+                          <span className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full">
+                            Duration: {plan.program_duration} minutes
+                          </span>
+                          <span className="px-3 py-1 text-sm bg-green-100 text-green-800 rounded-full">
+                            {plan.days_per_week} days/week
+                          </span>
                         </div>
+
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() =>
+                            handleSelectPlan(plan.id, plan.workout_name)
+                          }
+                          className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
+                        >
+                          Choose Plan
+                        </motion.button>
                       </div>
                     </div>
-                  ))
-                ) : (
-                  <p>No available workout plans. Refresh the page.</p>
-                )}
-              </div>
+                  </motion.div>
+                ))
+              ) : (
+                <p className="text-center text-gray-500">
+                  No available workout plans. Refresh the page.
+                </p>
+              )}
             </div>
-          </div>
+          </motion.div>
         ) : (
-          <div>
-            <h2 className="section-title">Your Current Workout Plan</h2>
-            <div className="outer-container">
-              {currentPlan && currentPlan.workout_plan ? (
-                <div className="workout-plan-container">
-                  <div className="class-studio-video">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+              Your Current Workout Plan
+            </h2>
+
+            {currentPlan && currentPlan.workout_plan ? (
+              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+                <div className="p-6 flex flex-col sm:flex-row gap-6">
+                  <div className="w-full sm:w-48 h-48 flex-shrink-0">
                     <img
                       src={dietplanCoffeeImage}
-                      className="plan-image"
-                      
+                      className="w-full h-full object-cover rounded-lg"
+                      alt="current-plan"
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="class-studio-text">
                     <h1>{currentPlan.workout_plan.workout_name}</h1>
                     <p>{currentPlan.workout_plan.description || "No description available."}</p>
@@ -247,19 +290,56 @@ export default function WorkoutPlansPage() {
                     <span className="plan-category">{currentPlan.workout_plan.days_per_week} days a week</span>
                     <div className="button-group">
                       <button onClick={() => navigate("/workout")} className="class-button">
+=======
+
+                  <div className="flex-1 space-y-4">
+                    <h3 className="text-left pl-10 text-2xl font-bold text-gray-900">
+                      {currentPlan.workout_plan.workout_name}
+                    </h3>
+
+                    <p className="text-left pl-10 text-gray-600">
+                      {currentPlan.workout_plan.description ||
+                        "No description available."}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pl-10">
+                      <span className="px-3 py-1 text-sm bg-orange-100 text-orange-800 rounded-full">
+                        {currentPlan.workout_plan.workout_type}
+                      </span>
+                      <span className="px-3 py-1 text-sm bg-green-100 text-green-800 rounded-full">
+                        {currentPlan.workout_plan.days_per_week} days/week
+                      </span>
+                    </div>
+
+                    <div className="flex gap-3 pt-2 pl-10">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => navigate("/workout")}
+                        className="px-6 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
+                      >
+>>>>>>> b1e035aa60bb4d70abf7a7827dd81d5ba5bd8d5d
                         Today's exercises
-                      </button>
-                      <button onClick={handleExitPlan} className="class-button exit-button">
+                      </motion.button>
+
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handleExitPlan}
+                        className="px-6 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 transition-colors"
+                      >
                         Exit Plan
-                      </button>
+                      </motion.button>
                     </div>
                   </div>
                 </div>
-              ) : (
-                <p>Loading workout plan details...</p>
-              )}
-            </div>
-          </div>
+              </div>
+            ) : (
+              <p className="text-center text-gray-500">
+                Loading workout plan details...
+              </p>
+            )}
+          </motion.div>
         )}
       </div>
     </>

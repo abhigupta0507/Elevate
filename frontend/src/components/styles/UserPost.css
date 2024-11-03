@@ -84,14 +84,14 @@ h2 {
 
 .post-date-and-content h3 {
   font-weight: bold;
-  border: 1px solid rgb(235, 235, 235);
+  border: none;
+  font-size:20px;
   padding: 10px;
   font-family: "Arial";
 }
 .post-detail {
-  border: 1px solid rgb(206, 206, 206);
+  border: none;
   padding: 10px;
-  margin-top: 10px;
   font-family: "Roboto", sans-serif;
 }
 
