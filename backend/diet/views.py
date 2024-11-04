@@ -69,6 +69,7 @@ class TodaysMealsView(APIView):
             return Response({"detail": "No active diet plan found for the user"}, status=status.HTTP_404_NOT_FOUND)
 
         current_day_of_week = datetime.now().weekday()
+        print(current_day_of_week)
         meals = DietPlanMeal.objects.filter(diet_plan=user_diet_plan.diet_plan, day_of_week=current_day_of_week)
         
         if not meals.exists():

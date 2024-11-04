@@ -4,10 +4,10 @@ import "../components/styles/Dietplans.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { jwtDecode } from "jwt-decode";
-import plan1 from "../images/dietplan_coffee.jpg";
+import plan1 from "../images/plan1.jpg";
 import { motion } from "framer-motion"; // Import Framer Motion
-import plan2 from "../images/diet_Home.jpg";
-import plan3 from "../images/Community_Home.png";
+import plan2 from "../images/dp2.jpg";
+import plan3 from "../images/dp3.jpg";
 import { FaSpinner } from "react-icons/fa";
 
 const dietPlanImages = {

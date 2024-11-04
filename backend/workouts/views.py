@@ -8,16 +8,17 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from badges.views import award_badges
-from datetime import date
+
 from .models import UserWorkouts, WorkoutExercise, User
 from .serializers import UserWorkoutSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from datetime import date
+
 from .models import User, WorkoutExercise, UserWorkouts
 from badges.models import UserBadge
 from .serializers import UserWorkoutSerializer
+from datetime import datetime
 import pytz
 
 User = get_user_model()

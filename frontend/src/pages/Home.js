@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../components/styles/Home.css";
 import "../components/styles/Reviewslider.css";
 import dietHome from "../images/diet_Home.jpg";
-import professionalHome from "../images/professionals_Home.jpg";
+import professionalHome from "../images/home.png";
 import progressImg from "../images/progress_Home.png";
 import BadgeImg from "../images/badge_Home.png";
 import { motion } from "framer-motion";
