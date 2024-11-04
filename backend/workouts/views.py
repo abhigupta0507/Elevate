@@ -76,9 +76,6 @@ class ExitWorkoutPlanView(APIView):
             return Response({"message": "Successfully exited the workout plan."}, status=status.HTTP_200_OK)
         except UserWorkoutPlan.DoesNotExist:
             return Response({"error": "No active workout plan found."}, status=status.HTTP_400_BAD_REQUEST)
-
-
-#To display the list of exercises he has to do
 class TodaysExercisesView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -93,47 +90,95 @@ class TodaysExercisesView(APIView):
         if not user_workout_plan:
             return Response({"detail": "No active workout plan found for the user"}, status=status.HTTP_404_NOT_FOUND)
 
-        today = datetime.now().weekday()
-        print(today)
+        today = timezone.now().strftime('%A')
         workout_exercises = WorkoutExercise.objects.filter(workout=user_workout_plan.workout_plan, day_of_week=today)
 
-
         if not workout_exercises.exists():
-            return Response({"detail": "No exercises for today","exercises":[]})
-
-        exercises = workout_exercises.select_related('exercise').values('exercise', 'sets', 'reps', 'day_of_week')
+            return Response({"detail": "No exercises for today", "exercises": []})
 
         exercise_details = []
-        for x in exercises:
-            exercise = Exercise.objects.get(id=x['exercise'])
+        for workout_exercise in workout_exercises:
+            exercise = workout_exercise.exercise
             exercise_data = {
                 'id': exercise.id,
+                'workout_exercise_id': workout_exercise.id,  # Include the WorkoutExercise ID
                 'exercise_name': exercise.exercise_name,
                 'muscle_group': exercise.muscle_group,
                 'video_url': exercise.video_url,
                 'description': exercise.description,
                 'calories_burned': exercise.calories_burned,
-                'sets': x['sets'],
-                'reps': x['reps'],
+                'sets': workout_exercise.sets,
+                'reps': workout_exercise.reps,
             }
             exercise_details.append(exercise_data)
 
         return Response({"exercises": exercise_details})
 
+#To display the list of exercises he has to do
+# class TodaysExercisesView(APIView):
+#     permission_classes = [IsAuthenticated]
+
+#     def get(self, request):
+#         user_id = request.user.id
+
+#         if user_id is None:
+#             return Response({"detail": "User ID is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+#         user_workout_plan = UserWorkoutPlan.objects.filter(user_id=user_id, is_active=True).first()
+
+#         if not user_workout_plan:
+#             return Response({"detail": "No active workout plan found for the user"}, status=status.HTTP_404_NOT_FOUND)
+
+#         today = timezone.now().strftime('%A')  # Get day 'Monday'
+#         print(timezone.now().strftime('%A'))
+#         workout_exercises = WorkoutExercise.objects.filter(workout=user_workout_plan.workout_plan, day_of_week=today)
+
+
+#         if not workout_exercises.exists():
+#             return Response({"detail": "No exercises for today","exercises":[]})
+
+#         exercises = workout_exercises.select_related('exercise').values('exercise', 'sets', 'reps', 'day_of_week')
+
+#         exercise_details = []
+#         for x in exercises:
+#             exercise = Exercise.objects.get(id=x['exercise'])
+#             exercise_data = {
+#                 'id': exercise.id,
+#                 'exercise_name': exercise.exercise_name,
+#                 'muscle_group': exercise.muscle_group,
+#                 'video_url': exercise.video_url,
+#                 'description': exercise.description,
+#                 'calories_burned': exercise.calories_burned,
+#                 'sets': x['sets'],
+#                 'reps': x['reps'],
+#             }
+#             exercise_details.append(exercise_data)
+
+#         return Response({"exercises": exercise_details})
+
 class MarkExerciseDoneView(APIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request):
+
+        print("Request URL:", request.path)
+        print("Request Method:", request.method)
+        print("Request Headers:", request.headers)
+        print("Request Body:", request.data)
         user_id = request.user.id
+        user=request.user
         workout_exercise_id = request.data.get("workout_exercise_id")
-
-        try:
-            user = User.objects.get(id=user_id)
-        except User.DoesNotExist:
-            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
-
+        
+        # Debug prints
+        print(f"Received workout_exercise_id: {workout_exercise_id}")
+        print(f"Available exercise IDs: {list(WorkoutExercise.objects.values_list('id', flat=True))}")
+        
         try:
             workout_exercise = WorkoutExercise.objects.get(id=workout_exercise_id)
         except WorkoutExercise.DoesNotExist:
-            return Response({"error": "Workout exercise not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({
+                "error": f"Workout exercise with ID {workout_exercise_id} not found",
+                "available_ids": list(WorkoutExercise.objects.values_list('id', flat=True))
+            }, status=status.HTTP_404_NOT_FOUND)
 
         today = date.today()
         if UserWorkouts.objects.filter(user=user, workout_exercise=workout_exercise, completed_date=today).exists():
@@ -161,6 +206,10 @@ class UserCompletedExercisesView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        print("Request URL:", request.path)
+        print("Request Method:", request.method)
+        print("Request Headers:", request.headers)
+        print("Request Body:", request.data)
         user_id = request.user.id
         india_tz = pytz.timezone('Asia/Kolkata')
         today = timezone.now().astimezone(india_tz).date()
@@ -176,3 +225,4 @@ class UserCompletedExercisesView(APIView):
             "completed_exercises": completed_exercise_ids,
             "total_calories_burned": total_calories_burned
         })
+
