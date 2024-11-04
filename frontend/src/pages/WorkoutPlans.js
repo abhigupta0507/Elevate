@@ -4,10 +4,10 @@ import "../components/styles/WorkoutPlans.css"; // Assuming you have some CSS fo
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Toast notifications for feedback
 import { jwtDecode } from "jwt-decode";
-import plan1 from "../images/dietplan_coffee.jpg";
+import plan2 from "../images/dietplan_coffee.jpg";
 import { motion } from "framer-motion";
-import plan2 from "../images/diet_Home.jpg";
-import plan3 from "../images/Community_Home.png";
+import plan1 from "../images/workplan1.jpg";
+import plan3 from "../images/workplan1.jpg";
 import { FaSpinner } from "react-icons/fa";
 const WorkoutPlanImages = {
   1: plan1,

@@ -99,20 +99,21 @@ class TodaysExercisesView(APIView):
         if not workout_exercises.exists():
             return Response({"detail": "No exercises for today","exercises":[]})
 
-        exercises = workout_exercises.select_related('exercise').values('exercise', 'sets', 'reps', 'day_of_week')
+       
 
         exercise_details = []
-        for x in exercises:
-            exercise = Exercise.objects.get(id=x['exercise'])
+        for workout_exercise in workout_exercises:
+            exercise = workout_exercise.exercise
             exercise_data = {
                 'id': exercise.id,
+                'workout_exercise_id': workout_exercise.id,  # Include the WorkoutExercise ID
                 'exercise_name': exercise.exercise_name,
                 'muscle_group': exercise.muscle_group,
                 'video_url': exercise.video_url,
                 'description': exercise.description,
                 'calories_burned': exercise.calories_burned,
-                'sets': x['sets'],
-                'reps': x['reps'],
+                'sets': workout_exercise.sets,
+                'reps': workout_exercise.reps,
             }
             exercise_details.append(exercise_data)
 
@@ -159,6 +160,10 @@ class UserCompletedExercisesView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        print("Request URL:", request.path)
+        print("Request Method:", request.method)
+        print("Request Headers:", request.headers)
+        print("Request Body:", request.data)
         user_id = request.user.id
         india_tz = pytz.timezone('Asia/Kolkata')
         today = timezone.now().astimezone(india_tz).date()
@@ -170,7 +175,6 @@ class UserCompletedExercisesView(APIView):
         total_calories_burned = sum(exercise['calories_burned'] for exercise in completed_exercises)
 
         return Response({
-            #"date":timezone.now(),
             "completed_exercises": completed_exercise_ids,
             "total_calories_burned": total_calories_burned
         })

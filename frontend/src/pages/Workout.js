@@ -103,6 +103,7 @@ export default function WorkoutPage() {
         if (data.exercises.length === 0) {
           return;
         }
+        console.log(data);
         setCurrentExercise(data.exercises[0]); // Set first exercise as default
       })
       .catch((error) => console.error("Error fetching exercises:", error))
@@ -124,6 +125,7 @@ export default function WorkoutPage() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         //console.log(data);
         setCompletedExercises(data.completed_exercises);
       })
@@ -140,6 +142,8 @@ export default function WorkoutPage() {
       setShowBadgeModal(false); // Close modal if all badges are shown
     }
   };
+
+  //useEffect(() => calculateTotalCalories(), [completedExercises]);
 
   // Calculate total calories burned
   const calculateTotalCalories = () => {
@@ -270,13 +274,15 @@ export default function WorkoutPage() {
   //     .finally(() => setLoading(false));
   // };
   // Handle when the user marks an exercise as done
-  const handleCompleteExercise = async (exerciseId) => {
+  const handleCompleteExercise = async (workout_exercise_id, exerciseId) => {
     setLoading(true);
     await checkAuthentication();
     const token = localStorage.getItem("accessToken");
     if (!token) {
       navigate("/login");
     }
+
+    //console.log(workout_exercise_id);
 
     fetch(`http://127.0.0.1:8000/api/workouts/mark_done/`, {
       method: "POST",
@@ -285,7 +291,7 @@ export default function WorkoutPage() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        workout_exercise_id: exerciseId,
+        workout_exercise_id: workout_exercise_id,
       }),
     })
       .then((response) => response.json())
@@ -298,6 +304,8 @@ export default function WorkoutPage() {
             ...prevCompleted,
             exerciseId,
           ]);
+
+          window.location.reload();
 
           if (data.newly_awarded_badges.length > 0) {
             setNewlyAwardedBadges(data.newly_awarded_badges);
@@ -341,15 +349,15 @@ export default function WorkoutPage() {
                     key={exercise.id}
                     onClick={() => handleExerciseSelect(exercise)}
                     className={
-                      completedExercises.includes(exercise.id)
+                      completedExercises.includes(exercise.workout_exercise_id)
                         ? "completed"
                         : ""
                     }
                   >
                     {exercise.exercise_name}
-                    {completedExercises.includes(exercise.id) && (
-                      <span className="checkmark">✔</span>
-                    )}
+                    {completedExercises.includes(
+                      exercise.workout_exercise_id
+                    ) && <span className="checkmark">✔</span>}
                   </li>
                 ))}
               </ul>
@@ -390,10 +398,19 @@ export default function WorkoutPage() {
                 {currentExercise.calories_burned}
               </p>
               <button
-                onClick={() => handleCompleteExercise(currentExercise.id)}
-                disabled={completedExercises.includes(currentExercise.id)}
+                onClick={() =>
+                  handleCompleteExercise(
+                    currentExercise.workout_exercise_id,
+                    currentExercise.id
+                  )
+                }
+                disabled={completedExercises.includes(
+                  currentExercise.workout_exercise_id
+                )}
                 className={`complete-exercise-button ${
-                  completedExercises.includes(currentExercise.id)
+                  completedExercises.includes(
+                    currentExercise.workout_exercise_id
+                  )
                     ? "disabled"
                     : ""
                 }`}
@@ -403,7 +420,9 @@ export default function WorkoutPage() {
                     <span className="ml-2 text-l">Marking it...</span>
                     <FaSpinner className="animate-spin text-blue-500" />
                   </div>
-                ) : completedExercises.includes(currentExercise.id) ? (
+                ) : completedExercises.includes(
+                    currentExercise.workout_exercise_id
+                  ) ? (
                   "Completed"
                 ) : (
                   "Mark as Done"
