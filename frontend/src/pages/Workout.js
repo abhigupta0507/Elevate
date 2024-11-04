@@ -100,6 +100,7 @@ export default function WorkoutPage() {
       .then((res) => res.json())
       .then((data) => {
         setExerciseList(data.exercises);
+        console.log("data:",data);
         if (data.exercises.length === 0) {
           return;
         }
@@ -109,6 +110,8 @@ export default function WorkoutPage() {
       .finally(() => setPageLoading(false));
   }
 
+  console.log(completedExercises);
+  console.log(exerciseList);
   // Fetch completed exercises for today
   const fetchCompletedExercises = () => {
     setPageLoading(true);
