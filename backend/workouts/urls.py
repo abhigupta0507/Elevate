@@ -8,6 +8,6 @@ urlpatterns = [
     path('exit-workout-plan/', ExitWorkoutPlanView.as_view(), name='exit_workout_plan'),
     path('workout-plans/', WorkoutListView.as_view(), name='workout_plans'),
     path('exercises/today/', TodaysExercisesView.as_view(), name='todays_exercises'),
-    path('mark_done/', MarkExerciseDoneView.as_view(), name='mark-exercise-done'),
+    path('mark-done/', MarkExerciseDoneView.as_view(), name='mark-exercise-done'),
     path('completed_exercises/', UserCompletedExercisesView.as_view(), name='completed_exercises'),
 ]
