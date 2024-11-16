@@ -15,6 +15,7 @@ Welcome to our **Fitness Web Application (Elevate)**! This project is designed t
 
 ### 🏋️ Workout Plan
 - **Custom Workouts**: Users can choose from several structured workout plans focusing on various fitness targets, such as strength training, cardio, or HIIT.
+- <img width="535" alt="image" src="https://github.com/user-attachments/assets/45b232bb-8f16-4e89-bfde-5371821cc6c4">
 - <img width="960" alt="image" src="https://github.com/user-attachments/assets/41b020ed-c227-4442-8ea1-408766609392">
 - **Track Progress**: Users can mark exercises as "done" to monitor their workout progress and maintain motivation over time.
 <img width="947" alt="image" src="https://github.com/user-attachments/assets/cef5a983-2fc3-44b3-a382-e55c5b622ffc">
@@ -35,14 +36,13 @@ Welcome to our **Fitness Web Application (Elevate)**! This project is designed t
 - **Frontend**: React.js (Create React App)
 - **Backend**: Django REST Framework
 - **Authentication**: JWT (JSON Web Token)
-- **Database**: PostgreSQL / SQLite
+- **Database**: SQLite
 
 ## Installation and Setup
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/)
 - [Python](https://www.python.org/)
-- [PostgreSQL](https://www.postgresql.org/) (or use SQLite for simpler setups)
 
 ### Step-by-Step guide
 - git clone https://github.com/abhigupta0507/Elevate.git
