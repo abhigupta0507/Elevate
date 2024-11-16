@@ -100,6 +100,7 @@ export default function WorkoutPage() {
       .then((res) => res.json())
       .then((data) => {
         setExerciseList(data.exercises);
+        console.log("data:", data);
         if (data.exercises.length === 0) {
           return;
         }
@@ -110,6 +111,8 @@ export default function WorkoutPage() {
       .finally(() => setPageLoading(false));
   }
 
+  console.log(completedExercises);
+  console.log(exerciseList);
   // Fetch completed exercises for today
   const fetchCompletedExercises = () => {
     setPageLoading(true);
@@ -282,7 +285,7 @@ export default function WorkoutPage() {
       navigate("/login");
     }
 
-    //console.log(workout_exercise_id);
+    console.log(workout_exercise_id);
 
     fetch(`http://127.0.0.1:8000/api/workouts/mark_done/`, {
       method: "POST",
@@ -298,7 +301,7 @@ export default function WorkoutPage() {
       .then((data) => {
         if (data.success) {
           setMessage("Exercise marked as done!");
-
+          console.log(workout_exercise_id);
           // Update completed exercises state immediately
           setCompletedExercises((prevCompleted) => [
             ...prevCompleted,

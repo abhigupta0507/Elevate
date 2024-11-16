@@ -8,16 +8,17 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from badges.views import award_badges
-from datetime import date
+
 from .models import UserWorkouts, WorkoutExercise, User
 from .serializers import UserWorkoutSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from datetime import date
+
 from .models import User, WorkoutExercise, UserWorkouts
 from badges.models import UserBadge
 from .serializers import UserWorkoutSerializer
+from datetime import datetime,date
 import pytz
 
 User = get_user_model()
@@ -75,9 +76,6 @@ class ExitWorkoutPlanView(APIView):
             return Response({"message": "Successfully exited the workout plan."}, status=status.HTTP_200_OK)
         except UserWorkoutPlan.DoesNotExist:
             return Response({"error": "No active workout plan found."}, status=status.HTTP_400_BAD_REQUEST)
-
-
-#To display the list of exercises he has to do
 class TodaysExercisesView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -92,9 +90,8 @@ class TodaysExercisesView(APIView):
         if not user_workout_plan:
             return Response({"detail": "No active workout plan found for the user"}, status=status.HTTP_404_NOT_FOUND)
 
-        today = timezone.now().strftime('%A')  # Get day 'Monday'
+        today = timezone.now().strftime('%A')
         workout_exercises = WorkoutExercise.objects.filter(workout=user_workout_plan.workout_plan, day_of_week=today)
-
 
         if not workout_exercises.exists():
             return Response({"detail": "No exercises for today","exercises":[]})
@@ -120,19 +117,28 @@ class TodaysExercisesView(APIView):
         return Response({"exercises": exercise_details})
 
 class MarkExerciseDoneView(APIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request):
+
+        print("Request URL:", request.path)
+        print("Request Method:", request.method)
+        print("Request Headers:", request.headers)
+        print("Request Body:", request.data)
         user_id = request.user.id
+        user=request.user
         workout_exercise_id = request.data.get("workout_exercise_id")
-
-        try:
-            user = User.objects.get(id=user_id)
-        except User.DoesNotExist:
-            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
-
+        
+        # Debug prints
+        #print(f"Received workout_exercise_id: {workout_exercise_id}")
+        #print(f"Available exercise IDs: {list(WorkoutExercise.objects.values_list('id', flat=True))}")
+        
         try:
             workout_exercise = WorkoutExercise.objects.get(id=workout_exercise_id)
         except WorkoutExercise.DoesNotExist:
-            return Response({"error": "Workout exercise not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({
+                "error": f"Workout exercise with ID {workout_exercise_id} not found",
+                "available_ids": list(WorkoutExercise.objects.values_list('id', flat=True))
+            }, status=status.HTTP_404_NOT_FOUND)
 
         today = date.today()
         if UserWorkouts.objects.filter(user=user, workout_exercise=workout_exercise, completed_date=today).exists():
@@ -160,15 +166,15 @@ class UserCompletedExercisesView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        print("Request URL:", request.path)
-        print("Request Method:", request.method)
-        print("Request Headers:", request.headers)
-        print("Request Body:", request.data)
+        #print("Request URL:", request.path)
+        #print("Request Method:", request.method)
+        #print("Request Headers:", request.headers)
+        #print("Request Body:", request.data)
         user_id = request.user.id
         india_tz = pytz.timezone('Asia/Kolkata')
         today = timezone.now().astimezone(india_tz).date()
        # today = timezone.now().date()
-        print(timezone.now())
+        #print(timezone.now())
 
         completed_exercises = UserWorkouts.objects.filter(user_id=user_id, completed_date=today).values('workout_exercise', 'calories_burned')
         completed_exercise_ids = [exercise['workout_exercise'] for exercise in completed_exercises]
@@ -178,3 +184,4 @@ class UserCompletedExercisesView(APIView):
             "completed_exercises": completed_exercise_ids,
             "total_calories_burned": total_calories_burned
         })
+

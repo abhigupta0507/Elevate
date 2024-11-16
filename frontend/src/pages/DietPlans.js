@@ -4,7 +4,7 @@ import "../components/styles/Dietplans.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { jwtDecode } from "jwt-decode";
-import plan1 from "../images/dietplan_coffee.jpg";
+import plan1 from "../images/plan1.jpg";
 import { motion } from "framer-motion"; // Import Framer Motion
 import plan2 from "../images/plan1.jpg";
 import plan3 from "../images/plan3.jpg";

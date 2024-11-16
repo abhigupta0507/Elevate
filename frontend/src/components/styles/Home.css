@@ -184,9 +184,9 @@ body {
 
 .circle-text {
   position: absolute;
-  top: 20%;
-  right: -50px;
-  background-color: #f1d55f; /* Circle blue color */
+  top: 2%;
+  right: 25%;
+  background-color: #c5f79c; 
   color: black;
   border-radius: 50%;
   padding: 30px;
