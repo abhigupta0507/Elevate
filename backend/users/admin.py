@@ -4,7 +4,7 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'first_name', 'last_name', 'gender', 'age', 'height', 'weight', 'join_date')
+    list_display = ('email', 'first_name', 'last_name', 'gender', 'age', 'height', 'weight', 'join_date','is_verified')
     ordering = ('email',) 
     search_fields = ('email',)
 

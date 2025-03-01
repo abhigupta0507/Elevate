@@ -10,7 +10,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Home from "./Home";
 import Knowledge from "./Knowledge";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 import UserPost from "./UserPost";
 import Signup from "./Signup";
 import WorkoutPlansPage from "./WorkoutPlans";

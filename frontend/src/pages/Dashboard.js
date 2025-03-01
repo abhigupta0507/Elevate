@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 // import badge2 from "../images/badge_2.png";
 // import badge3 from "../images/badge_3.png";
 import userImg from "../images/user.png";
-import EditProfileModal from "./EditProfileModal";
+import EditProfileModal from "../components/EditProfileModal";
 
 const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
   const [currentWorkoutPlan, setCurrentWorkoutPlan] = useState(null);

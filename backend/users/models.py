@@ -29,12 +29,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True, max_length=100)
     password = models.CharField(max_length=255)
-    gender = models.CharField(max_length=6,null=True, choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')])
+    gender = models.CharField(max_length=6, null=True, choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')])
     age = models.IntegerField(null=True, blank=True)
     height = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)  # height in cm
     weight = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)  # weight in kg
     join_date = models.DateTimeField(default=timezone.now)
     
+    mobile_number = models.CharField(max_length=15, null=True, blank=True)
+    otp = models.CharField(max_length=6, null=True, blank=True)
+    otp_created_at = models.DateTimeField(null=True, blank=True)
+    is_verified = models.BooleanField(default=False)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
