@@ -1,0 +1,4049 @@
+[
+  {
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+      "last_login": "2024-11-03T18:45:34.202Z",
+      "is_superuser": true,
+      "first_name": "abhi",
+      "last_name": "gupta",
+      "email": "abhi@gmail.com",
+      "password": "pbkdf2_sha256$720000$ITmdZm6iKCrAc92oM9tEA9$RET7l01zHdAvfsdXgHpfpzHRkf+XXm4tzptAnA6skuM=",
+      "gender": null,
+      "age": null,
+      "height": null,
+      "weight": null,
+      "join_date": "2024-11-03T18:45:16.744Z",
+      "mobile_number": null,
+      "otp": null,
+      "otp_created_at": null,
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+      "last_login": "2024-11-03T19:19:07.188Z",
+      "is_superuser": true,
+      "first_name": "Anna ",
+      "last_name": "Narang",
+      "email": "annanarang13@gmail.com",
+      "password": "pbkdf2_sha256$870000$KcbhVuKegNWTKMN2isDFI4$exgq4MlPWHGTInUuENEZ6PufYXKLqElxe2LIBPupRMY=",
+      "gender": null,
+      "age": 19,
+      "height": "155.00",
+      "weight": "60.00",
+      "join_date": "2024-11-03T19:18:58.390Z",
+      "mobile_number": null,
+      "otp": null,
+      "otp_created_at": null,
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 4,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "alankrit",
+      "last_name": "kumar",
+      "email": "dasf@gmail.com",
+      "password": "pbkdf2_sha256$720000$ksaI1DTAVZCGO2mm2eA0kZ$aAUyMssHEV2qkXg8zwsTMqB2sQwYr/q1ubuUKOFx4+g=",
+      "gender": "Male",
+      "age": 20,
+      "height": "175.00",
+      "weight": "75.00",
+      "join_date": "2024-11-03T18:30:00Z",
+      "mobile_number": null,
+      "otp": null,
+      "otp_created_at": null,
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 19,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Abhishek",
+      "last_name": "Gupta",
+      "email": "abhishekguptakhe2rla@gmail.com",
+      "password": "pbkdf2_sha256$720000$bEZFCEljbJbGgKdsPWf7xT$CMzE55UyJA+HbpvV9Lnrz4cYcEqJDAahWZQ9CQwZz/w=",
+      "gender": "Male",
+      "age": 16,
+      "height": "186.00",
+      "weight": "80.00",
+      "join_date": "2025-02-28T18:30:00Z",
+      "mobile_number": "9079683399",
+      "otp": "498805",
+      "otp_created_at": "2025-03-01T10:52:04.065Z",
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 20,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Abhishek",
+      "last_name": "Gupta",
+      "email": "abhishekguptakihe2rla@gmail.com",
+      "password": "pbkdf2_sha256$720000$SD0UUAdAHgr28IDTj4MwS1$UDVe6si1vwDvxJgLqiGLwp6/7XsPGGTcd2Wxcks6Dek=",
+      "gender": "Male",
+      "age": 16,
+      "height": "186.00",
+      "weight": "80.00",
+      "join_date": "2025-02-28T18:30:00Z",
+      "mobile_number": "9079683399",
+      "otp": "104196",
+      "otp_created_at": "2025-03-01T10:52:40.972Z",
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 21,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Abhishek",
+      "last_name": "Gupta",
+      "email": "abhishekguptjakihe2rla@gmail.com",
+      "password": "pbkdf2_sha256$720000$fVSCsDgYLLqNROIqgjuPlI$OyLWFM4UMdBGlTmS+j3SY+Xc460F0U8L/c1UMFexpbk=",
+      "gender": "Male",
+      "age": 16,
+      "height": "186.00",
+      "weight": "80.00",
+      "join_date": "2025-02-28T18:30:00Z",
+      "mobile_number": "9079683399",
+      "otp": "823081",
+      "otp_created_at": "2025-03-01T10:53:31.405Z",
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 22,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Abhishek",
+      "last_name": "Gupta",
+      "email": "abhishekguptjakjihe2rla@gmail.com",
+      "password": "pbkdf2_sha256$720000$lL0eELyzhlQEVj6z9o0EiJ$9C+NllnjBSy4KBSNXKv53KVUckeNB7FyPI88W1Jb8dc=",
+      "gender": "Male",
+      "age": 16,
+      "height": "186.00",
+      "weight": "80.00",
+      "join_date": "2025-02-28T18:30:00Z",
+      "mobile_number": "9079683399",
+      "otp": "364408",
+      "otp_created_at": "2025-03-01T10:58:03.695Z",
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 23,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Abhishek",
+      "last_name": "Gupta",
+      "email": "abhishekguptakherla@gmail.com",
+      "password": "pbkdf2_sha256$720000$cBAzrBAUUcZSJdLcCamCrK$sX2QZMbFpfGUWTN4VWRX2srUFurNXoHy+UWJwJj1tFY=",
+      "gender": "Male",
+      "age": 19,
+      "height": "185.00",
+      "weight": "87.00",
+      "join_date": "2025-02-28T18:30:00Z",
+      "mobile_number": "9079683399",
+      "otp": null,
+      "otp_created_at": "2025-03-01T11:00:27.103Z",
+      "is_verified": true,
+      "is_active": true,
+      "is_staff": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 24,
+    "fields": {
+      "last_login": "2025-05-13T18:34:33.171Z",
+      "is_superuser": true,
+      "first_name": "abhishek",
+      "last_name": "gupta",
+      "email": "abhi12@gmail.com",
+      "password": "pbkdf2_sha256$720000$S2Vl6lE8y6xX4uGV96Rxk3$woiWgVQyR82GU7BheXQTbHZJy10RCAMz3WwxVGurdSo=",
+      "gender": null,
+      "age": null,
+      "height": null,
+      "weight": null,
+      "join_date": "2025-05-13T18:34:21.703Z",
+      "mobile_number": null,
+      "otp": null,
+      "otp_created_at": null,
+      "is_verified": false,
+      "is_active": true,
+      "is_staff": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 26,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Abhishek",
+      "last_name": "Gupta",
+      "email": "abhishekgupta39585@gmail.com",
+      "password": "pbkdf2_sha256$720000$cI73tSMhumw3AfObhueOnT$kpO7xk5ySB5sOaDgTP7h0nY4hnv/v8USX7wBW23UGmI=",
+      "gender": "Male",
+      "age": 73,
+      "height": "186.00",
+      "weight": "86.00",
+      "join_date": "2025-05-12T18:30:00Z",
+      "mobile_number": "9079683399",
+      "otp": null,
+      "otp_created_at": "2025-05-13T18:44:00.702Z",
+      "is_verified": true,
+      "is_active": true,
+      "is_staff": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "community.communitypost",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "title": "Quick Tip",
+      "content": "Keep your back straight while doing deadlifts..",
+      "likes": 28,
+      "created_at": "2024-11-03T21:00:04.721Z",
+      "liked_by": [3, 4, 26]
+    }
+  },
+  {
+    "model": "workouts.workout",
+    "pk": 1,
+    "fields": {
+      "workout_name": "At Home HIIT",
+      "workout_type": "Strength",
+      "program_duration": 20,
+      "days_per_week": 7,
+      "description": "Do or die"
+    }
+  },
+  {
+    "model": "workouts.workout",
+    "pk": 2,
+    "fields": {
+      "workout_name": "Quick Cardio",
+      "workout_type": "Cardio",
+      "program_duration": 15,
+      "days_per_week": 6,
+      "description": "Let's get going."
+    }
+  },
+  {
+    "model": "workouts.workout",
+    "pk": 3,
+    "fields": {
+      "workout_name": "Weights Workout",
+      "workout_type": "Strength",
+      "program_duration": 45,
+      "days_per_week": 3,
+      "description": "Grab the dumbells and start working out"
+    }
+  },
+  {
+    "model": "workouts.exercise",
+    "pk": 1,
+    "fields": {
+      "exercise_name": "Planks",
+      "muscle_group": "Back",
+      "video_url": "https://www.youtube.com/embed/pSHjTRCQxIw?si=ceGUFgjriilqXLLJ",
+      "description": "Do this otherwise you wont live",
+      "calories_burned": 500
+    }
+  },
+  {
+    "model": "workouts.exercise",
+    "pk": 3,
+    "fields": {
+      "exercise_name": "Squats",
+      "muscle_group": "Legs",
+      "video_url": "https://www.youtube.com/embed/aPYCiuiB4PA?si=BY4Vr74NFmsXl-NJ",
+      "description": "..nn",
+      "calories_burned": 500
+    }
+  },
+  {
+    "model": "workouts.exercise",
+    "pk": 4,
+    "fields": {
+      "exercise_name": "Deadlift with dumbells",
+      "muscle_group": "Back",
+      "video_url": "https://www.youtube.com/embed/JNpUNRPQkAk?si=0-UvVoZEO_16iKir",
+      "description": "Be careful with weights. Lift only as much as you can",
+      "calories_burned": 1500
+    }
+  },
+  {
+    "model": "workouts.exercise",
+    "pk": 5,
+    "fields": {
+      "exercise_name": "Lunges",
+      "muscle_group": "Legs",
+      "video_url": "https://www.bing.com/ck/a?!&&p=dda325260e31675c0addd53b913511605ccbd36d85049087b92623080578aa74JmltdHM9MTczMDU5MjAwMA&ptn=3&ver=2&hsh=4&fclid=016ebd83-1c89-636c-3b7c-aedc1d7b62b9&u=a1L3ZpZGVvcy9zZWFyY2g_cGdsdD00MSZxPWx1bmdlcyZjdmlkPTdmODY1ODdjOWMyZDQyYTli",
+      "description": "..",
+      "calories_burned": 2500
+    }
+  },
+  {
+    "model": "workouts.exercise",
+    "pk": 6,
+    "fields": {
+      "exercise_name": "Jumping Jacks",
+      "muscle_group": "General",
+      "video_url": "https://www.youtube.com/embed/c4DAnQ6DtF8?si=68hxoHPfdKCbWmbS",
+      "description": "Keep yourself pumped up!!",
+      "calories_burned": 3000
+    }
+  },
+  {
+    "model": "workouts.exercise",
+    "pk": 7,
+    "fields": {
+      "exercise_name": "Dumbell Press",
+      "muscle_group": "Chest",
+      "video_url": "https://www.youtube.com/embed/oZVCBM9f8Eo?si=MzvQ_mzMU9C9ToFu",
+      "description": "Repeat for flat bench, incline bench and decline bench. Set*rep same for each.",
+      "calories_burned": 4000
+    }
+  },
+  {
+    "model": "workouts.exercise",
+    "pk": 8,
+    "fields": {
+      "exercise_name": "Crunches",
+      "muscle_group": "Core",
+      "video_url": "https://www.youtube.com/embed/5ER5Of4MOPI?si=-W8AMt08gvJSKfyL",
+      "description": "...",
+      "calories_burned": 5000
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 9,
+    "fields": {
+      "workout": 1,
+      "exercise": 3,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 15,
+      "duration": null
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 10,
+    "fields": {
+      "workout": 1,
+      "exercise": 1,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 2,
+      "duration": 1
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 11,
+    "fields": {
+      "workout": 1,
+      "exercise": 8,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 20,
+      "duration": null
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 12,
+    "fields": {
+      "workout": 2,
+      "exercise": 5,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 20,
+      "duration": null
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 13,
+    "fields": {
+      "workout": 2,
+      "exercise": 6,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 50,
+      "duration": null
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 14,
+    "fields": {
+      "workout": 3,
+      "exercise": 4,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 12,
+      "duration": null
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 15,
+    "fields": {
+      "workout": 3,
+      "exercise": 7,
+      "day_of_week": "Monday",
+      "sets": 4,
+      "reps": 12,
+      "duration": null
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 17,
+    "fields": {
+      "workout": 1,
+      "exercise": 4,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 7,
+      "duration": 79
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 18,
+    "fields": {
+      "workout": 1,
+      "exercise": 6,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 2,
+      "duration": 12
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 19,
+    "fields": {
+      "workout": 1,
+      "exercise": 3,
+      "day_of_week": "Tuesday",
+      "sets": 3,
+      "reps": 12,
+      "duration": null
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 20,
+    "fields": {
+      "workout": 1,
+      "exercise": 3,
+      "day_of_week": "Wednesday",
+      "sets": 3,
+      "reps": 2,
+      "duration": 12
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 21,
+    "fields": {
+      "workout": 1,
+      "exercise": 6,
+      "day_of_week": "Thursday",
+      "sets": 3,
+      "reps": 1,
+      "duration": 12
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 22,
+    "fields": {
+      "workout": 1,
+      "exercise": 8,
+      "day_of_week": "Friday",
+      "sets": 3,
+      "reps": 1,
+      "duration": 21
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 23,
+    "fields": {
+      "workout": 1,
+      "exercise": 6,
+      "day_of_week": "Saturday",
+      "sets": 3,
+      "reps": 2,
+      "duration": 21
+    }
+  },
+  {
+    "model": "workouts.workoutexercise",
+    "pk": 24,
+    "fields": {
+      "workout": 1,
+      "exercise": 7,
+      "day_of_week": "Sunday",
+      "sets": 3,
+      "reps": 2,
+      "duration": 12
+    }
+  },
+  {
+    "model": "workouts.userworkoutplan",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "workout_plan": 1,
+      "start_date": "2024-11-04",
+      "is_active": true
+    }
+  },
+  {
+    "model": "workouts.userworkoutplan",
+    "pk": 3,
+    "fields": {
+      "user": 4,
+      "workout_plan": 1,
+      "start_date": "2024-11-04",
+      "is_active": true
+    }
+  },
+  {
+    "model": "workouts.userworkouts",
+    "pk": 44,
+    "fields": {
+      "user": 4,
+      "workout_exercise": 14,
+      "completed_date": "2024-11-04",
+      "calories_burned": "1500.00"
+    }
+  },
+  {
+    "model": "workouts.userworkouts",
+    "pk": 45,
+    "fields": {
+      "user": 4,
+      "workout_exercise": 23,
+      "completed_date": "2024-11-16",
+      "calories_burned": "3000.00"
+    }
+  },
+  {
+    "model": "diet.dietplancategory",
+    "pk": 2,
+    "fields": { "category_name": "Weight Loss" }
+  },
+  {
+    "model": "diet.dietplancategory",
+    "pk": 3,
+    "fields": { "category_name": "Maintenance" }
+  },
+  {
+    "model": "diet.dietplancategory",
+    "pk": 4,
+    "fields": { "category_name": "Muscle Gain" }
+  },
+  {
+    "model": "diet.dietplan",
+    "pk": 1,
+    "fields": {
+      "category": 2,
+      "plan_name": "3 week Weight Loss",
+      "description": "This is a diet for weight loss"
+    }
+  },
+  {
+    "model": "diet.dietplan",
+    "pk": 2,
+    "fields": {
+      "category": 3,
+      "plan_name": "Keep fit",
+      "description": "Healthy Eating Guide"
+    }
+  },
+  {
+    "model": "diet.dietplan",
+    "pk": 3,
+    "fields": {
+      "category": 4,
+      "plan_name": "Extreme Protein Challenge",
+      "description": "Build muscle Guide"
+    }
+  },
+  {
+    "model": "diet.mealtype",
+    "pk": 2,
+    "fields": { "meal_type_name": "Early Morning" }
+  },
+  {
+    "model": "diet.mealtype",
+    "pk": 3,
+    "fields": { "meal_type_name": "Breakfast" }
+  },
+  {
+    "model": "diet.mealtype",
+    "pk": 4,
+    "fields": { "meal_type_name": "Mid-Morning" }
+  },
+  {
+    "model": "diet.mealtype",
+    "pk": 5,
+    "fields": { "meal_type_name": "Lunch" }
+  },
+  {
+    "model": "diet.mealtype",
+    "pk": 6,
+    "fields": { "meal_type_name": "Evening Snack" }
+  },
+  {
+    "model": "diet.mealtype",
+    "pk": 7,
+    "fields": { "meal_type_name": "Dinner" }
+  },
+  {
+    "model": "diet.mealtype",
+    "pk": 8,
+    "fields": { "meal_type_name": "Post-Dinner" }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 2,
+    "fields": {
+      "diet_plan": 1,
+      "meal_type": 2,
+      "meal_name": "Warm Water + soaked almonds",
+      "calories": 10,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 3,
+    "fields": {
+      "diet_plan": 1,
+      "meal_type": 3,
+      "meal_name": "1 bowl mix fruits",
+      "calories": 20,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 4,
+    "fields": {
+      "diet_plan": 1,
+      "meal_type": 4,
+      "meal_name": "1 Apple",
+      "calories": 15,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 5,
+    "fields": {
+      "diet_plan": 1,
+      "meal_type": 5,
+      "meal_name": "1 bowl veg rice + curd",
+      "calories": 30,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 6,
+    "fields": {
+      "diet_plan": 1,
+      "meal_type": 6,
+      "meal_name": "1 bowl salad / soup",
+      "calories": 25,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 7,
+    "fields": {
+      "diet_plan": 1,
+      "meal_type": 7,
+      "meal_name": "1 small oats chapati with dal",
+      "calories": 40,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 8,
+    "fields": {
+      "diet_plan": 1,
+      "meal_type": 8,
+      "meal_name": "Green Tea",
+      "calories": 25,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 9,
+    "fields": {
+      "diet_plan": 2,
+      "meal_type": 2,
+      "meal_name": "Warm Water + soaked almonds",
+      "calories": 10,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 10,
+    "fields": {
+      "diet_plan": 2,
+      "meal_type": 3,
+      "meal_name": "4 Idli + Sambhar + Coconut chutney",
+      "calories": 25,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 11,
+    "fields": {
+      "diet_plan": 2,
+      "meal_type": 4,
+      "meal_name": "1 Apple / Orange",
+      "calories": 25,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 12,
+    "fields": {
+      "diet_plan": 2,
+      "meal_type": 5,
+      "meal_name": "2 rotis + � cup mixed vegetable curry / chickpeas + 1 cup low-fat curd + 1 cup salad",
+      "calories": 50,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 13,
+    "fields": {
+      "diet_plan": 2,
+      "meal_type": 6,
+      "meal_name": "Roasted almonds / foxnuts / peanuts (a handful",
+      "calories": 30,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 14,
+    "fields": {
+      "diet_plan": 2,
+      "meal_type": 7,
+      "meal_name": "2 rotis + � cup mixed vegetable curry / chickpeas + 1 cup salad",
+      "calories": 45,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 15,
+    "fields": {
+      "diet_plan": 2,
+      "meal_type": 8,
+      "meal_name": "Warm milk + Turmeric / Green Tea",
+      "calories": 45,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 16,
+    "fields": {
+      "diet_plan": 3,
+      "meal_type": 2,
+      "meal_name": "Warm Water + soaked almonds + Dates",
+      "calories": 25,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 17,
+    "fields": {
+      "diet_plan": 3,
+      "meal_type": 3,
+      "meal_name": "Paneer and veggie sandwich + Protein shake",
+      "calories": 100,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 18,
+    "fields": {
+      "diet_plan": 3,
+      "meal_type": 4,
+      "meal_name": "1 bowl soya chunks",
+      "calories": 75,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 19,
+    "fields": {
+      "diet_plan": 3,
+      "meal_type": 5,
+      "meal_name": "1 bowl green protein veg + 4 chapatis",
+      "calories": 150,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 20,
+    "fields": {
+      "diet_plan": 3,
+      "meal_type": 6,
+      "meal_name": "Protein shake / buttermilk",
+      "calories": 70,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 21,
+    "fields": {
+      "diet_plan": 3,
+      "meal_type": 7,
+      "meal_name": "2 bowls dal + 3 oat chapatis",
+      "calories": 150,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.dietplanmeal",
+    "pk": 22,
+    "fields": {
+      "diet_plan": 3,
+      "meal_type": 8,
+      "meal_name": "Warm milk + Turmeric / Green Tea",
+      "calories": 60,
+      "day_of_week": 0
+    }
+  },
+  {
+    "model": "diet.userdietplan",
+    "pk": 2,
+    "fields": { "user": 3, "diet_plan": 1, "is_active": true }
+  },
+  {
+    "model": "diet.userdietplan",
+    "pk": 3,
+    "fields": { "user": 4, "diet_plan": 2, "is_active": false }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 1,
+    "fields": {
+      "badge_name": "Workout Beginner 1",
+      "badge_description": "Complete 5 workouts to earn this badge",
+      "condition_to_earn": "5",
+      "badge_icon": "1"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 3,
+    "fields": {
+      "badge_name": "Workout Beginner 2",
+      "badge_description": "Complete 10 workouts to earn this badge",
+      "condition_to_earn": "10",
+      "badge_icon": "1"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 4,
+    "fields": {
+      "badge_name": "Workout Beginner 3",
+      "badge_description": "Complete 20 workouts to earn this badge",
+      "condition_to_earn": "20",
+      "badge_icon": "1"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 5,
+    "fields": {
+      "badge_name": "Workout Beginner 4",
+      "badge_description": "Complete 50 workouts to earn this badge",
+      "condition_to_earn": "50",
+      "badge_icon": "1"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 6,
+    "fields": {
+      "badge_name": "Workout Beginner 5",
+      "badge_description": "Complete 100 workouts to earn this badge",
+      "condition_to_earn": "100",
+      "badge_icon": "1"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 8,
+    "fields": {
+      "badge_name": "Calorie Burner 1",
+      "badge_description": "Burn 500 calories to earn this badge",
+      "condition_to_earn": "500",
+      "badge_icon": "2"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 9,
+    "fields": {
+      "badge_name": "Calorie Burner 2",
+      "badge_description": "Burn 1000 calories to earn this badge",
+      "condition_to_earn": "1000",
+      "badge_icon": "2"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 10,
+    "fields": {
+      "badge_name": "Calorie Burner 3",
+      "badge_description": "Burn 2000 calories to earn this badge",
+      "condition_to_earn": "2000",
+      "badge_icon": "2"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 11,
+    "fields": {
+      "badge_name": "Calorie Burner 4",
+      "badge_description": "Burn 5000 calories to earn this badge",
+      "condition_to_earn": "5000",
+      "badge_icon": "2"
+    }
+  },
+  {
+    "model": "badges.badge",
+    "pk": 12,
+    "fields": {
+      "badge_name": "Calorie Burner 5",
+      "badge_description": "Burn 10000 calories to earn this badge",
+      "condition_to_earn": "10000",
+      "badge_icon": "2"
+    }
+  },
+  {
+    "model": "badges.userbadge",
+    "pk": 14,
+    "fields": {
+      "user": 4,
+      "badge": 8,
+      "earned_date": "2024-11-04T09:39:27.757Z"
+    }
+  },
+  {
+    "model": "badges.userbadge",
+    "pk": 15,
+    "fields": {
+      "user": 4,
+      "badge": 9,
+      "earned_date": "2024-11-04T09:39:27.777Z"
+    }
+  },
+  {
+    "model": "badges.userbadge",
+    "pk": 16,
+    "fields": {
+      "user": 4,
+      "badge": 10,
+      "earned_date": "2024-11-16T15:57:31.302Z"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2024-11-03T18:47:03.748Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "1",
+      "object_repr": "Workout Beginner 1",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2024-11-03T18:47:21.012Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "2",
+      "object_repr": "Calorie Burner 1",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2024-11-03T18:47:40.419Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "Breakfast",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2024-11-03T18:48:00.891Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "2",
+      "object_repr": "Weight Loss",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2024-11-03T18:48:12.311Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Paleo DIet",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2024-11-03T18:48:26.906Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Atkins Diet",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2024-11-03T18:48:39.796Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "1",
+      "object_repr": "Breakfast",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2024-11-03T18:48:54.246Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "1",
+      "object_repr": "dcqwe (Sunday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2024-11-03T18:49:51.145Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "1",
+      "object_repr": "HIIT",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2024-11-03T18:50:25.866Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "2",
+      "object_repr": "Cardio",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2024-11-03T18:54:38.593Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "Planks",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2024-11-03T18:55:18.647Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "2",
+      "object_repr": "Squats",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2024-11-03T18:55:45.872Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Planks for HIIT on Sunday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2024-11-03T18:55:55.812Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "2",
+      "object_repr": "Squats for HIIT on Sunday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2024-11-03T18:56:02.754Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "3",
+      "object_repr": "Planks for HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2024-11-03T19:42:32.845Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "2",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2024-11-03T19:48:37.089Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2024-11-03T19:49:55.016Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "3",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2024-11-03T19:53:56.260Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "4",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2024-11-03T19:55:29.653Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "5",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2024-11-03T19:56:25.853Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "6",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2024-11-03T19:57:18.042Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "8",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2024-11-03T19:57:18.059Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "7",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2024-11-03T19:58:52.677Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "10",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2024-11-03T19:58:52.679Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "9",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+      "action_time": "2024-11-03T19:59:41.311Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "Workout Beginner 2",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2024-11-03T19:59:50.252Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "4",
+      "object_repr": "Workout Beginner 3",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+      "action_time": "2024-11-03T20:00:00.587Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "5",
+      "object_repr": "Workout Beginner 4",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+      "action_time": "2024-11-03T20:00:10.820Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "6",
+      "object_repr": "Workout Beginner 5",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+      "action_time": "2024-11-03T20:00:18.768Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "7",
+      "object_repr": "Calorie Burner 2",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+      "action_time": "2024-11-03T20:00:25.914Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "8",
+      "object_repr": "Calorie Burner 3",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+      "action_time": "2024-11-03T20:00:34.222Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "9",
+      "object_repr": "Calorie Burner 4",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+      "action_time": "2024-11-03T20:00:47.296Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "10",
+      "object_repr": "Calorie Burner 5",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+      "action_time": "2024-11-03T20:01:02.842Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "12",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2024-11-03T20:01:02.861Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "11",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2024-11-03T20:03:47.500Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "2",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Workout Beginner 3",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2024-11-03T20:04:00.263Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "2",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Calorie Burner 2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2024-11-03T20:04:24.400Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "3",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Workout Beginner 1",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+      "action_time": "2024-11-03T20:04:43.848Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "14",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+      "action_time": "2024-11-03T20:04:57.345Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "3",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Workout Beginner 1",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+      "action_time": "2024-11-03T20:04:57.362Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "2",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Calorie Burner 2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+      "action_time": "2024-11-03T20:04:57.370Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "1",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Calorie Burner 1",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+      "action_time": "2024-11-03T20:05:11.101Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "13",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+      "action_time": "2024-11-03T20:09:47.028Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "16",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+      "action_time": "2024-11-03T20:09:47.043Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "15",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+      "action_time": "2024-11-03T20:09:58.414Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "5",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Calorie Burner 2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+      "action_time": "2024-11-03T20:09:58.430Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "4",
+      "object_repr": "abhishekguptakherla1@gmail.com's badge: Calorie Burner 1",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+      "action_time": "2024-11-03T20:10:29.450Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "18",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+      "action_time": "2024-11-03T20:11:37.956Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "17",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+      "action_time": "2024-11-03T20:41:28.292Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "19",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+      "action_time": "2024-11-03T20:42:11.010Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "20",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+      "action_time": "2024-11-03T19:20:05.432Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "2",
+      "object_repr": "Calorie Burner 1",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+      "action_time": "2024-11-03T19:20:12.595Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "7",
+      "object_repr": "Calorie Burner 2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+      "action_time": "2024-11-03T19:20:40.065Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "1",
+      "object_repr": "Workout Beginner 1",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+      "action_time": "2024-11-03T19:21:01.253Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "Workout Beginner 2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+      "action_time": "2024-11-03T19:21:17.802Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "4",
+      "object_repr": "Workout Beginner 3",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+      "action_time": "2024-11-03T19:21:28.606Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "5",
+      "object_repr": "Workout Beginner 4",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+      "action_time": "2024-11-03T19:21:40.192Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "6",
+      "object_repr": "Workout Beginner 5",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+      "action_time": "2024-11-03T19:22:05.208Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "8",
+      "object_repr": "Calorie Burner 1",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge name\", \"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+      "action_time": "2024-11-03T19:22:27.224Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "9",
+      "object_repr": "Calorie Burner 2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge name\", \"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+      "action_time": "2024-11-03T19:22:41.083Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "10",
+      "object_repr": "Calorie Burner 3",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Badge name\", \"Badge description\", \"Condition to earn\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+      "action_time": "2024-11-03T19:23:05.226Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "11",
+      "object_repr": "Calorie Burner 4",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+      "action_time": "2024-11-03T19:23:21.851Z",
+      "user": 3,
+      "content_type": 14,
+      "object_id": "12",
+      "object_repr": "Calorie Burner 5",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+      "action_time": "2024-11-03T19:23:44.048Z",
+      "user": 3,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "Breakfast",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+      "action_time": "2024-11-03T19:23:55.446Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "1",
+      "object_repr": "dcqwe (Sunday)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+      "action_time": "2024-11-03T19:24:28.313Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "1",
+      "object_repr": "Breakfast",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+      "action_time": "2024-11-03T19:24:33.843Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "2",
+      "object_repr": "Early Morning",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+      "action_time": "2024-11-03T19:24:38.034Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "3",
+      "object_repr": "Breakfast",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+      "action_time": "2024-11-03T19:24:41.952Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "4",
+      "object_repr": "Mid-Morning",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+      "action_time": "2024-11-03T19:24:45.006Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "5",
+      "object_repr": "Lunch",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+      "action_time": "2024-11-03T19:24:51.249Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "6",
+      "object_repr": "Evening Snack",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+      "action_time": "2024-11-03T19:24:57.933Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "7",
+      "object_repr": "Dinner",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+      "action_time": "2024-11-03T19:25:01.087Z",
+      "user": 3,
+      "content_type": 10,
+      "object_id": "8",
+      "object_repr": "Post-Dinner",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+      "action_time": "2024-11-03T19:25:28.544Z",
+      "user": 3,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "3 week Weight Loss",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Plan name\", \"Description\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+      "action_time": "2024-11-03T19:25:41.480Z",
+      "user": 3,
+      "content_type": 9,
+      "object_id": "3",
+      "object_repr": "Maintenance",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+      "action_time": "2024-11-03T19:25:49.803Z",
+      "user": 3,
+      "content_type": 9,
+      "object_id": "4",
+      "object_repr": "Muscle Gain",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+      "action_time": "2024-11-03T19:26:25.064Z",
+      "user": 3,
+      "content_type": 11,
+      "object_id": "2",
+      "object_repr": "Keep fit",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Category\", \"Plan name\", \"Description\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+      "action_time": "2024-11-03T19:27:08.517Z",
+      "user": 3,
+      "content_type": 11,
+      "object_id": "3",
+      "object_repr": "Extreme Protein Challenge",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+      "action_time": "2024-11-03T19:27:36.795Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "2",
+      "object_repr": "Warm Water + soaked almonds (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+      "action_time": "2024-11-03T19:27:50.481Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "3",
+      "object_repr": "1 bowl mix fruits (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+      "action_time": "2024-11-03T19:28:10.636Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "4",
+      "object_repr": "1 Apple (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+      "action_time": "2024-11-03T19:28:28.538Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "5",
+      "object_repr": "1 bowl veg rice + curd (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+      "action_time": "2024-11-03T19:28:48.890Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "6",
+      "object_repr": "1 bowl salad / soup (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+      "action_time": "2024-11-03T19:29:14.408Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "7",
+      "object_repr": "1 small oats chapati with dal (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+      "action_time": "2024-11-03T19:29:26.497Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "8",
+      "object_repr": "Green Tea (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+      "action_time": "2024-11-03T19:29:56.988Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "9",
+      "object_repr": "Warm Water + soaked almonds (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+      "action_time": "2024-11-03T19:30:13.649Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "10",
+      "object_repr": "4 Idli + Sambhar + Coconut chutney (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+      "action_time": "2024-11-03T19:30:28.578Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "11",
+      "object_repr": "1 Apple / Orange (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+      "action_time": "2024-11-03T19:30:58.752Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "12",
+      "object_repr": "2 rotis + � cup mixed vegetable curry / chickpeas + 1 cup low-fat curd + 1 cup salad (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+      "action_time": "2024-11-03T19:31:48.818Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "13",
+      "object_repr": "Roasted almonds / foxnuts / peanuts (a handful (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+      "action_time": "2024-11-03T19:32:20.556Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "14",
+      "object_repr": "2 rotis + � cup mixed vegetable curry / chickpeas + 1 cup salad (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+      "action_time": "2024-11-03T19:32:51.846Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "15",
+      "object_repr": "Warm milk + Turmeric / Green Tea (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+      "action_time": "2024-11-03T19:33:16.563Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "16",
+      "object_repr": "Warm Water + soaked almonds + Dates (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+      "action_time": "2024-11-03T19:41:44.664Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "17",
+      "object_repr": "Paneer and veggie sandwich + Protein shake (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+      "action_time": "2024-11-03T19:42:28.809Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "18",
+      "object_repr": "1 bowl soya chunks (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+      "action_time": "2024-11-03T19:45:31.407Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "19",
+      "object_repr": "1 bowl green protein veg + 4 chapatis (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+      "action_time": "2024-11-03T19:45:59.505Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "20",
+      "object_repr": "Protein shake / buttermilk (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+      "action_time": "2024-11-03T19:46:21.611Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "21",
+      "object_repr": "2 bowls dal + 3 oat chapatis (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+      "action_time": "2024-11-03T19:46:44.467Z",
+      "user": 3,
+      "content_type": 12,
+      "object_id": "22",
+      "object_repr": "Warm milk + Turmeric / Green Tea (Monday)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+      "action_time": "2024-11-03T21:00:04.726Z",
+      "user": 3,
+      "content_type": 2,
+      "object_id": "2",
+      "object_repr": "Quick Tip",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+      "action_time": "2024-11-03T21:01:27.569Z",
+      "user": 3,
+      "content_type": 4,
+      "object_id": "2",
+      "object_repr": "Quick Cardio",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Workout name\", \"Program duration\", \"Description\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+      "action_time": "2024-11-03T21:01:44.628Z",
+      "user": 3,
+      "content_type": 4,
+      "object_id": "1",
+      "object_repr": "At Home HIIT",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Workout name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+      "action_time": "2024-11-03T21:03:16.555Z",
+      "user": 3,
+      "content_type": 4,
+      "object_id": "3",
+      "object_repr": "Weights Workout",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+      "action_time": "2024-11-03T21:40:08.369Z",
+      "user": 3,
+      "content_type": 3,
+      "object_id": "3",
+      "object_repr": "Squats",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 105,
+    "fields": {
+      "action_time": "2024-11-03T21:40:17.248Z",
+      "user": 3,
+      "content_type": 3,
+      "object_id": "3",
+      "object_repr": "Squats",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Calories burned\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 106,
+    "fields": {
+      "action_time": "2024-11-03T21:40:24.309Z",
+      "user": 3,
+      "content_type": 3,
+      "object_id": "2",
+      "object_repr": "Squats",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 107,
+    "fields": {
+      "action_time": "2024-11-03T21:41:26.742Z",
+      "user": 3,
+      "content_type": 3,
+      "object_id": "4",
+      "object_repr": "Deadlift with dumbells",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 108,
+    "fields": {
+      "action_time": "2024-11-03T21:41:47.223Z",
+      "user": 3,
+      "content_type": 7,
+      "object_id": "3",
+      "object_repr": "Planks for At Home HIIT on Monday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 109,
+    "fields": {
+      "action_time": "2024-11-03T21:42:08.670Z",
+      "user": 3,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "Deadlift with dumbells for Weights Workout on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 110,
+    "fields": {
+      "action_time": "2024-11-03T21:42:23.202Z",
+      "user": 3,
+      "content_type": 7,
+      "object_id": "5",
+      "object_repr": "Squats for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 111,
+    "fields": {
+      "action_time": "2024-11-03T21:43:05.816Z",
+      "user": 3,
+      "content_type": 3,
+      "object_id": "5",
+      "object_repr": "Lunges",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 112,
+    "fields": {
+      "action_time": "2024-11-03T21:43:24.608Z",
+      "user": 3,
+      "content_type": 7,
+      "object_id": "6",
+      "object_repr": "Lunges for Quick Cardio on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 113,
+    "fields": {
+      "action_time": "2024-11-03T22:20:50.447Z",
+      "user": 3,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "Deadlift with dumbells for Weights Workout on Monday",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Duration\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 114,
+    "fields": {
+      "action_time": "2024-11-03T22:26:15.603Z",
+      "user": 3,
+      "content_type": 7,
+      "object_id": "7",
+      "object_repr": "Planks for Quick Cardio on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 115,
+    "fields": {
+      "action_time": "2024-11-04T04:24:16.682Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "3",
+      "object_repr": "Squats",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 116,
+    "fields": {
+      "action_time": "2024-11-04T04:36:18.454Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "22",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 117,
+    "fields": {
+      "action_time": "2024-11-04T04:49:24.183Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "23",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 118,
+    "fields": {
+      "action_time": "2024-11-04T04:49:54.941Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "24",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 119,
+    "fields": {
+      "action_time": "2024-11-04T04:51:21.538Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "5",
+      "object_repr": "Squats for At Home HIIT on Monday",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Duration\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 120,
+    "fields": {
+      "action_time": "2024-11-04T04:51:49.030Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "3",
+      "object_repr": "Squats",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 121,
+    "fields": {
+      "action_time": "2024-11-04T04:53:04.040Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "8",
+      "object_repr": "Lunges for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 122,
+    "fields": {
+      "action_time": "2024-11-04T04:54:24.018Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "8",
+      "object_repr": "Lunges for At Home HIIT on Monday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 123,
+    "fields": {
+      "action_time": "2024-11-04T04:54:24.048Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "7",
+      "object_repr": "Planks for Quick Cardio on Monday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 124,
+    "fields": {
+      "action_time": "2024-11-04T04:54:24.067Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "6",
+      "object_repr": "Lunges for Quick Cardio on Monday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 125,
+    "fields": {
+      "action_time": "2024-11-04T04:54:24.083Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "5",
+      "object_repr": "Squats for At Home HIIT on Monday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 126,
+    "fields": {
+      "action_time": "2024-11-04T04:54:24.094Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "Deadlift with dumbells for Weights Workout on Monday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 127,
+    "fields": {
+      "action_time": "2024-11-04T04:54:24.105Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Planks for At Home HIIT on Sunday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 128,
+    "fields": {
+      "action_time": "2024-11-04T04:55:43.612Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "4",
+      "object_repr": "Deadlift with dumbells",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Video url\", \"Description\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 129,
+    "fields": {
+      "action_time": "2024-11-04T04:58:12.077Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "6",
+      "object_repr": "Jumping Jacks",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 130,
+    "fields": {
+      "action_time": "2024-11-04T05:00:31.916Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "7",
+      "object_repr": "Inclined Dumbell Press",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 131,
+    "fields": {
+      "action_time": "2024-11-04T05:01:45.085Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "8",
+      "object_repr": "Crunches",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 132,
+    "fields": {
+      "action_time": "2024-11-04T05:02:09.046Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "9",
+      "object_repr": "Squats for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 133,
+    "fields": {
+      "action_time": "2024-11-04T05:02:37.391Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "10",
+      "object_repr": "Planks for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 134,
+    "fields": {
+      "action_time": "2024-11-04T05:02:59.459Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "11",
+      "object_repr": "Crunches for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 135,
+    "fields": {
+      "action_time": "2024-11-04T05:03:13.474Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "12",
+      "object_repr": "Lunges for Quick Cardio on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 136,
+    "fields": {
+      "action_time": "2024-11-04T05:03:26.868Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "13",
+      "object_repr": "Jumping Jacks for Quick Cardio on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 137,
+    "fields": {
+      "action_time": "2024-11-04T05:03:51.729Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "14",
+      "object_repr": "Deadlift with dumbells for Weights Workout on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 138,
+    "fields": {
+      "action_time": "2024-11-04T05:04:13.085Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "15",
+      "object_repr": "Inclined Dumbell Press for Weights Workout on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 139,
+    "fields": {
+      "action_time": "2024-11-04T05:05:06.545Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "7",
+      "object_repr": "Dumbell Press",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Exercise name\", \"Description\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 140,
+    "fields": {
+      "action_time": "2024-11-04T05:06:53.614Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "Planks",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 141,
+    "fields": {
+      "action_time": "2024-11-04T05:12:10.565Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "8",
+      "object_repr": "Crunches",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 142,
+    "fields": {
+      "action_time": "2024-11-04T05:43:35.557Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "16",
+      "object_repr": "Squats for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 143,
+    "fields": {
+      "action_time": "2024-11-04T05:44:26.358Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "17",
+      "object_repr": "Deadlift with dumbells for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 144,
+    "fields": {
+      "action_time": "2024-11-04T05:44:43.680Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "16",
+      "object_repr": "Squats for At Home HIIT on Monday",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 145,
+    "fields": {
+      "action_time": "2024-11-04T07:35:14.295Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "29",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 146,
+    "fields": {
+      "action_time": "2024-11-04T08:41:32.371Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "31",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 147,
+    "fields": {
+      "action_time": "2024-11-04T08:41:32.375Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "30",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 148,
+    "fields": {
+      "action_time": "2024-11-04T08:41:32.385Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "29",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 149,
+    "fields": {
+      "action_time": "2024-11-04T08:50:30.130Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "33",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 150,
+    "fields": {
+      "action_time": "2024-11-04T08:50:30.139Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "32",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 151,
+    "fields": {
+      "action_time": "2024-11-04T08:50:30.147Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "28",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 152,
+    "fields": {
+      "action_time": "2024-11-04T08:57:50.226Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "34",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 153,
+    "fields": {
+      "action_time": "2024-11-04T09:16:50.241Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "37",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 154,
+    "fields": {
+      "action_time": "2024-11-04T09:16:50.255Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "36",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 155,
+    "fields": {
+      "action_time": "2024-11-04T09:18:21.466Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "18",
+      "object_repr": "Jumping Jacks for At Home HIIT on Monday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 156,
+    "fields": {
+      "action_time": "2024-11-04T09:19:21.218Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "41",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 157,
+    "fields": {
+      "action_time": "2024-11-04T09:19:21.249Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "38",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 158,
+    "fields": {
+      "action_time": "2024-11-04T09:19:21.274Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "35",
+      "object_repr": "abhishekguptakherla1@gmail.com's workout on 2024-11-04",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 159,
+    "fields": {
+      "action_time": "2024-11-16T15:51:19.097Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "19",
+      "object_repr": "Squats for At Home HIIT on Tuesday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 160,
+    "fields": {
+      "action_time": "2024-11-16T15:51:29.681Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "20",
+      "object_repr": "Squats for At Home HIIT on Wednesday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 161,
+    "fields": {
+      "action_time": "2024-11-16T15:51:38.423Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "21",
+      "object_repr": "Jumping Jacks for At Home HIIT on Thursday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 162,
+    "fields": {
+      "action_time": "2024-11-16T15:51:48.574Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "22",
+      "object_repr": "Crunches for At Home HIIT on Friday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 163,
+    "fields": {
+      "action_time": "2024-11-16T15:51:58.625Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "23",
+      "object_repr": "Jumping Jacks for At Home HIIT on Saturday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 164,
+    "fields": {
+      "action_time": "2024-11-16T15:52:07.962Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "24",
+      "object_repr": "Dumbell Press for At Home HIIT on Sunday",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 179,
+    "fields": {
+      "action_time": "2025-05-13T18:37:09.132Z",
+      "user": 24,
+      "content_type": 1,
+      "object_id": "5",
+      "object_repr": "abhishekgupta39585@gmail.com",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 180,
+    "fields": {
+      "action_time": "2025-05-13T18:43:58.153Z",
+      "user": 24,
+      "content_type": 1,
+      "object_id": "25",
+      "object_repr": "abhishekgupta39585@gmail.com",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add custom user",
+      "content_type": 1,
+      "codename": "add_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change custom user",
+      "content_type": 1,
+      "codename": "change_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete custom user",
+      "content_type": 1,
+      "codename": "delete_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view custom user",
+      "content_type": 1,
+      "codename": "view_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add community post",
+      "content_type": 2,
+      "codename": "add_communitypost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change community post",
+      "content_type": 2,
+      "codename": "change_communitypost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete community post",
+      "content_type": 2,
+      "codename": "delete_communitypost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view community post",
+      "content_type": 2,
+      "codename": "view_communitypost"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add exercise",
+      "content_type": 3,
+      "codename": "add_exercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change exercise",
+      "content_type": 3,
+      "codename": "change_exercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete exercise",
+      "content_type": 3,
+      "codename": "delete_exercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view exercise",
+      "content_type": 3,
+      "codename": "view_exercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add workout",
+      "content_type": 4,
+      "codename": "add_workout"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change workout",
+      "content_type": 4,
+      "codename": "change_workout"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete workout",
+      "content_type": 4,
+      "codename": "delete_workout"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view workout",
+      "content_type": 4,
+      "codename": "view_workout"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add user progress",
+      "content_type": 5,
+      "codename": "add_userprogress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change user progress",
+      "content_type": 5,
+      "codename": "change_userprogress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete user progress",
+      "content_type": 5,
+      "codename": "delete_userprogress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view user progress",
+      "content_type": 5,
+      "codename": "view_userprogress"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add user workout plan",
+      "content_type": 6,
+      "codename": "add_userworkoutplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change user workout plan",
+      "content_type": 6,
+      "codename": "change_userworkoutplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete user workout plan",
+      "content_type": 6,
+      "codename": "delete_userworkoutplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view user workout plan",
+      "content_type": 6,
+      "codename": "view_userworkoutplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add workout exercise",
+      "content_type": 7,
+      "codename": "add_workoutexercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change workout exercise",
+      "content_type": 7,
+      "codename": "change_workoutexercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete workout exercise",
+      "content_type": 7,
+      "codename": "delete_workoutexercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view workout exercise",
+      "content_type": 7,
+      "codename": "view_workoutexercise"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add user workouts",
+      "content_type": 8,
+      "codename": "add_userworkouts"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change user workouts",
+      "content_type": 8,
+      "codename": "change_userworkouts"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete user workouts",
+      "content_type": 8,
+      "codename": "delete_userworkouts"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view user workouts",
+      "content_type": 8,
+      "codename": "view_userworkouts"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add diet plan category",
+      "content_type": 9,
+      "codename": "add_dietplancategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change diet plan category",
+      "content_type": 9,
+      "codename": "change_dietplancategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete diet plan category",
+      "content_type": 9,
+      "codename": "delete_dietplancategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view diet plan category",
+      "content_type": 9,
+      "codename": "view_dietplancategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add meal type",
+      "content_type": 10,
+      "codename": "add_mealtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change meal type",
+      "content_type": 10,
+      "codename": "change_mealtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete meal type",
+      "content_type": 10,
+      "codename": "delete_mealtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view meal type",
+      "content_type": 10,
+      "codename": "view_mealtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add diet plan",
+      "content_type": 11,
+      "codename": "add_dietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change diet plan",
+      "content_type": 11,
+      "codename": "change_dietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete diet plan",
+      "content_type": 11,
+      "codename": "delete_dietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view diet plan",
+      "content_type": 11,
+      "codename": "view_dietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add diet plan meal",
+      "content_type": 12,
+      "codename": "add_dietplanmeal"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change diet plan meal",
+      "content_type": 12,
+      "codename": "change_dietplanmeal"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete diet plan meal",
+      "content_type": 12,
+      "codename": "delete_dietplanmeal"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view diet plan meal",
+      "content_type": 12,
+      "codename": "view_dietplanmeal"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add user diet plan",
+      "content_type": 13,
+      "codename": "add_userdietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change user diet plan",
+      "content_type": 13,
+      "codename": "change_userdietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete user diet plan",
+      "content_type": 13,
+      "codename": "delete_userdietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view user diet plan",
+      "content_type": 13,
+      "codename": "view_userdietplan"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add badge",
+      "content_type": 14,
+      "codename": "add_badge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change badge",
+      "content_type": 14,
+      "codename": "change_badge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete badge",
+      "content_type": 14,
+      "codename": "delete_badge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view badge",
+      "content_type": 14,
+      "codename": "view_badge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add user badge",
+      "content_type": 15,
+      "codename": "add_userbadge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change user badge",
+      "content_type": 15,
+      "codename": "change_userbadge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete user badge",
+      "content_type": 15,
+      "codename": "delete_userbadge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view user badge",
+      "content_type": 15,
+      "codename": "view_userbadge"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 16,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 16,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 16,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 16,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 17,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 17,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 17,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 17,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 18,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 18,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 18,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 18,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 19,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 19,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 19,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 19,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 20,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 20,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 20,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 20,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": { "app_label": "users", "model": "customuser" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": { "app_label": "community", "model": "communitypost" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": { "app_label": "workouts", "model": "exercise" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": { "app_label": "workouts", "model": "workout" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": { "app_label": "workouts", "model": "userprogress" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": { "app_label": "workouts", "model": "userworkoutplan" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": { "app_label": "workouts", "model": "workoutexercise" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": { "app_label": "workouts", "model": "userworkouts" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": { "app_label": "diet", "model": "dietplancategory" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": { "app_label": "diet", "model": "mealtype" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": { "app_label": "diet", "model": "dietplan" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": { "app_label": "diet", "model": "dietplanmeal" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": { "app_label": "diet", "model": "userdietplan" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": { "app_label": "badges", "model": "badge" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": { "app_label": "badges", "model": "userbadge" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": { "app_label": "admin", "model": "logentry" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": { "app_label": "auth", "model": "permission" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": { "app_label": "auth", "model": "group" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 19,
+    "fields": { "app_label": "contenttypes", "model": "contenttype" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": { "app_label": "sessions", "model": "session" }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "apxf13zqgyf183fun3dymyxmwaj8l9jm",
+    "fields": {
+      "session_data": ".eJxVzM0OwiAQBOB34WwIlJ-iR-8-A9llu1I1kJT2ZHx3S9KDXuebmbeIsK05bm1a4kziIow4_WYI6TmVDvSAcq8y1bIuM8pekYc2eas0va5H9-8gQ8t97YEogbLBEXu2zqpgkEEPqMgNxnnNOGpOwQTYnZgsjOjG8w5sUXy-ABY4lA:1t7g7v:0u-4ekT1ms8WSoypnH-7JiiavLVOmxtiayiZgRplYcM",
+      "expire_date": "2024-11-17T19:19:07.203Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "jdvnk0ez3zt3dz268mnanznxdk1rtu44",
+    "fields": {
+      "session_data": ".eJxVjLEOAiEQRP-F2hBgJYqlvd9AdtlFTg0kx11l_He55Aotpph5M_NWEdelxLXLHCdWF2XV4TcjTE-pG-AH1nvTqdVlnkhvFb3Trm-N5XXdu38HBXsZ6yzOUyCyIcvJO48szN4Og5g8QQ6GwQKwY0Dr0tBRzsmwZ7EERn2-GJo5AA:1t7fbS:7eBaCfsavMIEKRmJgYerTAq4ae9ih1SGYX5i7p84Nxo",
+      "expire_date": "2024-11-17T18:45:34.214Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "rrl98kcmapfitim6h94rhxgcltl849j2",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSHI8Bhcuu83kIGhUjU0Ke3K-O_apAvd3nPOfYlI21rj1ssSJxYXoY04_Y6J8qO0nfCd2m2WeW7rMiW5K_KgXQ4zl-f1cP8OKvX6rRESB7JptMrC2ZFSwQFSsqMGYHTEJXvUGa13mIA9oUMNNhhjyBcv3h_5Cjde:1uEuSX:xJiJbffkgSMmlHxoD3rfxASkdGFwUsmHU0etxgTHU40",
+      "expire_date": "2025-05-27T18:34:33.178Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "svf3c6rhyz49c29hvb7xohnzwb654nos",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSE8BVy67zeQgRmkaiAp7cr479qkC93ec859sQjbWuM2aIkzsguz7PS7JcgPajvAO7Rb57m3dZkT3xV-0MGnjvS8Hu7fQYVRv7UUSaAOwRUpi3Lei2IVJYNCGmNFAIk-OEI8K6upKA1Jk8eSwRlnQLH3B8p4N6M:1toIbx:ylMbW6Zfw1P5VnOZ5nQ7YNnl6lYYshXrqmJcIAF8pO8",
+      "expire_date": "2025-03-15T08:54:17.777Z"
+    }
+  }
+]
