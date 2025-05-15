@@ -1,7 +1,0 @@
-{
-  "python.analysis.autoImportCompletions": true,
-  "files.associations": {
-    "*.embeddedhtml": "html",
-    "iostream": "cpp"
-  }
-}
